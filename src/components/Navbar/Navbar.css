@@ -1,0 +1,19 @@
+.navbar {
+    background-image: url("./space.jpg");
+    height: 125px;
+    border-bottom: rgb(153, 153, 153) solid 8px;
+}
+
+#title {
+    font-size: 300%;
+    font-weight: bold;
+    /* letter-spacing: 5px; */
+    color: rgba(189, 189, 189, 0.747);
+    margin-right: 0;
+}
+
+@media (max-width: 760px) {
+    #title {
+        font-size: 6.3vw;
+    }
+}
