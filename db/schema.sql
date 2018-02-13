@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS astrological_research_tool_db;
+CREATE DATABASE astrological_research_tool_db;
