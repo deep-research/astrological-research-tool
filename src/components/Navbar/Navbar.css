@@ -1,7 +1,6 @@
-.navbar {
+#topBar {
     background-image: url("./space.jpg");
     height: 125px;
-    border-bottom: rgb(153, 153, 153) solid 8px;
 }
 
 #title {
@@ -16,4 +15,8 @@
     #title {
         font-size: 6.3vw;
     }
+}
+
+body {
+    background-color: rgba(211, 211, 211, 0.274);
 }
