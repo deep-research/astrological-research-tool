@@ -2,8 +2,17 @@
     color: grey;
     margin-bottom: 0;
     margin-top: 4px;
+    text-align: right;
+    padding-right: 40px;
 }
 
 .nav-space {
     width: 20px;
+}
+
+@media (max-width: 767px) {
+    #loginMessage {
+        text-align: center;
+        padding-right: 0;
+    }    
 }
