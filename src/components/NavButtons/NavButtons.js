@@ -7,18 +7,18 @@ class NavButtons extends Component {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-3"></div>
-                <div className="col-sm-12 col-md-6">
+                <div className="col-sm-12 col-md-6" id="button-div">
                     <ul className="nav nav-pills justify-content-center">
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-primary btn-lg">About</button>
+                            <button type="button" className="btn btn-outline-dark btn-lg navButton">About</button>
                         </li>
                         <li className="nav-space"></li>                
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-primary btn-lg">Login</button>
+                            <button type="button" className="btn btn-outline-dark btn-lg navButton">Login</button>
                         </li>
                         <li className="nav-space"></li>
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-primary btn-lg">Register</button>
+                            <button type="button" className="btn btn-outline-dark btn-lg navButton">Register</button>
                         </li>
                     </ul>
                 </div>

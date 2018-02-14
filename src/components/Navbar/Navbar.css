@@ -1,6 +1,7 @@
 #topBar {
     background-image: url("./space.jpg");
     height: 125px;
+    border-bottom: 4px rgb(31, 31, 31) solid;
 }
 
 #title {
