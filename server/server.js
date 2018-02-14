@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Sequelize database import
-var db = require("./models");
+var db = require("../models");
 
 // Initialize body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +23,7 @@ app.get("*", function(req, res) {
 });
 
 // Connect the API routes folder
-require("./routes/api-routes.js")(app);
+// require("../routes/api-routes.js")(app);
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
