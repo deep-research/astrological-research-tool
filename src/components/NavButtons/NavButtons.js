@@ -10,7 +10,7 @@ class NavButtons extends Component {
                 <div className="col-sm-12 col-md-6" id="button-div">
                     <ul className="nav nav-pills justify-content-center">
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-dark btn-lg nav-button">About</button>
+                            <button type="button" className="btn btn-outline-dark btn-lg nav-button" data-toggle="collapse" data-target="#AboutSection" aria-expanded="false" aria-controls="#AboutSection">About</button>
                         </li>
                         <li className="nav-space"></li>                
                         <li className="nav-item">

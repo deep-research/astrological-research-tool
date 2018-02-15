@@ -8,8 +8,13 @@
     font-size: 300%;
     font-weight: bold;
     /* letter-spacing: 5px; */
-    color: rgba(189, 189, 189, 0.747);
+    color: rgba(189, 189, 189);
+    opacity: 0.52;
     margin-right: 0;
+}
+
+#title:hover {
+    opacity: .58;
 }
 
 @media (max-width: 760px) {
