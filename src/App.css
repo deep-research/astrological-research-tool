@@ -1,0 +1,11 @@
+/* .app {
+    min-height: calc(100vh - 17px);
+} */
+
+body {
+    /* background: linear-gradient(-45deg, red, blue); */
+    background-color: rgba(211, 211, 211, 0.274);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
