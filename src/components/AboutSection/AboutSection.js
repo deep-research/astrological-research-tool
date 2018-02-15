@@ -4,9 +4,9 @@ import "./AboutSection.css";
 class AboutSection extends Component {
     render() {
         return (
-        <div id="AboutSection" class="collapse">
+        <div id="AboutSection" className="collapse">
             <br />
-            <h2>About</h2>
+            <h3>About</h3>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis maximus nisl vel molestie. Etiam mauris tortor, elementum sed fringilla maximus, tincidunt quis turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sagittis pellentesque lorem ac sollicitudin. Nulla suscipit tellus ante, eu congue ipsum commodo mollis. Quisque sit amet tortor hendrerit, porta elit quis, tincidunt elit.
             </p>

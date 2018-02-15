@@ -4,6 +4,7 @@ import "./HomePage.css";
 import Navbar from "../../components/Navbar"
 import NavButtons from "../../components/NavButtons"
 import AboutSection from "../../components/AboutSection"
+import EventForm from "../../components/EventForm"
 
 class HomePage extends Component {
     render() {
@@ -13,6 +14,7 @@ class HomePage extends Component {
             <NavButtons />
             <div className="container">
                 <AboutSection />
+                <EventForm />
             </div>
             {/* <Link to={`./index.html`}>click here</Link><br /> */}
             {/* <Link to={`./`}>click here</Link> */}         
