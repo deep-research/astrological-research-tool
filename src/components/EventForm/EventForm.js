@@ -10,24 +10,24 @@ class EventForm extends Component {
             <form>
                 <div className="row">
                     <div className="col-sm-12 col-md-6">
-                        <label htmlFor="eventFormDescription">Example label</label>
-                        <input type="text" className="form-control" id="eventFormDescription" placeholder="Description" />
-                        <div className="formSpacer"></div>
-                        <label htmlFor="eventFormDate">Example label</label>
-                        <input type="text" className="form-control" id="eventFormDate" placeholder="Date" />
+                        <label htmlFor="eventFormName">Event Name</label>
+                        <input  required type="text" className="form-control" id="eventFormName" placeholder="Name" />
+                        <div required className="formSpacer"></div>
+                        <label htmlFor="eventFormCity">Event City</label>
+                        <input required type="text" className="form-control" id="eventFormCity" placeholder="City" />
                         <div className="formSpacer"></div>
                     </div>
                     <div className="col-sm-12 col-md-6">
-                        <label htmlFor="eventFormLocation">Example label</label>
-                        <input type="text" className="form-control" id="eventFormLocation" placeholder="Location" />
+                        <label htmlFor="eventFormDate">Event Date</label>
+                        <input  required type="date" className="form-control" id="eventFormDate" placeholder="Date" />
                         <div className="formSpacer"></div>
-                        <label htmlFor="eventFormTime">Example label</label>
-                        <input type="text" className="form-control" id="eventFormTime" placeholder="Time" />
+                        <label htmlFor="eventFormTime">Event Time</label>
+                        <input required type="time" className="form-control" id="eventFormTime" placeholder="Time" />
                         <div className="formSpacer"></div>
                     </div>
                 </div>
                 <div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary" id="eventFormBtn">Submit</button>
                 </div>
             </form>
         </div>
