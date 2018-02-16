@@ -14,7 +14,7 @@ class HomePage extends Component {
             <NavButtons />
             <div className="container">
                 <AboutSection />
-                <EventForm />
+                <EventForm state={this.state} />
             </div>
             {/* <Link to={`./index.html`}>click here</Link><br /> */}
             {/* <Link to={`./`}>click here</Link> */}         
