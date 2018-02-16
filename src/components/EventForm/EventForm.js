@@ -9,25 +9,25 @@ class EventForm extends Component {
             <h3>Add an Event</h3>
             <form>
                 <div className="row">
-                    <div className="col">
-                        <label for="eventFormDescription">Example label</label>
-                        <input type="text" class="form-control" id="eventFormDescription" placeholder="Description" />
-                        {/* <br /> */}
-                        <div class="formSpacer"></div>
-                        <label for="eventFormDate">Example label</label>
-                        <input type="text" class="form-control" id="eventFormDate" placeholder="Date" />
-                        {/* <br /> */}
-                        <div id="formButtonSpacer"></div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div className="col-sm-12 col-md-6">
+                        <label htmlFor="eventFormDescription">Example label</label>
+                        <input type="text" className="form-control" id="eventFormDescription" placeholder="Description" />
+                        <div className="formSpacer"></div>
+                        <label htmlFor="eventFormDate">Example label</label>
+                        <input type="text" className="form-control" id="eventFormDate" placeholder="Date" />
+                        <div className="formSpacer"></div>
                     </div>
-                    <div className="col">
-                        <label for="eventFormLocation">Example label</label>
-                        <input type="text" class="form-control" id="eventFormLocation" placeholder="Location" />
-                        <div class="formSpacer"></div>
-                        {/* <br /> */}
-                        <label for="eventFormTime">Example label</label>
-                        <input type="text" class="form-control" id="eventFormTime" placeholder="Time" />
+                    <div className="col-sm-12 col-md-6">
+                        <label htmlFor="eventFormLocation">Example label</label>
+                        <input type="text" className="form-control" id="eventFormLocation" placeholder="Location" />
+                        <div className="formSpacer"></div>
+                        <label htmlFor="eventFormTime">Example label</label>
+                        <input type="text" className="form-control" id="eventFormTime" placeholder="Time" />
+                        <div className="formSpacer"></div>
                     </div>
+                </div>
+                <div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
