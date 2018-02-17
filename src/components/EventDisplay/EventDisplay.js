@@ -39,6 +39,7 @@ class EventDisplay extends Component {
                                 <p>City: {event.city}</p>
                                 <p>Date: {this.dateConversion(event.date)}</p>
                                 <p>Time: {event.time}</p>
+                                <p>Coordinates: {event.coordinates}</p>
                             </div>
                         </div>
                     </div>

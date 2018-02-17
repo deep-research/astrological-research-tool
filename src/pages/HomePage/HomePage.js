@@ -6,6 +6,7 @@ import NavButtons from "../../components/NavButtons"
 import AboutSection from "../../components/AboutSection"
 import EventForm from "../../components/EventForm"
 import EventDisplay from "../../components/EventDisplay"
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 class HomePage extends Component {
     state = {
@@ -25,6 +26,11 @@ class HomePage extends Component {
     
     handleEventFormSubmit = event => {
         event.preventDefault()
+
+        geocodeByAddress(this.state.city)
+            .then(results => getLatLng(results[0]))
+            .then(latLng => console.log('Success', latLng))
+            .catch(error => console.error('Error', error))
 
         const newEvent = {
             name: this.state.name,
