@@ -2,6 +2,11 @@ import React, {Component} from "react";
 import "./EventForm.css";
 
 class EventForm extends Component {
+    constructor(props) {
+        super(props);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+     }
+
     state = {
         events: [],
         name: "",
@@ -35,7 +40,7 @@ class EventForm extends Component {
             city: "",
             date: "",
             time: ""
-        })
+        }, () => console.log(this.state.events))
     };
 
     render() {
@@ -44,7 +49,7 @@ class EventForm extends Component {
         <div id="EventForm">
             <br />
             <h3>Add an Event</h3>
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
                 <div className="row">
                     <div className="col-sm-12 col-md-6">
                         <label htmlFor="eventFormName">Event Name</label>
@@ -102,7 +107,6 @@ class EventForm extends Component {
                         type="submit"
                         className="btn btn-primary"
                         id="eventFormBtn"
-                        onSubmit={this.handleFormSubmit}
                     >Submit</button>
                 </div>
             </form>
