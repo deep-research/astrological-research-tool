@@ -20,12 +20,22 @@ class EventForm extends Component {
     handleFormSubmit = event => {
         event.preventDefault()
 
-        console.log(
-            this.state.name,
-            this.state.city,
-            this.state.date,
-            this.state.time
-        )
+        const newEvent = {
+            name: this.state.name,
+            city: this.state.city,
+            date: this.state.date,
+            time: this.state.time
+        }
+
+        console.log(newEvent)
+
+        this.setState({
+            events: [...this.state.events, newEvent],
+            name: "",
+            city: "",
+            date: "",
+            time: ""
+        })
     };
 
     render() {
@@ -64,6 +74,8 @@ class EventForm extends Component {
                         <label htmlFor="eventFormDate">Event Date</label>
                         <input required
                             type="date"
+                            min="1970-01-01"
+                            max="2070-12-31"
                             value={this.state.date}
                             onChange={this.handleInputChange}
                             name="date"
@@ -90,7 +102,7 @@ class EventForm extends Component {
                         type="submit"
                         className="btn btn-primary"
                         id="eventFormBtn"
-                        onClick={this.handleFormSubmit}
+                        onSubmit={this.handleFormSubmit}
                     >Submit</button>
                 </div>
             </form>
