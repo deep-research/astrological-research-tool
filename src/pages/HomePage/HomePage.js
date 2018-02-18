@@ -12,7 +12,10 @@ class HomePage extends Component {
     state = {
         events: [],
         name: "",
-        city: "",
+        cityInput: "",
+        cityResult: "",
+        cityLat: "",
+        cityLng: "",
         date: "",
         time: ""
     };
@@ -22,18 +25,25 @@ class HomePage extends Component {
         this.setState(
             {[name]: value},
             () => {
-                const userCity = this.state.city.toLowerCase();
-                alert(userCity)
-                
-                var indexOfCity = cities.map((x) => 
-                    {return x.name.toLowerCase(); }).indexOf(userCity);
-                if (cities[indexOfCity])  {
-                    const cityName = cities[indexOfCity].name;
-                    const cityLat = cities[indexOfCity].lat;
-                    const cityLng = cities[indexOfCity].lng;
-                } else {
-                    alert("Not found")
-                }
+                if (name === "cityInput") {
+                    const userCity = this.state.cityInput.toLowerCase();
+                    
+                    var indexOfCity = cities.map((x) => 
+                        {return x.name.toLowerCase(); }).indexOf(userCity);
+                    if (cities[indexOfCity])  {
+                        const cityName = cities[indexOfCity].name;
+                        const cityLat = cities[indexOfCity].lat;
+                        const cityLng = cities[indexOfCity].lng;
+
+                        this.setState(
+                            {
+                                cityResult: cityName,
+                                cityLat: cityLat,
+                                cityLng: cityLng 
+                            }, () => {console.log(this.state)}
+                        );
+                    };
+                };
             }
         );
     };
@@ -43,23 +53,24 @@ class HomePage extends Component {
 
         const newEvent = {
             name: this.state.name,
-            city: this.state.city,
+            city: this.state.cityResult,
+            lat: this.state.cityLat,
+            lng: this.state.cityLng,
             date: this.state.date,
             time: this.state.time,
             key: this.state.events.length + 1
         }
 
-        // console.log(newEvent)
-
         this.setState({
             events: [...this.state.events, newEvent],
             name: "",
-            city: "",
+            cityInput: "",
+            cityResult: "",
+            cityLat: "",
+            cityLng: "",
             date: "",
             time: ""
-        }
-        // ,() => console.log(this.state.events)
-        )
+        });
     };
 
     render() {
