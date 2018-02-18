@@ -25,7 +25,7 @@ class EventForm extends Component {
                         <label htmlFor="eventFormCity">Event City</label>
                         <input required
                             type="text"
-                            value={this.props.state.city}
+                            value={this.props.state.cityInput}
                             onChange={this.props.eventFormInputChange}
                             name="cityInput"
                             className={"form-control " + this.props.cityValidation()}
