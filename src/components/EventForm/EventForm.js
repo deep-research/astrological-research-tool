@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./EventForm.css";
-import cities from "../../utils/cities.json"
 
 class EventForm extends Component {
     render() {

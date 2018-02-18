@@ -26,11 +26,11 @@ class HomePage extends Component {
             {[name]: value},
             () => {
                 if (name === "cityInput") {
-                    console.log(this.state)
                     const userCity = this.state.cityInput.toLowerCase();
                     
                     var indexOfCity = cities.map((x) => 
                         {return x.name.toLowerCase(); }).indexOf(userCity);
+                        
                     if (cities[indexOfCity])  {
                         const cityName = cities[indexOfCity].name;
                         const cityLat = cities[indexOfCity].lat;
@@ -41,7 +41,6 @@ class HomePage extends Component {
                                 cityLat: cityLat,
                                 cityLng: cityLng 
                             }
-                            // , () => {}
                         );
                     } else {
                         this.setState({
