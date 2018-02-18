@@ -58,26 +58,28 @@ class HomePage extends Component {
     handleEventFormSubmit = event => {
         event.preventDefault()
 
-        const newEvent = {
-            name: this.state.name,
-            city: this.state.cityResult,
-            lat: this.state.cityLat,
-            lng: this.state.cityLng,
-            date: this.state.date,
-            time: this.state.time,
-            key: this.state.events.length + 1
-        }
+        if (this.state.cityResult) {
+            const newEvent = {
+                name: this.state.name,
+                city: this.state.cityResult,
+                lat: this.state.cityLat,
+                lng: this.state.cityLng,
+                date: this.state.date,
+                time: this.state.time,
+                key: this.state.events.length + 1
+            }
 
-        this.setState({
-            events: [...this.state.events, newEvent],
-            name: "",
-            cityInput: "",
-            cityResult: "",
-            cityLat: "",
-            cityLng: "",
-            date: "",
-            time: ""
-        });
+            this.setState({
+                events: [...this.state.events, newEvent],
+                name: "",
+                cityInput: "",
+                cityResult: "",
+                cityLat: "",
+                cityLng: "",
+                date: "",
+                time: ""
+            });
+        };
     };
 
     cityValidation = () => {
