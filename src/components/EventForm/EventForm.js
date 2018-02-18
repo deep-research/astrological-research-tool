@@ -28,7 +28,7 @@ class EventForm extends Component {
                             value={this.props.state.city}
                             onChange={this.props.eventFormInputChange}
                             name="cityInput"
-                            className="form-control"
+                            className={"form-control " + this.props.cityValidation()}
                             id="eventFormCity"
                             placeholder="City"
                         />

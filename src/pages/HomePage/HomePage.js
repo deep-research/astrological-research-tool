@@ -73,6 +73,16 @@ class HomePage extends Component {
         });
     };
 
+    cityValidation = () => {
+        if (this.state.cityInput === "") {
+            return
+        } else if (this.state.cityInput && this.state.cityResult === "") {
+            return "is-invalid"
+        } else {
+            return "is-valid"
+        }
+    }
+
     render() {
         return (
         <div>
@@ -84,6 +94,7 @@ class HomePage extends Component {
                     state={this.state}
                     eventFormInputChange={this.eventFormInputChange}
                     handleEventFormSubmit={this.handleEventFormSubmit}
+                    cityValidation= {this.cityValidation}
                 />
                 <EventDisplay state={this.state} />
             </div>
