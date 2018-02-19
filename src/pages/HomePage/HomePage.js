@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 // import { Link } from "react-router-dom";
 import "./HomePage.css";
+<<<<<<< HEAD
 import Navbar from "../../components/Navbar";
 import NavButtons from "../../components/NavButtons";
 import AboutSection from "../../components/AboutSection";
@@ -9,6 +10,14 @@ import EventDisplay from "../../components/EventDisplay";
 import cities from "../../utils/cities.json";
 import timezoner from "timezoner";
 import momentTimezone from "moment-timezone";
+=======
+import Navbar from "../../components/Navbar"
+import NavButtons from "../../components/NavButtons"
+import AboutSection from "../../components/AboutSection"
+import EventForm from "../../components/EventForm"
+import EventDisplay from "../../components/EventDisplay"
+import cities from "../../utils/cities.json"
+>>>>>>> parent of c1ad471... Google Timezone Conversion
 
 class HomePage extends Component {
     state = {
@@ -30,9 +39,9 @@ class HomePage extends Component {
                 if (name === "cityInput") {
                     const userCity = this.state.cityInput.toLowerCase();
                     
-                    var indexOfCity = cities.map((x) =>
+                    var indexOfCity = cities.map((x) => 
                         {return x.name.toLowerCase(); }).indexOf(userCity);
-
+                        
                     if (cities[indexOfCity])  {
                         const cityName = cities[indexOfCity].name;
                         const cityLat = cities[indexOfCity].lat;
@@ -60,6 +69,7 @@ class HomePage extends Component {
         event.preventDefault()
 
         if (this.state.cityResult) {
+<<<<<<< HEAD
             const year = this.state.date.slice(0,4);
             const month = this.state.date.slice(5,7);
             const day = this.state.date.slice(8,10);
@@ -104,11 +114,13 @@ class HomePage extends Component {
                 { language: 'en', key: "" }
             );
 
+=======
+>>>>>>> parent of c1ad471... Google Timezone Conversion
             const newEvent = {
                 name: this.state.name,
                 city: this.state.cityResult,
-                lat: lat,
-                lng: lng,
+                lat: this.state.cityLat,
+                lng: this.state.cityLng,
                 date: this.state.date,
                 time: this.state.time,
                 key: this.state.events.length + 1
