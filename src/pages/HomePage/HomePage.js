@@ -8,6 +8,7 @@ import EventForm from "../../components/EventForm";
 import EventDisplay from "../../components/EventDisplay";
 import cities from "../../utils/cities.json";
 import timezoner from "timezoner";
+import momentTimezone from "moment-timezone";
 
 class HomePage extends Component {
     state = {
@@ -86,16 +87,21 @@ class HomePage extends Component {
                             if (seconds < 10) {seconds = "0"+seconds;}
                             return hours+':'+minutes+':'+seconds;
                         }
-                        console.log(data.timeZoneName);
-                        if (data.rawOffset >= 0) {
+                        const timeZoneName = data.timeZoneName;
+                        const dstOffset = data.dstOffset;
+                        const timeZoneId = data.timeZoneId;
+                        const rawOffset = data.rawOffset;
+
+
+
+                        if (rawOffset >= 0) {
                             console.log("UTC+" + toHHMMSS(data.rawOffset))
                         } else {
                             console.log("UTC-" + toHHMMSS(data.rawOffset).slice(2))
                         }
-                        // UTC-6 hours
                     }
                 },
-                { language: 'en', key: 'AIzaSyCe_cnkYOIgF2UqOd61VqPwSwtniXOb8J8' }
+                { language: 'en', key: "" }
             );
 
             const newEvent = {

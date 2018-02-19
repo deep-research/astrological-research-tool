@@ -11,6 +11,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
     "mysql2": "^1.5.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
