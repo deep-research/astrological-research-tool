@@ -47,7 +47,7 @@ class EventForm extends Component {
                             placeholder="Date"
                         />
                         <div className="formSpacer"></div>
-                        <label htmlFor="eventFormTime">Event Time (UTC)</label>
+                        <label htmlFor="eventFormTime">Local Time</label>
                         <input required
                             type="time"
                             value={this.props.state.time}

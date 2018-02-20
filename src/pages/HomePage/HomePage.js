@@ -8,7 +8,7 @@ import EventForm from "../../components/EventForm";
 import EventDisplay from "../../components/EventDisplay";
 import cities from "../../utils/cities.json";
 import timezoner from "timezoner";
-import momentTimezone from "moment-timezone";
+import moment from "moment-timezone";
 
 class HomePage extends Component {
     state = {
@@ -19,7 +19,10 @@ class HomePage extends Component {
         cityLat: "",
         cityLng: "",
         date: "",
-        time: ""
+        time: "",
+        localTime: "",
+        utcTime: "",
+        timeZoneName: ""
     };
 
     eventFormInputChange = event => {
@@ -59,6 +62,8 @@ class HomePage extends Component {
     handleEventFormSubmit = event => {
         event.preventDefault()
 
+        const file = this;
+
         if (this.state.cityResult) {
             const year = this.state.date.slice(0,4);
             const month = this.state.date.slice(5,7);
@@ -67,7 +72,6 @@ class HomePage extends Component {
             const minutes = this.state.time.slice(3,5);
             const lat = this.state.cityLat;
             const lng = this.state.cityLng;
-            var eventDate = new Date(year, month, day, hours, minutes);
 
             timezoner.getTimeZone(
                 lat,
@@ -75,55 +79,69 @@ class HomePage extends Component {
                 function (err, data) {
                     if (err) {
                         console.log(err);
-                    } else {
-                        const toHHMMSS = (seconds) => {
-                            var sec_num = parseInt(seconds, 10); // don't forget the second param
-                            var hours   = Math.floor(sec_num / 3600);
-                            var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-                            var seconds = sec_num - (hours * 3600) - (minutes * 60);
-                        
-                            if (hours   < 10) {hours   = "0"+hours;}
-                            if (minutes < 10) {minutes = "0"+minutes;}
-                            if (seconds < 10) {seconds = "0"+seconds;}
-                            return hours+':'+minutes+':'+seconds;
-                        }
+                    } else {                   
                         const timeZoneName = data.timeZoneName;
-                        const dstOffset = data.dstOffset;
                         const timeZoneId = data.timeZoneId;
-                        const rawOffset = data.rawOffset;
+                        // const dstOffset = data.dstOffset;
+                        // const rawOffset = data.rawOffset;
 
+                        const localMoment = moment.tz(`${year}-${month}-${day} ${hours}:${minutes}`,
+                            timeZoneId)
+                        const localTime = moment(localMoment).format("h:mm a, MMMM Do YYYY");
+                        const utcTime = moment.utc(localMoment).format("h:mm a, MMMM Do YYYY");
 
+                        // const toHHMMSS = (seconds) => {
+                        //     var sec_num = parseInt(seconds, 10); // don't forget the second param
+                        //     var hours   = Math.floor(sec_num / 3600);
+                        //     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+                        //     var seconds = sec_num - (hours * 3600) - (minutes * 60);
+                        
+                        //     if (hours   < 10) {hours   = "0"+hours;}
+                        //     if (minutes < 10) {minutes = "0"+minutes;}
+                        //     if (seconds < 10) {seconds = "0"+seconds;}
+                        //     return hours+':'+minutes+':'+seconds;
+                        // }
 
-                        if (rawOffset >= 0) {
-                            console.log("UTC+" + toHHMMSS(data.rawOffset))
-                        } else {
-                            console.log("UTC-" + toHHMMSS(data.rawOffset).slice(2))
+                        // if (rawOffset >= 0) {
+                        //     console.log("UTC+" + toHHMMSS(data.rawOffset))
+                        // } else {
+                        //     console.log("UTC-" + toHHMMSS(data.rawOffset).slice(2))
+                        // }
+
+                        // if (dstOffset >= 0) {
+                        //     console.log("UTC+" + toHHMMSS(data.dstOffset))
+                        // } else {
+                        //     console.log("UTC-" + toHHMMSS(data.dstOffset).slice(2))
+                        // }
+
+                        const newEvent = {
+                            name: file.state.name,
+                            city: file.state.cityResult,
+                            lat: lat,
+                            lng: lng,
+                            key: file.state.events.length + 1,
+                            localTime: localTime,
+                            utcTime: utcTime,
+                            timeZoneName: timeZoneName
                         }
-                    }
-                },
-                { language: 'en', key: '' }
+            
+                        file.setState({
+                            events: [...file.state.events, newEvent],
+                            name: "",
+                            cityInput: "",
+                            cityResult: "",
+                            cityLat: "",
+                            cityLng: "",
+                            date: "",
+                            time: "",
+                            localTime: "",
+                            utcTime: "",
+                            timeZoneName: ""
+                        });
+                    };
+                }
+                // , { language: 'en', key: '' }
             );
-
-            const newEvent = {
-                name: this.state.name,
-                city: this.state.cityResult,
-                lat: lat,
-                lng: lng,
-                date: this.state.date,
-                time: this.state.time,
-                key: this.state.events.length + 1
-            }
-
-            this.setState({
-                events: [...this.state.events, newEvent],
-                name: "",
-                cityInput: "",
-                cityResult: "",
-                cityLat: "",
-                cityLng: "",
-                date: "",
-                time: ""
-            });
         };
     };
 

@@ -36,11 +36,9 @@ class EventDisplay extends Component {
                             aria-labelledby={"heading" + event.key}
                         >
                             <div className="card-body">
-                                <p>City: {event.city}</p>
-                                <p>Date: {this.dateConversion(event.date)}</p>
-                                <p>Time: {event.time}</p>
-                                <p>Latitude: {event.lat}</p>
-                                <p>Longitude: {event.lng}</p>
+                                <p><b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
+                                <p><b>Local Time & Date:</b> {event.localTime} ({event.timeZoneName})</p>
+                                <p><b>UTC Time & Date:</b> {event.utcTime} (Greenwich Mean Time)</p>
                             </div>
                         </div>
                     </div>
