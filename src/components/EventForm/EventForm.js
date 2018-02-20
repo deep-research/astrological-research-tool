@@ -20,7 +20,7 @@ class EventForm extends Component {
                             id="eventFormName"
                             placeholder="Name"
                         />
-                        <div required className="formSpacer"></div>
+                        <div className="formSpacer"></div>
                         <label htmlFor="eventFormCity">Event City</label>
                         <input required
                             type="text"
@@ -32,13 +32,11 @@ class EventForm extends Component {
                             placeholder="City"
                         />
                         <div className="formSpacer"></div>
-                    </div>
-                    <div className="col-sm-12 col-md-6">
                         <label htmlFor="eventFormDate">Event Date</label>
                         <input required
                             type="date"
-                            min="1970-01-01"
-                            max="2070-12-31"
+                            min="0001-01-01"
+                            max="3999-12-31"
                             value={this.props.state.date}
                             onChange={this.props.eventFormInputChange}
                             name="date"
@@ -57,6 +55,44 @@ class EventForm extends Component {
                             id="eventFormTime"
                             placeholder="Time"
                         />
+                        <div className="formSpacer"></div>
+                    </div>
+                    <div className="col-sm-12 col-md-6">
+                        <label htmlFor="eventFormWeather">Event Weather</label>
+                        <input
+                            type="text"
+                            value={this.props.state.weather}
+                            onChange={this.props.eventFormInputChange}
+                            name="weather"
+                            className="form-control"
+                            id="eventFormWeather"
+                            placeholder="Description"
+                        />
+                        <div className="formSpacer"></div>
+                        <label htmlFor="eventFormNews">News of the Day</label>
+                        <input
+                            type="text"
+                            value={this.props.state.news}
+                            onChange={this.props.eventFormInputChange}
+                            name="news"
+                            className="form-control"
+                            id="eventFormNews"
+                            placeholder="Top Story"
+                        />
+                        <div className="formSpacer"></div>
+                        <label htmlFor="eventFormSun">The Sun</label>
+                        <select
+                            value={this.props.state.sun}
+                            onChange={this.props.eventFormInputChange.bind(this)}
+                            name="sun"
+                            className="form-control"
+                            id="eventFormSun">
+                            <option value="" selected>Solar Motion:</option>
+                            <option value="Above Horizon, Ascending">1. Above Horizon, Ascending</option>
+                            <option value="Above Horizon, Descending">2. Above Horizon, Descending</option>
+                            <option value="Below Horizon, Descending">3. Below Horizon, Descending</option>
+                            <option value="Below Horizon, Ascending">4. Below Horizon, Ascending</option>
+                        </select>
                         <div className="formSpacer"></div>
                     </div>
                 </div>

@@ -22,7 +22,10 @@ class HomePage extends Component {
         time: "",
         localTime: "",
         utcTime: "",
-        timeZoneName: ""
+        timeZoneName: "",
+        weather: "",
+        news: "",
+        sun: ""
     };
 
     eventFormInputChange = event => {
@@ -82,32 +85,29 @@ class HomePage extends Component {
                     } else {                   
                         const timeZoneName = data.timeZoneName;
                         const timeZoneId = data.timeZoneId;
-                        // const dstOffset = data.dstOffset;
-                        // const rawOffset = data.rawOffset;
 
                         const localMoment = moment.tz(`${year}-${month}-${day} ${hours}:${minutes}`,
                             timeZoneId)
-                        const localTime = moment(localMoment).format("h:mm a, MMMM Do YYYY");
-                        const utcTime = moment.utc(localMoment).format("h:mm a, MMMM Do YYYY");
+                        const localTime = moment(localMoment).format("h:mm a, MMM Do YYYY");
+                        const utcTime = moment.utc(localMoment).format("h:mm a, MMM Do YYYY");
 
+                        // const dstOffset = data.dstOffset;
+                        // const rawOffset = data.rawOffset;
                         // const toHHMMSS = (seconds) => {
                         //     var sec_num = parseInt(seconds, 10); // don't forget the second param
                         //     var hours   = Math.floor(sec_num / 3600);
                         //     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-                        //     var seconds = sec_num - (hours * 3600) - (minutes * 60);
-                        
+                        //     var seconds = sec_num - (hours * 3600) - (minutes * 60);                        
                         //     if (hours   < 10) {hours   = "0"+hours;}
                         //     if (minutes < 10) {minutes = "0"+minutes;}
                         //     if (seconds < 10) {seconds = "0"+seconds;}
                         //     return hours+':'+minutes+':'+seconds;
                         // }
-
                         // if (rawOffset >= 0) {
                         //     console.log("UTC+" + toHHMMSS(data.rawOffset))
                         // } else {
                         //     console.log("UTC-" + toHHMMSS(data.rawOffset).slice(2))
                         // }
-
                         // if (dstOffset >= 0) {
                         //     console.log("UTC+" + toHHMMSS(data.dstOffset))
                         // } else {
@@ -115,14 +115,17 @@ class HomePage extends Component {
                         // }
 
                         const newEvent = {
-                            name: file.state.name,
+                            name: file.state.name.trim(),
                             city: file.state.cityResult,
                             lat: lat,
                             lng: lng,
                             key: file.state.events.length + 1,
                             localTime: localTime,
                             utcTime: utcTime,
-                            timeZoneName: timeZoneName
+                            timeZoneName: timeZoneName,
+                            weather: file.state.weather.trim(),
+                            news: file.state.news.trim(),
+                            sun: file.state.sun.trim()
                         }
             
                         file.setState({
@@ -136,7 +139,10 @@ class HomePage extends Component {
                             time: "",
                             localTime: "",
                             utcTime: "",
-                            timeZoneName: ""
+                            timeZoneName: "",
+                            weather: "",
+                            news: "",
+                            sun: ""
                         });
                     };
                 }

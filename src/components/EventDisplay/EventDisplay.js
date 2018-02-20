@@ -39,6 +39,15 @@ class EventDisplay extends Component {
                                 <p><b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
                                 <p><b>Local Time & Date:</b> {event.localTime} ({event.timeZoneName})</p>
                                 <p><b>UTC Time & Date:</b> {event.utcTime} (Greenwich Mean Time)</p>
+                                {(event.weather)
+                                    ? <div><p><b>Weather:</b> {event.weather}</p></div>
+                                    : <div></div>}
+                                {(event.news)
+                                    ? <div><p><b>News:</b> {event.news}</p></div>
+                                    : <div></div>}
+                                {(event.sun)
+                                    ? <div><p><b>Solar Position:</b> {event.sun}</p></div>
+                                    : <div></div>}
                             </div>
                         </div>
                     </div>
