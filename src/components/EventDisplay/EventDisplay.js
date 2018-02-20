@@ -46,7 +46,40 @@ class EventDisplay extends Component {
                                     ? <div><p><b>News:</b> {event.news}</p></div>
                                     : <div></div>}
                                 {(event.sun)
-                                    ? <div><p><b>Solar Position:</b> {event.sun}</p></div>
+                                    ? <div><p><b>Solar Quadrant:</b> {event.sun}</p></div>
+                                    : <div></div>}
+                                {(event.season)
+                                    ? <div><p><b>Solar Season:</b> {event.season}</p></div>
+                                    : <div></div>}
+                                {(event.moon)
+                                    ? <div><p><b>Lunar Quadrant:</b> {event.moon}</p></div>
+                                    : <div></div>}
+                                {(event.phase)
+                                    ? <div><p><b>Lunar Phase:</b> {event.phase}</p></div>
+                                    : <div></div>}
+                                {(event.mercury)
+                                    ? <div><p><b>Mercurial Quadrant:</b> {event.mercury}</p></div>
+                                    : <div></div>}
+                                {(event.venus)
+                                    ? <div><p><b>Venusian Quadrant:</b> {event.venus}</p></div>
+                                    : <div></div>}
+                                {(event.mars)
+                                    ? <div><p><b>Martian Quadrant:</b> {event.mars}</p></div>
+                                    : <div></div>}
+                                {(event.jupiter)
+                                    ? <div><p><b>Jovian Quadrant:</b> {event.jupiter}</p></div>
+                                    : <div></div>}
+                                {(event.saturn)
+                                    ? <div><p><b>Saturnian Quadrant:</b> {event.saturn}</p></div>
+                                    : <div></div>}
+                                {(event.uranus)
+                                    ? <div><p><b>Uranian Quadrant:</b> {event.uranus}</p></div>
+                                    : <div></div>}
+                                {(event.neptune)
+                                    ? <div><p><b>Neptunian Quadrant:</b> {event.neptune}</p></div>
+                                    : <div></div>}
+                                {(event.pluto)
+                                    ? <div><p><b>Plutonian Quadrant:</b> {event.pluto}</p></div>
                                     : <div></div>}
                             </div>
                         </div>

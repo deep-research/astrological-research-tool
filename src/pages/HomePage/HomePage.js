@@ -25,7 +25,18 @@ class HomePage extends Component {
         timeZoneName: "",
         weather: "",
         news: "",
-        sun: "Above Horizon, Ascending"
+        sun: "Above Horizon, Ascending",
+        season: "Spring",
+        moon: "Above Horizon, Ascending",
+        phase: "New Moon",
+        mercury: "Above Horizon, Ascending",
+        venus: "Above Horizon, Ascending",
+        mars: "Above Horizon, Ascending",
+        jupiter: "Above Horizon, Ascending",
+        saturn: "Above Horizon, Ascending",
+        uranus: "Above Horizon, Ascending",
+        neptune: "Above Horizon, Ascending",
+        pluto: "Above Horizon, Ascending"
     };
 
     eventFormInputChange = event => {
@@ -125,7 +136,18 @@ class HomePage extends Component {
                             timeZoneName: timeZoneName,
                             weather: file.state.weather.trim(),
                             news: file.state.news.trim(),
-                            sun: file.state.sun.trim()
+                            sun: file.state.sun.trim(),
+                            season: file.state.season.trim(),
+                            moon: file.state.moon.trim(),
+                            phase: file.state.phase.trim(),
+                            mercury: file.state.mercury.trim(),
+                            venus: file.state.venus.trim(),
+                            mars: file.state.mars.trim(),
+                            jupiter: file.state.jupiter.trim(),
+                            saturn: file.state.saturn.trim(),
+                            uranus: file.state.uranus.trim(),
+                            neptune: file.state.neptune.trim(),
+                            pluto: file.state.pluto.trim()
                         }
             
                         file.setState({
@@ -142,7 +164,18 @@ class HomePage extends Component {
                             timeZoneName: "",
                             weather: "",
                             news: "",
-                            sun: "Above Horizon, Ascending"
+                            sun: "Above Horizon, Ascending",
+                            season: "Spring",
+                            moon: "Above Horizon, Ascending",
+                            phase: "New Moon",
+                            mercury: "Above Horizon, Ascending",
+                            venus: "Above Horizon, Ascending",
+                            mars: "Above Horizon, Ascending",
+                            jupiter: "Above Horizon, Ascending",
+                            saturn: "Above Horizon, Ascending",
+                            uranus: "Above Horizon, Ascending",
+                            neptune: "Above Horizon, Ascending",
+                            pluto: "Above Horizon, Ascending"
                         });
                     };
                 }
