@@ -80,18 +80,18 @@ class EventForm extends Component {
                             placeholder="Top Story"
                         />
                         <div className="formSpacer"></div>
-                        <label htmlFor="eventFormSun">The Sun</label>
+                        <label htmlFor="eventFormSun">Solar Quadrant</label>
                         <select
                             value={this.props.state.sun}
                             onChange={this.props.eventFormInputChange.bind(this)}
                             name="sun"
                             className="form-control"
                             id="eventFormSun">
-                            <option value="" selected>Solar Motion:</option>
-                            <option value="Above Horizon, Ascending">1. Above Horizon, Ascending</option>
+                            <option selected value="Above Horizon, Ascending">1. Above Horizon, Ascending</option>
                             <option value="Above Horizon, Descending">2. Above Horizon, Descending</option>
                             <option value="Below Horizon, Descending">3. Below Horizon, Descending</option>
                             <option value="Below Horizon, Ascending">4. Below Horizon, Ascending</option>
+                            <option value="">No Answer</option>
                         </select>
                         <div className="formSpacer"></div>
                     </div>

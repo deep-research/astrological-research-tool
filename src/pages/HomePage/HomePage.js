@@ -25,7 +25,7 @@ class HomePage extends Component {
         timeZoneName: "",
         weather: "",
         news: "",
-        sun: ""
+        sun: "Above Horizon, Ascending"
     };
 
     eventFormInputChange = event => {
@@ -142,7 +142,7 @@ class HomePage extends Component {
                             timeZoneName: "",
                             weather: "",
                             news: "",
-                            sun: ""
+                            sun: "Above Horizon, Ascending"
                         });
                     };
                 }
