@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./EventForm.css";
+import PlanetForm from "../PlanetForm";
 
 class EventForm extends Component {
     render() {
@@ -141,304 +142,79 @@ class EventForm extends Component {
                             <option value="">No Answer</option>
                         </select>
                         <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="mercury"
+                            planetCaps="Mercury"
+                        />
 
-                        <label htmlFor="eventFormMercury">Mercury (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.mercuryPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="mercuryPosition"
-                            className="form-control"
-                            id="eventFormMercuryPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.mercurySector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="mercurySector"
-                            className="form-control"
-                            id="eventFormMercurySector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.mercuryMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="mercuryMotion"
-                            className="form-control"
-                            id="eventFormMercuryMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
-
-                        <label htmlFor="eventFormVenus">Venus (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.venusPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="venusPosition"
-                            className="form-control"
-                            id="eventFormVenusPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.venusSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="venusSector"
-                            className="form-control"
-                            id="eventFormVenusSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.venusMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="venusMotion"
-                            className="form-control"
-                            id="eventFormVenusMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="venus"
+                            planetCaps="Venus"
+                        />
                     </div>
 
                     <div className="col-sm-12 col-md-6">
-                    <label htmlFor="eventFormMars">Mars (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.marsPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="marsPosition"
-                            className="form-control"
-                            id="eventFormMearsPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.marsSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="marsSector"
-                            className="form-control"
-                            id="eventFormMarsSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.marsMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="marsMotion"
-                            className="form-control"
-                            id="eventFormMarsMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="mars"
+                            planetCaps="Mars"
+                        />
 
-                        <label htmlFor="eventFormJupiter">Jupiter (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.jupiterPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="jupiterPosition"
-                            className="form-control"
-                            id="eventFormJupiterPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.jupiterSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="jupiterSector"
-                            className="form-control"
-                            id="eventFormJupiterSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.jupiterMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="jupiterMotion"
-                            className="form-control"
-                            id="eventFormJupiterMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="jupiter"
+                            planetCaps="Jupiter"
+                        />
 
-                        <label htmlFor="eventFormSaturn">Saturn (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.saturnPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="saturnPosition"
-                            className="form-control"
-                            id="eventFormSaturnPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.saturnSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="saturnSector"
-                            className="form-control"
-                            id="eventFormSaturnSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.saturnMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="saturnMotion"
-                            className="form-control"
-                            id="eventFormSaturnMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="saturn"
+                            planetCaps="Saturn"
+                        />
 
-                        <label htmlFor="eventFormUranus">Uranus (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.uranusPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="uranusPosition"
-                            className="form-control"
-                            id="eventFormUranusPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.uranusSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="uranusSector"
-                            className="form-control"
-                            id="eventFormUranusSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.uranusMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="uranusMotion"
-                            className="form-control"
-                            id="eventFormUranusMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="uranus"
+                            planetCaps="Uranus"
+                        />
 
-                        <label htmlFor="eventFormNeptune">Neptune (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.neptunePosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="neptunePosition"
-                            className="form-control"
-                            id="eventFormNeptunePosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.neptuneSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="neptuneSector"
-                            className="form-control"
-                            id="eventFormNeptuneSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.neptuneMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="neptuneMotion"
-                            className="form-control"
-                            id="eventFormNeptuneMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="neptune"
+                            planetCaps="Neptune"
+                        />
 
-                        <label htmlFor="eventFormPluto">Pluto (Position, Sector, Motion) <span className="star">*</span></label>
-                        <select
-                            value={this.props.state.plutoPosition}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="plutoPosition"
-                            className="form-control"
-                            id="eventFormPlutoPosition">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
-                            <option value="Above Horizon, Descending">Above Horizon, Descending</option>
-                            <option value="Below Horizon, Descending">Below Horizon, Descending</option>
-                            <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.plutoSector}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="plutoSector"
-                            className="form-control"
-                            id="eventFormPlutoSector">
-                            <option selected value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Autumn">Autumn</option>
-                            <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <select
-                            value={this.props.state.plutoMotion}
-                            onChange={this.props.eventFormInputChange.bind(this)}
-                            name="plutoMotion"
-                            className="form-control"
-                            id="eventFormPlutoMotion">
-                            <option selected value="Direct">Direct</option>
-                            <option value="Retrograde">Retrograde</option>
-                            <option value="">No Answer</option>
-                        </select>
-                        <div className="formSpacer"></div>
+                        <PlanetForm
+                            state={this.props.state}
+                            eventFormInputChange={this.props.eventFormInputChange}
+                            handleEventFormSubmit={this.props.handleEventFormSubmit}
+                            cityValidation= {this.props.cityValidation}
+                            planetLower="pluto"
+                            planetCaps="Pluto"
+                        />
                     </div>
                 </div>
                 <div>
