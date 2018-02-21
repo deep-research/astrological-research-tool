@@ -35,7 +35,7 @@ class EventForm extends Component {
                         />
                         <div className="formSpacer"></div>
 
-                        <label htmlFor="eventFormDate">Event Date <span className="star">*</span></label>
+                        <label htmlFor="eventFormDate">Event Date and Local Time <span className="star">*</span></label>
                         <input required
                             type="date"
                             min="0001-01-01"
@@ -47,9 +47,6 @@ class EventForm extends Component {
                             id="eventFormDate"
                             placeholder="Date"
                         />
-                        <div className="formSpacer"></div>
-
-                        <label htmlFor="eventFormTime">Local Time <span className="star">*</span></label>
                         <input required
                             type="time"
                             value={this.props.state.time}
