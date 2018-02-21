@@ -27,8 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"node ./server/server.js\" \"yarn start\"",
-    "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "dev": "concurrently \"node ./server/server.js\" \"yarn start\""
   },
   "cacheDirectories": [
     "node_modules"
