@@ -1,8 +1,15 @@
 import React, {Component} from "react";
 import "./EventForm.css";
 import PlanetForm from "../PlanetForm";
+import { ToastContainer, toast } from 'react-toastify';
 
 class EventForm extends Component {
+    notify = () => {
+        toast.info("Event Submitted Successfully!", {
+            position: toast.POSITION.BOTTOM_CENTER
+        });
+    }
+
     render() {
         return (
         <div id="EventForm">
@@ -35,7 +42,16 @@ class EventForm extends Component {
                         />
                         <div className="formSpacer"></div>
 
-                        <label htmlFor="eventFormDate">Event Date and Local Time <span className="star">*</span></label>
+                        <label htmlFor="eventFormDate">Local Time and Date <span className="star">*</span></label>
+                        <input required
+                            type="time"
+                            value={this.props.state.time}
+                            onChange={this.props.eventFormInputChange}
+                            name="time"
+                            className="form-control"
+                            id="eventFormTime"
+                            placeholder="Time"
+                        />                     
                         <input required
                             type="date"
                             min="0001-01-01"
@@ -46,15 +62,6 @@ class EventForm extends Component {
                             className="form-control"
                             id="eventFormDate"
                             placeholder="Date"
-                        />
-                        <input required
-                            type="time"
-                            value={this.props.state.time}
-                            onChange={this.props.eventFormInputChange}
-                            name="time"
-                            className="form-control"
-                            id="eventFormTime"
-                            placeholder="Time"
                         />
                         <div className="formSpacer"></div>
 
@@ -78,22 +85,22 @@ class EventForm extends Component {
                             name="news"
                             className="form-control"
                             id="eventFormNews"
-                            placeholder="Top Story"
+                            placeholder="Top Stories"
                         />
                         <div className="formSpacer"></div>
 
-                        <label htmlFor="eventFormSun">The Sun (Position, Season) <span className="star">*</span></label>
+                        <label htmlFor="eventFormSun">The Sun (Position, Season)</label>
                         <select
                             value={this.props.state.sun}
                             onChange={this.props.eventFormInputChange.bind(this)}
                             name="sun"
                             className="form-control"
                             id="eventFormSun">
-                            <option defaultValue="Above Horizon, Ascending">Above Horizon, Ascending</option>
+                            <option value="Above Horizon, Ascending">Above Horizon, Ascending</option>
                             <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                             <option value="Below Horizon, Descending">Below Horizon, Descending</option>
                             <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
+                            <option defaultValue=""></option>
                         </select>
                         <select
                             value={this.props.state.season}
@@ -101,26 +108,26 @@ class EventForm extends Component {
                             name="season"
                             className="form-control"
                             id="eventFormSeason">
-                            <option defaultValue="Spring">Spring</option>
+                            <option value="Spring">Spring</option>
                             <option value="Summer">Summer</option>
                             <option value="Autumn">Autumn</option>
                             <option value="Winter">Winter</option>
-                            <option value="">No Answer</option>
+                            <option defaultValue=""></option>
                         </select>
                         <div className="formSpacer"></div>
 
-                        <label htmlFor="eventFormMoon">The Moon (Position, Phase) <span className="star">*</span></label>
+                        <label htmlFor="eventFormMoon">The Moon (Position, Phase)</label>
                         <select
                             value={this.props.state.moon}
                             onChange={this.props.eventFormInputChange.bind(this)}
                             name="moon"
                             className="form-control"
                             id="eventFormMoon">
-                            <option defaultValue="Above Horizon, Ascending">Above Horizon, Ascending</option>
+                            <option value="Above Horizon, Ascending">Above Horizon, Ascending</option>
                             <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                             <option value="Below Horizon, Descending">Below Horizon, Descending</option>
                             <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
-                            <option value="">No Answer</option>
+                            <option defaultValue=""></option>
                         </select>
                         <select
                             value={this.props.state.phase}
@@ -128,7 +135,7 @@ class EventForm extends Component {
                             name="phase"
                             className="form-control"
                             id="eventFormPhase">
-                            <option defaultValue="New Moon">New Moon</option>
+                            <option value="New Moon">New Moon</option>
                             <option value="Waxing Crescent">Waxing Crescent</option>
                             <option value="First Quarter">First Quarter</option>
                             <option value="Waxing Gibbous">Waxing Gibbous</option>
@@ -136,7 +143,7 @@ class EventForm extends Component {
                             <option value="Waning Gibbous">Waning Gibbous</option>
                             <option value="Third Quarter">Third Quarter</option>
                             <option value="Waning Crescent">Waning Crescent</option>
-                            <option value="">No Answer</option>
+                            <option defaultValue=""></option>
                         </select>
                         <div className="formSpacer"></div>
                         
@@ -220,7 +227,9 @@ class EventForm extends Component {
                         type="submit"
                         className="btn btn-primary"
                         id="eventFormBtn"
+                        onClick={this.notify}
                     >Submit</button>
+                    <ToastContainer autoClose={2250} />
                 </div>
             </form>
         </div>
