@@ -92,7 +92,7 @@ class EventForm extends Component {
                             name="sun"
                             className="form-control"
                             id="eventFormSun">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
+                            <option defaultValue="Above Horizon, Ascending">Above Horizon, Ascending</option>
                             <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                             <option value="Below Horizon, Descending">Below Horizon, Descending</option>
                             <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
@@ -104,7 +104,7 @@ class EventForm extends Component {
                             name="season"
                             className="form-control"
                             id="eventFormSeason">
-                            <option selected value="Spring">Spring</option>
+                            <option defaultValue="Spring">Spring</option>
                             <option value="Summer">Summer</option>
                             <option value="Autumn">Autumn</option>
                             <option value="Winter">Winter</option>
@@ -119,7 +119,7 @@ class EventForm extends Component {
                             name="moon"
                             className="form-control"
                             id="eventFormMoon">
-                            <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
+                            <option defaultValue="Above Horizon, Ascending">Above Horizon, Ascending</option>
                             <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                             <option value="Below Horizon, Descending">Below Horizon, Descending</option>
                             <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
@@ -131,7 +131,7 @@ class EventForm extends Component {
                             name="phase"
                             className="form-control"
                             id="eventFormPhase">
-                            <option selected value="New Moon">New Moon</option>
+                            <option defaultValue="New Moon">New Moon</option>
                             <option value="Waxing Crescent">Waxing Crescent</option>
                             <option value="First Quarter">First Quarter</option>
                             <option value="Waxing Gibbous">Waxing Gibbous</option>

@@ -13,7 +13,7 @@ class PlanetForm extends Component {
                     name={this.props.planetLower + "Position"}
                     className="form-control"
                     id={"eventForm" + this.props.planetCaps + "Position"}>
-                    <option selected value="Above Horizon, Ascending">Above Horizon, Ascending</option>
+                    <option defaultValue="Above Horizon, Ascending">Above Horizon, Ascending</option>
                     <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                     <option value="Below Horizon, Descending">Below Horizon, Descending</option>
                     <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
@@ -26,7 +26,7 @@ class PlanetForm extends Component {
                     name={this.props.planetLower + "Sector"}
                     className="form-control"
                     id={"eventForm" + this.props.planetCaps + "Sector"}>
-                    <option selected value="Spring">Spring</option>
+                    <option defaultValue="Spring">Spring</option>
                     <option value="Summer">Summer</option>
                     <option value="Autumn">Autumn</option>
                     <option value="Winter">Winter</option>
@@ -39,7 +39,7 @@ class PlanetForm extends Component {
                     name={this.props.planetLower + "Motion"}
                     className="form-control"
                     id={"eventForm" + this.props.planetCaps + "Motion"}>
-                    <option selected value="Direct">Direct</option>
+                    <option defaultValue="Direct">Direct</option>
                     <option value="Retrograde">Retrograde</option>
                     <option value="">No Answer</option>
                 </select>
