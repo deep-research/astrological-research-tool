@@ -27,11 +27,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"node ./server/server.js\" \"yarn start\""
+    "dev": "concurrently \"node ./server/server.js\" \"yarn start\"",
+    "heroku-postbuild": "yarn build"
   },
-  "cacheDirectories": [
-    "node_modules"
-  ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
