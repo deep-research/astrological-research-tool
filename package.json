@@ -23,12 +23,12 @@
     "timezoner": "^0.2.0"
   },
   "scripts": {
+    "heroku-postbuild": "yarn build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"node ./server/server.js\" \"yarn start\"",
-    "heroku-postbuild": "yarn build"
+    "dev": "concurrently --kill-others-on-fail \"node ./server/server.js\" \"yarn start\""
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
