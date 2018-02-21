@@ -5,9 +5,14 @@ import { ToastContainer, toast } from 'react-toastify';
 
 class EventForm extends Component {
     notify = () => {
-        toast.info("Event Submitted Successfully!", {
-            position: toast.POSITION.BOTTOM_CENTER
-        });
+        if (this.props.state.name &&
+            this.props.state.cityInput &&
+            this.props.state.time &&
+            this.props.state.date) {
+                toast.info("Event Submitted Successfully!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                });
+            }
     }
 
     render() {
