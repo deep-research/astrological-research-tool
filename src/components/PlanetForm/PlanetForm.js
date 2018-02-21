@@ -6,6 +6,7 @@ class PlanetForm extends Component {
         return (
             <div>
                 <label htmlFor={"eventForm" + this.props.planetCaps}>{this.props.planetCaps} (Position, Sector, Motion) <span className="star">*</span></label>
+
                 <select
                     value={this.props.state[this.props.planetLower + "Position"]}
                     onChange={this.props.eventFormInputChange.bind(this)}
@@ -18,6 +19,7 @@ class PlanetForm extends Component {
                     <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
                     <option value="">No Answer</option>
                 </select>
+
                 <select
                     value={this.props.state[this.props.planetLower + "Sector"]}
                     onChange={this.props.eventFormInputChange.bind(this)}
@@ -30,6 +32,7 @@ class PlanetForm extends Component {
                     <option value="Winter">Winter</option>
                     <option value="">No Answer</option>
                 </select>
+
                 <select
                     value={this.props.state[this.props.planetLower + "Motion"]}
                     onChange={this.props.eventFormInputChange.bind(this)}
@@ -40,6 +43,7 @@ class PlanetForm extends Component {
                     <option value="Retrograde">Retrograde</option>
                     <option value="">No Answer</option>
                 </select>
+                
                 <div className="formSpacer"></div>
             </div>
         )

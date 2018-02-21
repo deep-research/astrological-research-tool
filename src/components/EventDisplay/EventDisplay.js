@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "./EventDisplay.css";
-import moment from "moment"
+import moment from "moment";
+import PlanetDisplay from "../PlanetDisplay";
 
 class EventDisplay extends Component {
     dateConversion = (origionalDate) => {
@@ -61,85 +62,61 @@ class EventDisplay extends Component {
                                     ? <div><p><b>Lunar Phase:</b> {event.phase}</p></div>
                                     : <div></div>}
 
-                                {(event.mercuryPosition)
-                                    ? <div><p><b>Mercurial Position:</b> {event.mercuryPosition}</p></div>
-                                    : <div></div>}
-                                {(event.mercurySector)
-                                    ? <div><p><b>Mercurial Sector:</b> {event.mercurySector}</p></div>
-                                    : <div></div>}
-                                {(event.mercuryMotion)
-                                    ? <div><p><b>Mercurial Motion:</b> {event.mercuryMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="mercury"
+                                    adjective="Mercurial"
+                                />
 
-                                {(event.venusPosition)
-                                    ? <div><p><b>Venusian Position:</b> {event.venusPosition}</p></div>
-                                    : <div></div>}
-                                {(event.venusSector)
-                                    ? <div><p><b>Venusian Sector:</b> {event.venusSector}</p></div>
-                                    : <div></div>}
-                                {(event.venusMotion)
-                                    ? <div><p><b>Venusian Motion:</b> {event.venusMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="venus"
+                                    adjective="Venusian"
+                                />
 
-                                {(event.marsPosition)
-                                    ? <div><p><b>Martian Position:</b> {event.marsPosition}</p></div>
-                                    : <div></div>}
-                                {(event.marsSector)
-                                    ? <div><p><b>Martian Sector:</b> {event.marsSector}</p></div>
-                                    : <div></div>}
-                                {(event.marsMotion)
-                                    ? <div><p><b>Martian Motion:</b> {event.marsMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="mars"
+                                    adjective="Martian"
+                                />
 
-                                {(event.jupiterPosition)
-                                    ? <div><p><b>Jovian Position:</b> {event.jupiterPosition}</p></div>
-                                    : <div></div>}
-                                {(event.jupiterSector)
-                                    ? <div><p><b>Jovian Sector:</b> {event.jupiterSector}</p></div>
-                                    : <div></div>}
-                                {(event.jupiterMotion)
-                                    ? <div><p><b>Jovian Motion:</b> {event.jupiterMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="jupiter"
+                                    adjective="Jovian"
+                                />
 
-                                {(event.saturnPosition)
-                                    ? <div><p><b>Saturnian Position:</b> {event.saturnPosition}</p></div>
-                                    : <div></div>}
-                                {(event.saturnSector)
-                                    ? <div><p><b>Saturnian Sector:</b> {event.saturnSector}</p></div>
-                                    : <div></div>}
-                                {(event.saturnMotion)
-                                    ? <div><p><b>Saturnian Motion:</b> {event.saturnMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="saturn"
+                                    adjective="Saturnian"
+                                />
 
-                                {(event.uranusPosition)
-                                    ? <div><p><b>Uranian Position:</b> {event.uranusPosition}</p></div>
-                                    : <div></div>}
-                                {(event.uranusSector)
-                                    ? <div><p><b>Uranian Sector:</b> {event.uranusSector}</p></div>
-                                    : <div></div>}
-                                {(event.uranusMotion)
-                                    ? <div><p><b>Uranian Motion:</b> {event.uranusMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="uranus"
+                                    adjective="Uranian"
+                                />
 
-                                {(event.neptunePosition)
-                                    ? <div><p><b>Neptunian Position:</b> {event.neptunePosition}</p></div>
-                                    : <div></div>}
-                                {(event.neptuneSector)
-                                    ? <div><p><b>Neptunian Sector:</b> {event.neptuneSector}</p></div>
-                                    : <div></div>}
-                                {(event.neptuneMotion)
-                                    ? <div><p><b>Neptunian Motion:</b> {event.neptuneMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="neptune"
+                                    adjective="Neptunian"
+                                />
 
-                                {(event.plutoPosition)
-                                    ? <div><p><b>Plutonian Position:</b> {event.plutoPosition}</p></div>
-                                    : <div></div>}
-                                {(event.plutoSector)
-                                    ? <div><p><b>Plutonian Sector:</b> {event.plutoSector}</p></div>
-                                    : <div></div>}
-                                {(event.plutoMotion)
-                                    ? <div><p><b>Plutonian Motion:</b> {event.plutoMotion}</p></div>
-                                    : <div></div>}
+                                <PlanetDisplay
+                                    state={this.props.state}
+                                    event={event}
+                                    planet="pluto"
+                                    adjective="Plutonian"
+                                />
                             </div>
                         </div>
                     </div>

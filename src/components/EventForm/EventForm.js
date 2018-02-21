@@ -142,6 +142,7 @@ class EventForm extends Component {
                             <option value="">No Answer</option>
                         </select>
                         <div className="formSpacer"></div>
+                        
                         <PlanetForm
                             state={this.props.state}
                             eventFormInputChange={this.props.eventFormInputChange}
