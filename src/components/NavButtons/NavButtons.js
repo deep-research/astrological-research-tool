@@ -37,7 +37,7 @@ class NavButtons extends Component {
                         <div className="modal-body">
                             <form class="form-signin">
                                 <br />
-                                <label for="inputEmail" class="sr-only">Email address</label>
+                                <label for="inputEmail" class="sr-only">User Name</label>
                                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
                                 <br />
                                 <label for="inputPassword" class="sr-only">Password</label>
@@ -65,7 +65,7 @@ class NavButtons extends Component {
                         <div className="modal-body">
                             <form class="form-signin">
                                 <br />
-                                <label for="inputEmail" class="sr-only">Email address</label>
+                                <label for="inputEmail" class="sr-only">User Name</label>
                                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
                                 <br />
                                 <label for="inputPassword" class="sr-only">Password</label>
