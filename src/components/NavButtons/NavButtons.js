@@ -35,13 +35,13 @@ class NavButtons extends Component {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form class="form-signin">
+                            <form className="form-signin">
                                 <br />
-                                <label for="inputEmail" class="sr-only">User Name</label>
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
+                                <label htmlFor="inputEmailLogin" className="sr-only">User Name</label>
+                                <input type="email" id="inputEmailLogin" className="form-control" placeholder="Email address" required autoFocus />
                                 <br />
-                                <label for="inputPassword" class="sr-only">Password</label>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                                <label htmlFor="inputPasswordLogin" className="sr-only">Password</label>
+                                <input type="password" id="inputPasswordLogin" className="form-control" placeholder="Password" required />
                                 <br />
                             </form>
                         </div>
@@ -63,13 +63,13 @@ class NavButtons extends Component {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form class="form-signin">
+                            <form className="form-signin">
                                 <br />
-                                <label for="inputEmail" class="sr-only">User Name</label>
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
+                                <label htmlFor="inputEmailRegister" className="sr-only">User Name</label>
+                                <input type="email" id="inputEmailRegister" className="form-control" placeholder="Email address" required autoFocus />
                                 <br />
-                                <label for="inputPassword" class="sr-only">Password</label>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                                <label htmlFor="inputPasswordRegister" className="sr-only">Password</label>
+                                <input type="password" id="inputPasswordRegister" className="form-control" placeholder="Password" required />
                                 <br />
                             </form>
                         </div>
