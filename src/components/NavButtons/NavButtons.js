@@ -29,17 +29,25 @@ class NavButtons extends Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="loginModalLabel">Login Modal</h5>
+                            <h4 className="modal-title" id="loginModalLabel">Please sign in</h4>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            Login modal text...
+                            <form class="form-signin">
+                                <br />
+                                <label for="inputEmail" class="sr-only">Email address</label>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
+                                <br />
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                                <br />
+                            </form>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -49,13 +57,21 @@ class NavButtons extends Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="registerModalLabel">Register Modal</h5>
+                        <h4 className="modal-title" id="loginModalLabel">Create a new account</h4>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            Register modal text...
+                            <form class="form-signin">
+                                <br />
+                                <label for="inputEmail" class="sr-only">Email address</label>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
+                                <br />
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                                <br />
+                            </form>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
