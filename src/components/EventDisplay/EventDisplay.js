@@ -8,6 +8,7 @@ class EventDisplay extends Component {
         var convertedDate = moment(origionalDate, 'YYYY-MM-DD').format('MM-DD-YYYY');
         return convertedDate
     }
+
     render() {
         return (
             <div id="EventDisplay">
@@ -37,7 +38,13 @@ class EventDisplay extends Component {
                             aria-labelledby={"heading" + event.key}
                         >
                             <div className="card-body">
-                                <p><b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
+                                <p><button className="iconBtn" type="button">
+                                        <i className="far fa-save fa-2x" id="saveIcon"></i>
+                                    </button>&nbsp;&nbsp;
+                                    <button className="iconBtn" type="button" onClick={()=>this.props.removeEvent(event.key)}>
+                                        <i className="fas fa-trash-alt fa-2x" id="removeIcon"></i>
+                                    </button>&nbsp;&nbsp;
+                                    <b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
                                 <p><b>Local Time & Date:</b> {event.localTime} ({event.timeZoneName})</p>
                                 <p><b>UTC Time & Date:</b> {event.utcTime} (Greenwich Mean Time)</p>
 

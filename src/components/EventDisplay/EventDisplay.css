@@ -1,3 +1,21 @@
-.btn-link, .btn-link:hover, .btn-link:focus {
-    text-decoration: none
+.iconBtn {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.iconBtn:focus {
+    outline-style: none;
+}
+
+.iconBtn:active {
+    opacity: .7;
+}
+
+#saveIcon:hover {
+    color: rgb(0, 0, 87);
+}
+
+#removeIcon:hover {
+    color: rgb(87, 0, 0);
 }

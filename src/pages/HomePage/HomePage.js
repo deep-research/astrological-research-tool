@@ -242,6 +242,18 @@ class HomePage extends Component {
         }
     }
 
+    removeEvent = (eventKey) => {
+        const oldArray = this.state.events;
+
+        const newArray = oldArray.filter(obj => {
+            return obj.key !== eventKey;
+        });
+
+        this.setState({
+            events: newArray
+        });
+    }
+
     render() {
         return (
         <div>
@@ -255,7 +267,7 @@ class HomePage extends Component {
                     handleEventFormSubmit={this.handleEventFormSubmit}
                     cityValidation= {this.cityValidation}
                 />
-                <EventDisplay state={this.state} />
+                <EventDisplay state={this.state} removeEvent={this.removeEvent} />
             </div>
             {/* <Link to={`./index.html`}>click here</Link><br /> */}
             {/* <Link to={`./`}>click here</Link> */}         
