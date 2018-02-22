@@ -28,7 +28,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "concurrently --kill-others-on-fail \"node ./server/server.js\" \"yarn start\"",
-    "heroku-postbuild": "yarn build && yarn start"
+    "heroku-postbuild": "yarn build"
   },
   "cacheDirectories": [
     "node_modules"
