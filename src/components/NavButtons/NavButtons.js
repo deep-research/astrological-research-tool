@@ -37,8 +37,8 @@ class NavButtons extends Component {
                         <div className="modal-body">
                             <form className="form-signin">
                                 <br />
-                                <label htmlFor="inputEmailLogin" className="sr-only">User Name</label>
-                                <input type="email" id="inputEmailLogin" className="form-control" placeholder="Email address" required autoFocus />
+                                <label htmlFor="inputNameLogin" className="sr-only">User Name</label>
+                                <input type="text" id="inputNameLogin" className="form-control" placeholder="User Name" required autoFocus />
                                 <br />
                                 <label htmlFor="inputPasswordLogin" className="sr-only">Password</label>
                                 <input type="password" id="inputPasswordLogin" className="form-control" placeholder="Password" required />
@@ -65,9 +65,12 @@ class NavButtons extends Component {
                         <div className="modal-body">
                             <form className="form-signin">
                                 <br />
-                                <label htmlFor="inputEmailRegister" className="sr-only">User Name</label>
-                                <input type="email" id="inputEmailRegister" className="form-control" placeholder="Email address" required autoFocus />
+                                <label htmlFor="inputNameRegister" className="sr-only">User Name</label>
+                                <input type="text" id="inputNameRegister" className="form-control" placeholder="User Name" required autoFocus />
                                 <br />
+                                {/* <label htmlFor="inputEmailRegister" className="sr-only">Email Address</label>
+                                <input type="email" id="inputEmailRegister" className="form-control" placeholder="Email Address" required autoFocus />
+                                <br /> */}
                                 <label htmlFor="inputPasswordRegister" className="sr-only">Password</label>
                                 <input type="password" id="inputPasswordRegister" className="form-control" placeholder="Password" required />
                                 <br />
@@ -75,7 +78,7 @@ class NavButtons extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </div>
