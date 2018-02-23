@@ -8,6 +8,8 @@ import EventForm from "../../components/EventForm";
 import EventDisplay from "../../components/EventDisplay";
 import API from "../../utils/API";
 import cities from "../../utils/cities.json";
+import { ToastContainer, toast } from 'react-toastify';
+import bcrypt from "bcryptjs";
 import timezoner from "timezoner";
 import moment from "moment-timezone";
 
@@ -85,9 +87,12 @@ class HomePage extends Component {
         const password = this.state.registerFormPassword;
 
         if (username && password) {
+            var salt = bcrypt.genSaltSync(10);
+            var hash = bcrypt.hashSync(password, salt);
+
             API.addUser({
                 username: username,
-                password: password
+                password: hash
             })
             .then(res => {
                 this.setState({
@@ -97,12 +102,27 @@ class HomePage extends Component {
                     registerFormPassword: ""
                 }, () => {
                     document.getElementById("registerModal").click();
+
+                    toast.info("Registration Submitted Successfully!", {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    });
                 })                    
             })
             .catch(err => {
                 console.log(err)
+
+                toast.error("Invalid Username or Password!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                });
             });
           }
+    }
+
+    closeRegisterForm = () => {
+        this.setState({
+            registerFormName: "",
+            registerFormPassword: ""
+        })
     }
 
     handleLoginFormSubmit = event => {
@@ -320,6 +340,7 @@ class HomePage extends Component {
                 loginFormInputChange={this.loginFormInputChange}
                 handleLoginFormSubmit={this.handleLoginFormSubmit}
                 handleRegisterFormSubmit={this.handleRegisterFormSubmit}
+                closeRegisterForm={this.closeRegisterForm}
             />
             <div className="container">
                 <AboutSection />
@@ -331,6 +352,7 @@ class HomePage extends Component {
                 />
                 <EventDisplay state={this.state} removeEvent={this.removeEvent} />
             </div>
+            <ToastContainer autoClose={2250} />
             {/* <Link to={`./index.html`}>click here</Link><br /> */}
             {/* <Link to={`./`}>click here</Link> */}         
         </div>

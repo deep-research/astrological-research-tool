@@ -25,9 +25,7 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
-        trim: true,
-        validate: nameValidator
+        required: true
     }
 });
 
