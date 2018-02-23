@@ -11,12 +11,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
 }
 
-// Set up promises with mongoose
-mongoose.Promise = global.Promise;
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/astrology";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/astrology"
-);
+mongoose.Promise = global.Promise;
+mongoose.connect(MONGODB_URI || "mongodb://localhost/astrology");
 
 // Initialize body parser
 app.use(bodyParser.urlencoded({ extended: false }));
