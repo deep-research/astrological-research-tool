@@ -95,7 +95,9 @@ class HomePage extends Component {
                     loginName: username,
                     registerFormName: "",
                     registerFormPassword: ""
-                }, () => document.getElementById("registerModal").click())                    
+                }, () => {
+                    document.getElementById("registerModal").click();
+                })                    
             })
             .catch(err => {
                 console.log(err)
