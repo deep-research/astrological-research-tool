@@ -12,6 +12,7 @@
     "express": "^4.16.2",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",
+    "mongojs": "^2.5.0",
     "mongoose": "^5.0.7",
     "mongoose-validator": "^2.0.2",
     "react": "^16.2.0",
