@@ -6,6 +6,7 @@ import NavButtons from "../../components/NavButtons";
 import AboutSection from "../../components/AboutSection";
 import EventForm from "../../components/EventForm";
 import EventDisplay from "../../components/EventDisplay";
+import API from "../../utils/API";
 import cities from "../../utils/cities.json";
 import timezoner from "timezoner";
 import moment from "moment-timezone";
@@ -53,10 +54,57 @@ class HomePage extends Component {
         plutoPosition: "",
         plutoSector: "",
         plutoMotion: "",
+        registerFormName: "",
+        registerFormPassword: "",
+        loginFormName: "",
+        loginFormPassword: ""
     };
+
+    registerFormInputChange = event => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value
+        })
+    }
+
+    loginFormInputChange = event => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleRegisterFormSubmit = event => {
+        event.preventDefault()
+
+        const userName = this.state.registerFormName;
+        const userPassword = this.state.registerFormPassword;
+
+        if (userName && userPassword) {
+            API.saveUser({
+                user_name: userName,
+                password: userPassword
+            })
+                .then(res => {
+                    this.setState({
+                        loggedIn: true,
+                        loginName: userName
+                    })                    
+                })
+                .catch(err => console.log(err));
+          }
+    }
+
+    handleLoginFormSubmit = event => {
+        event.preventDefault()
+
+    }
 
     eventFormInputChange = event => {
         const { name, value } = event.target;
+
         this.setState(
             {[name]: value},
             () => {
@@ -258,7 +306,13 @@ class HomePage extends Component {
         return (
         <div>
             <Navbar/>
-            <NavButtons />
+            <NavButtons
+                state={this.state}
+                registerFormInputChange={this.registerFormInputChange}
+                loginFormInputChange={this.loginFormInputChange}
+                handleLoginFormSubmit={this.handleLoginFormSubmit}
+                handleRegisterFormSubmit={this.handleRegisterFormSubmit}
+            />
             <div className="container">
                 <AboutSection />
                 <EventForm
