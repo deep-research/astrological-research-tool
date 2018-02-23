@@ -1,1 +1,1 @@
-web: yarn seed && npm run server
+web: node ./server/server.js/
