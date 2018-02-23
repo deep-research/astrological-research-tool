@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    // Saves a book to the database
-    saveUser: function(bookData) {
-        return axios.post("/api/userAuth", bookData);
+    // Saves a user to the database
+    addUser: function(userData) {
+        return axios.post("/api/userAuth", userData);
     }
 };

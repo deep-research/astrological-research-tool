@@ -79,21 +79,23 @@ class HomePage extends Component {
     handleRegisterFormSubmit = event => {
         event.preventDefault()
 
-        const userName = this.state.registerFormName;
-        const userPassword = this.state.registerFormPassword;
+        const username = this.state.registerFormName;
+        const password = this.state.registerFormPassword;
 
-        if (userName && userPassword) {
-            API.saveUser({
-                user_name: userName,
-                password: userPassword
+        if (username && password) {
+            API.addUser({
+                username: username,
+                password: password
             })
-                .then(res => {
-                    this.setState({
-                        loggedIn: true,
-                        loginName: userName
-                    })                    
-                })
-                .catch(err => console.log(err));
+            .then(res => {
+                this.setState({
+                    loggedIn: true,
+                    loginName: username
+                })                    
+            })
+            .catch(err => {
+                console.log(err)
+            });
           }
     }
 
