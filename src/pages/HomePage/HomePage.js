@@ -57,7 +57,9 @@ class HomePage extends Component {
         registerFormName: "",
         registerFormPassword: "",
         loginFormName: "",
-        loginFormPassword: ""
+        loginFormPassword: "",
+        loggedIn: true,
+        loginName: ""
     };
 
     registerFormInputChange = event => {
@@ -90,8 +92,10 @@ class HomePage extends Component {
             .then(res => {
                 this.setState({
                     loggedIn: true,
-                    loginName: username
-                })                    
+                    loginName: username,
+                    registerFormName: "",
+                    registerFormPassword: ""
+                }, () => document.getElementById("registerModal").click())                    
             })
             .catch(err => {
                 console.log(err)
