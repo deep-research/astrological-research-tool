@@ -26,7 +26,8 @@ class NavButtons extends Component {
                                     type="button"
                                     className="btn btn-outline-dark btn-lg nav-button" 
                                     data-toggle="modal"
-                                    data-target="#loginModal">
+                                    data-target="#loginModal"
+                                    id="loginModalBtn">
                                         Login
                                 </button>
                             </li>
@@ -44,7 +45,10 @@ class NavButtons extends Component {
                     <p id="loginMessage"
                         className="nav-item navbar-text col-md-3">
                         <span id="login-span">
-                            Login to save events
+                            {(this.props.state.loginName)
+                                ? <span>Username: {this.props.state.loginName}</span> 
+                                : <span onClick={() => document.getElementById("loginModalBtn").click()}>
+                                    Login to save events</span>}      
                         </span>
                     </p>
                 </div>
