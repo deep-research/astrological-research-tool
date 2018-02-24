@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
     findOne: function(req, res) {
         db.User
-          .findOne({"username": req.params.username})
+          .findOne({"username": req.body.username})
           .then(dbModel => {
               res.json(dbModel)
           })
