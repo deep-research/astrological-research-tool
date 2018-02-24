@@ -90,7 +90,17 @@ class HomePage extends Component {
                 username: username
             })
             .then(res => {
-                console.log(res)
+                if (res.data) {
+                    const dbUser = res.data.username;
+                    const dbHash = res.data.password;
+                    const bcryptCheck = bcrypt.compareSync(password, dbHash);
+
+                    if (bcryptCheck) {
+                        alert("You can log in")
+                    } else {
+                        alert("You failed")
+                    }
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -109,8 +119,8 @@ class HomePage extends Component {
         const password = this.state.registerFormPassword;
 
         if (username && password) {
-            var salt = bcrypt.genSaltSync(10);
-            var hash = bcrypt.hashSync(password, salt);
+            const salt = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(password, salt);
 
             API.saveUser({
                 username: username,
