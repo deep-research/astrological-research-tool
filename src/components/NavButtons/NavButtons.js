@@ -114,6 +114,8 @@ class NavButtons extends Component {
                                         value={this.props.state.registerFormName}
                                         onChange={this.props.registerFormInputChange.bind(this)}
                                         name="registerFormName"
+                                        pattern="[a-zA-Z0-9]+"
+                                        title="Username should only contain letters or numbers\nNo spaces"
                                         minLength="5"
                                         maxLength="25"
                                         type="text"
@@ -131,6 +133,8 @@ class NavButtons extends Component {
                                         value={this.props.state.registerFormPassword}
                                         onChange={this.props.registerFormInputChange.bind(this)}
                                         name="registerFormPassword"
+                                        pattern="[a-zA-Z0-9]+"
+                                        title="Password should only contain letters or numbers with no spaces"
                                         minLength="5"
                                         maxLength="25"
                                         type="password"
