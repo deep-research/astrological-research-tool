@@ -86,7 +86,9 @@ class HomePage extends Component {
         const password = this.state.loginFormPassword;
         console.log(username)
         if (username && password) {
-            API.findUser(username)
+            API.findUser({
+                username: username
+            })
             .then(res => {
                 console.log(res)
             })
