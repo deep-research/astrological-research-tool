@@ -46,7 +46,7 @@ class NavButtons extends Component {
                         className="nav-item navbar-text col-md-3">
                         <span id="login-span">
                             {(this.props.state.loginName)
-                                ? <span>Username: {this.props.state.loginName}</span> 
+                                ? <span onClick={() => this.props.userLogout()}>Hello {this.props.state.loginName}!</span> 
                                 : <span onClick={() => document.getElementById("loginModalBtn").click()}>
                                     Login to save events</span>}      
                         </span>

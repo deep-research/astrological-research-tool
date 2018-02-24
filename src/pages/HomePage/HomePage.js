@@ -71,6 +71,13 @@ class HomePage extends Component {
         })
     }
 
+    userLogout = () => {
+        console.log("logged out")
+        this.setState({
+            loginName: ""
+        }, () => console.log("logged out"))
+    }
+
     loginFormInputChange = event => {
         const { name, value } = event.target;
 
@@ -96,10 +103,26 @@ class HomePage extends Component {
                     const bcryptCheck = bcrypt.compareSync(password, dbHash);
 
                     if (bcryptCheck) {
-                        alert("You can log in")
+                        this.setState({
+                            loginName: dbUser,
+                            loginFormName: "",
+                            loginFormPassword: ""
+                        }, () => {
+                            document.getElementById("loginModal").click();
+
+                            toast.info("Login Submitted Successfully!", {
+                                position: toast.POSITION.BOTTOM_CENTER
+                            });
+                        });
                     } else {
-                        alert("You failed")
+                        toast.error("Invalid Password!", {
+                            position: toast.POSITION.BOTTOM_CENTER
+                        });
                     }
+                } else {
+                    toast.error("Invalid Username!", {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    });
                 }
             })
             .catch(err => {
@@ -375,6 +398,7 @@ class HomePage extends Component {
                 handleRegisterFormSubmit={this.handleRegisterFormSubmit}
                 closeRegisterForm={this.closeRegisterForm}
                 closeLoginForm={this.closeLoginForm}
+                userLogout={this.userLogout}
             />
             <div className="container">
                 <AboutSection />
