@@ -66,6 +66,8 @@ class NavButtons extends Component {
                                         value={this.props.state.loginFormName}
                                         onChange={this.props.loginFormInputChange.bind(this)}
                                         name="loginFormName"
+                                        pattern="[a-zA-Z0-9]+"
+                                        title="Username should only contain letters or numbers with no spaces"
                                         minLength="5"
                                         maxLength="25"
                                         type="text"
@@ -79,6 +81,8 @@ class NavButtons extends Component {
                                         value={this.props.state.loginFormPassword}
                                         onChange={this.props.loginFormInputChange.bind(this)}
                                         name="loginFormPassword"
+                                        pattern="[a-zA-Z0-9]+"
+                                        title="Password should only contain letters or numbers with no spaces"
                                         minLength="5"
                                         maxLength="25"
                                         type="password"
@@ -88,7 +92,7 @@ class NavButtons extends Component {
                                         required />
                                     <br />
                                     <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => this.props.closeLoginForm()}>Close</button>
                                         <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
@@ -115,7 +119,7 @@ class NavButtons extends Component {
                                         onChange={this.props.registerFormInputChange.bind(this)}
                                         name="registerFormName"
                                         pattern="[a-zA-Z0-9]+"
-                                        title="Username should only contain letters or numbers\nNo spaces"
+                                        title="Username should only contain letters or numbers with no spaces"
                                         minLength="5"
                                         maxLength="25"
                                         type="text"

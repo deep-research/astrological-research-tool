@@ -111,7 +111,7 @@ class HomePage extends Component {
             .catch(err => {
                 console.log(err)
 
-                toast.error("Invalid Username or Password!", {
+                toast.error("Invalid Username!", {
                     position: toast.POSITION.BOTTOM_CENTER
                 });
             });
@@ -122,6 +122,13 @@ class HomePage extends Component {
         this.setState({
             registerFormName: "",
             registerFormPassword: ""
+        })
+    }
+
+    closeLoginForm = () => {
+        this.setState({
+            loginFormName: "",
+            loginFormPassword: ""
         })
     }
 
@@ -341,6 +348,7 @@ class HomePage extends Component {
                 handleLoginFormSubmit={this.handleLoginFormSubmit}
                 handleRegisterFormSubmit={this.handleRegisterFormSubmit}
                 closeRegisterForm={this.closeRegisterForm}
+                closeLoginForm={this.closeLoginForm}
             />
             <div className="container">
                 <AboutSection />
