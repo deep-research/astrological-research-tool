@@ -22,7 +22,15 @@ class NavButtons extends Component {
                             </li>
                             <li className="nav-space"></li>                
                             <li className="nav-item">
-                                <button
+                                {(this.props.state.loginName)
+                                ?<button
+                                    onClick={() => this.props.userLogout()}
+                                    type="button"
+                                    className="btn btn-outline-dark btn-lg nav-button" 
+                                    id="loginModalBtn">
+                                        Logout
+                                </button>   
+                                :<button
                                     type="button"
                                     className="btn btn-outline-dark btn-lg nav-button" 
                                     data-toggle="modal"
@@ -30,6 +38,7 @@ class NavButtons extends Component {
                                     id="loginModalBtn">
                                         Login
                                 </button>
+                                }
                             </li>
                             <li className="nav-space"></li>
                             <li className="nav-item">
@@ -48,7 +57,7 @@ class NavButtons extends Component {
                             {(this.props.state.loginName)
                                 ? <span onClick={() => this.props.userLogout()}>Hello {this.props.state.loginName}!</span> 
                                 : <span onClick={() => document.getElementById("loginModalBtn").click()}>
-                                    Login to save events</span>}      
+                                    Login to save events</span>}
                         </span>
                     </p>
                 </div>
