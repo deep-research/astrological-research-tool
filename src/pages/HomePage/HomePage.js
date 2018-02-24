@@ -60,7 +60,6 @@ class HomePage extends Component {
         registerFormPassword: "",
         loginFormName: "",
         loginFormPassword: "",
-        loggedIn: true,
         loginName: ""
     };
 
@@ -80,6 +79,27 @@ class HomePage extends Component {
         })
     }
 
+    handleLoginFormSubmit = event => {
+        event.preventDefault()
+
+        const username = this.state.loginFormName;
+        const password = this.state.loginFormPassword;
+        console.log(username)
+        if (username && password) {
+            API.findUser(username)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+
+                toast.error("Invalid Username or Password!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                });
+            });
+        }
+    }
+
     handleRegisterFormSubmit = event => {
         event.preventDefault()
 
@@ -90,13 +110,12 @@ class HomePage extends Component {
             var salt = bcrypt.genSaltSync(10);
             var hash = bcrypt.hashSync(password, salt);
 
-            API.addUser({
+            API.saveUser({
                 username: username,
                 password: hash
             })
             .then(res => {
                 this.setState({
-                    loggedIn: true,
                     loginName: username,
                     registerFormName: "",
                     registerFormPassword: ""
@@ -130,11 +149,6 @@ class HomePage extends Component {
             loginFormName: "",
             loginFormPassword: ""
         })
-    }
-
-    handleLoginFormSubmit = event => {
-        event.preventDefault()
-
     }
 
     eventFormInputChange = event => {
