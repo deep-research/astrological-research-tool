@@ -8,7 +8,7 @@ const eventSchema = new Schema({
     jupiterMotion: {
         type: String
     },
-    jupiterPostion: {
+    jupiterPosition: {
         type: String
     },
     jupiterSector: {

@@ -26,7 +26,7 @@ class EventForm extends Component {
                         <label htmlFor="eventFormName">Event Name <span className="star">*</span></label>
                         <input required
                             type="text"
-                            maxlength="40"
+                            maxLength="40"
                             value={this.props.state.name}
                             onChange={this.props.eventFormInputChange}
                             name="name"
@@ -39,7 +39,7 @@ class EventForm extends Component {
                         <label htmlFor="eventFormCity">Event City <span className="star">*</span></label>
                         <input required
                             type="text"
-                            maxlength="40"
+                            maxLength="40"
                             value={this.props.state.cityInput}
                             onChange={this.props.eventFormInputChange}
                             name="cityInput"
@@ -75,7 +75,7 @@ class EventForm extends Component {
                         <label htmlFor="eventFormWeather">Event Weather</label>
                         <input
                             type="text"
-                            maxlength="60"
+                            maxLength="60"
                             value={this.props.state.weather}
                             onChange={this.props.eventFormInputChange}
                             name="weather"
@@ -88,7 +88,7 @@ class EventForm extends Component {
                         <label htmlFor="eventFormNews">News of the Day</label>
                         <input
                             type="text"
-                            maxlength="60"
+                            maxLength="60"
                             value={this.props.state.news}
                             onChange={this.props.eventFormInputChange}
                             name="news"

@@ -9,6 +9,7 @@ export default {
         return axios.post("/api/login", data)
     },
     saveEvent: data => {
+        console.log(data)
         return axios.post("/api/event", data)
     }
 };

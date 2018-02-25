@@ -400,10 +400,10 @@ class HomePage extends Component {
         const eventObj = this.state.events.find(obj => obj.key === eventKey);
         console.log(eventObj)
 
-        API.saveUser({
+        API.saveEvent({
             city: eventObj.city,
             jupiterMotion: eventObj.jupiterMotion,
-            jupiterPostion: eventObj.jupiterPostion,
+            jupiterPosition: eventObj.jupiterPosition,
             jupiterSector: eventObj.jupiterSector,
             latitude: eventObj.lat,
             longitude: eventObj.lng,
