@@ -26,7 +26,15 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    events: [
+        {
+            // Store ObjectIds in the array
+            type: Schema.Types.ObjectId,
+            // The ObjectIds will refer to the ids in the Comment model
+            ref: "Event"
+        }
+    ]
 });
 
 const User = mongoose.model("User", userSchema);

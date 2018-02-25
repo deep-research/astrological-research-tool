@@ -60,7 +60,8 @@ class HomePage extends Component {
         registerFormPassword: "",
         loginFormName: "",
         loginFormPassword: "",
-        loginName: ""
+        loginName: "",
+        loginUserId: "",
     };
 
     registerFormInputChange = event => {
@@ -72,10 +73,10 @@ class HomePage extends Component {
     }
 
     userLogout = () => {
-        console.log("logged out")
         this.setState({
-            loginName: ""
-        }, () => console.log("logged out"))
+            loginName: "",
+            loginUserId: ""
+        })
     }
 
     loginFormInputChange = event => {
@@ -100,11 +101,13 @@ class HomePage extends Component {
                 if (res.data) {
                     const dbUser = res.data.username;
                     const dbHash = res.data.password;
+                    const dbUserId = res.data._id;
                     const bcryptCheck = bcrypt.compareSync(password, dbHash);
 
                     if (bcryptCheck) {
                         this.setState({
                             loginName: dbUser,
+                            loginUserId: dbUserId,
                             loginFormName: "",
                             loginFormPassword: ""
                         }, () => {
@@ -118,6 +121,10 @@ class HomePage extends Component {
                         toast.error("Invalid Password!", {
                             position: toast.POSITION.BOTTOM_CENTER
                         });
+
+                        this.setState({
+                            loginFormPassword: ""
+                        })
                     }
                 } else {
                     toast.error("Invalid Username!", {
@@ -131,6 +138,10 @@ class HomePage extends Component {
                 toast.error("Invalid Username or Password!", {
                     position: toast.POSITION.BOTTOM_CENTER
                 });
+
+                this.setState({
+                    loginFormPassword: ""
+                })
             });
         }
     }
@@ -151,7 +162,6 @@ class HomePage extends Component {
             })
             .then(res => {
                 this.setState({
-                    loginName: username,
                     registerFormName: "",
                     registerFormPassword: ""
                 }, () => {
@@ -167,7 +177,7 @@ class HomePage extends Component {
 
                 toast.error("Invalid Username!", {
                     position: toast.POSITION.BOTTOM_CENTER
-                });
+                })
             });
           }
     }
@@ -386,6 +396,57 @@ class HomePage extends Component {
         });
     }
 
+    saveEvent = (eventKey) => {
+        const eventObj = this.state.events.find(obj => obj.key === eventKey);
+        console.log(eventObj)
+
+        API.saveUser({
+            city: eventObj.city,
+            jupiterMotion: eventObj.jupiterMotion,
+            jupiterPostion: eventObj.jupiterPostion,
+            jupiterSector: eventObj.jupiterSector,
+            latitude: eventObj.lat,
+            longitude: eventObj.lng,
+            localTime: eventObj.localTime,
+            marsMotion: eventObj.marsMotion,
+            marsPosition: eventObj.marsPosition,
+            marsSector: eventObj.marsSector,
+            mercuryMotion: eventObj.mercuryMotion,
+            mercuryPosition: eventObj.mercuryPosition,
+            mercurySector: eventObj.mercurySector,
+            moon: eventObj.moon,
+            name: eventObj.name,
+            neptuneMotion: eventObj.neptuneMotion,
+            neptunePosition: eventObj.neptunePosition,
+            neptuneSector: eventObj.neptuneSector,
+            news: eventObj.news,
+            phase: eventObj.phase,
+            plutoMotion: eventObj.plutoMotion,
+            plutoPosition: eventObj.plutoPosition,
+            plutoSector: eventObj.plutoSector,
+            saturnMotion: eventObj.saturnMotion,
+            saturnPosition: eventObj.saturnPosition,
+            saturnSector: eventObj.saturnSector,
+            season: eventObj.season,
+            sun: eventObj.sun,
+            timeZoneName: eventObj.timeZoneName,
+            uranusMotion: eventObj.uranusMotion,
+            uranusPosition: eventObj.uranusPosition,
+            uranusSector: eventObj.uranusSector,
+            utcTime: eventObj.utcTime,
+            venusMotion: eventObj.venusMotion,
+            venusPosition: eventObj.venusPosition,
+            venusSector: eventObj.venusSector,
+            weather: eventObj.weather
+        })
+        .then(res => {
+            this.removeEvent(eventKey)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
+
     render() {
         return (
         <div>
@@ -408,7 +469,11 @@ class HomePage extends Component {
                     handleEventFormSubmit={this.handleEventFormSubmit}
                     cityValidation= {this.cityValidation}
                 />
-                <EventDisplay state={this.state} removeEvent={this.removeEvent} />
+                <EventDisplay
+                    state={this.state}
+                    removeEvent={this.removeEvent}
+                    saveEvent={this.saveEvent}
+                />
             </div>
             <ToastContainer autoClose={2250} />
             {/* <Link to={`./index.html`}>click here</Link><br /> */}
