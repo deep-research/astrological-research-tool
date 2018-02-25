@@ -437,7 +437,8 @@ class HomePage extends Component {
             venusMotion: eventObj.venusMotion,
             venusPosition: eventObj.venusPosition,
             venusSector: eventObj.venusSector,
-            weather: eventObj.weather
+            weather: eventObj.weather,
+            id: this.state.loginUserId
         })
         .then(res => {
             this.removeEvent(eventKey)
