@@ -1,0 +1,21 @@
+.removeUserGrey {
+    text-align: center;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.removeUserGrey span:hover {
+    color: darkblue;
+    cursor: pointer;
+}
+
+.removeUserRed {
+    text-align: center;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.removeUserRed span:hover {
+    color: red;
+    cursor: pointer;
+}

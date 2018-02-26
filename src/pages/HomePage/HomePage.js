@@ -6,6 +6,7 @@ import NavButtons from "../../components/NavButtons";
 import AboutSection from "../../components/AboutSection";
 import EventForm from "../../components/EventForm";
 import EventDisplay from "../../components/EventDisplay";
+import RemoveUser from "../../components/RemoveUser";
 import API from "../../utils/API";
 import cities from "../../utils/cities.json";
 import { ToastContainer, toast } from 'react-toastify';
@@ -63,6 +64,8 @@ class HomePage extends Component {
         loginFormPassword: "",
         loginName: "",
         loginUserId: "",
+        removeUserText: "Click to Remove User",
+        removeUserColor: "removeUserGrey"
     };
 
     registerFormInputChange = event => {
@@ -77,7 +80,9 @@ class HomePage extends Component {
         this.setState({
             loginName: "",
             loginUserId: "",
-            savedEvents: []
+            savedEvents: [],
+            removeUserText: "Click to Remove User",
+            removeUserColor: "removeUserGrey"
         })
     }
 
@@ -484,6 +489,19 @@ class HomePage extends Component {
             .catch(err => console.log(err));
     }
 
+    removeUser = () => {
+        if (this.state.removeUserText === "Click to Remove User") {
+            this.setState({
+                removeUserText: "Click to Confirm!",
+                removeUserColor: "removeUserRed"
+            })
+        } else if (this.state.removeUserText === "Click to Confirm!") {
+            API.removeUser(this.state.loginUserId)
+                .then(res => this.userLogout())
+                .catch(err => console.log(err));
+        }
+    }
+
     render() {
         return (
         <div>
@@ -511,6 +529,10 @@ class HomePage extends Component {
                     removeEvent={this.removeEvent}
                     saveEvent={this.saveEvent}
                     removeSavedEvent={this.removeSavedEvent}
+                />
+                <RemoveUser
+                    state={this.state}
+                    removeUser={this.removeUser}
                 />
             </div>
             <ToastContainer autoClose={2250} />

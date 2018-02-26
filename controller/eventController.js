@@ -25,7 +25,7 @@ module.exports = {
         var userId = req.query.userId;
         console.log(eventId, userId)
     
-        // Find and remove the events
+        // Find and remove the event
         db.Event.findOneAndRemove({ "_id": eventId }, function (err, response) {
             if (err) throw err;
     
