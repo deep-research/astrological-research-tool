@@ -14,10 +14,10 @@ const eventSchema = new Schema({
     jupiterSector: {
         type: String
     },
-    latitude: {
+    lat: {
         type: Number
     },
-    longitude: {
+    lng: {
         type: Number
     },
     localTime: {

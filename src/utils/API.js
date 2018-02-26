@@ -11,5 +11,8 @@ export default {
     saveEvent: data => {
         console.log(data)
         return axios.post("/api/event", data)
+    },
+    getEvents:  ({userId}) => {
+        return axios.get("/api/event/" + userId)
     }
 };

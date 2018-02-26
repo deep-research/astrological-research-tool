@@ -16,6 +16,7 @@ import moment from "moment-timezone";
 class HomePage extends Component {
     state = {
         events: [],
+        savedEvents: [],
         name: "",
         cityInput: "",
         cityResult: "",
@@ -112,6 +113,8 @@ class HomePage extends Component {
                             loginFormPassword: ""
                         }, () => {
                             document.getElementById("loginModal").click();
+
+                            this.displaySavedEvents(this.state.loginUserId)
 
                             toast.info("Login Submitted Successfully!", {
                                 position: toast.POSITION.BOTTOM_CENTER
@@ -398,15 +401,14 @@ class HomePage extends Component {
 
     saveEvent = (eventKey) => {
         const eventObj = this.state.events.find(obj => obj.key === eventKey);
-        console.log(eventObj)
 
         API.saveEvent({
             city: eventObj.city,
             jupiterMotion: eventObj.jupiterMotion,
             jupiterPosition: eventObj.jupiterPosition,
             jupiterSector: eventObj.jupiterSector,
-            latitude: eventObj.lat,
-            longitude: eventObj.lng,
+            lat: eventObj.lat,
+            lng: eventObj.lng,
             localTime: eventObj.localTime,
             marsMotion: eventObj.marsMotion,
             marsPosition: eventObj.marsPosition,
@@ -446,6 +448,28 @@ class HomePage extends Component {
         .catch(err => {
             console.log(err)
         });
+    }
+
+    displaySavedEvents = (userId) => {
+        API.getEvents({
+            userId: userId
+        })
+        .then(res => {
+            if (res.data.events.length > 0) {
+                const eventArray = []
+                for (const i in res.data.events) {
+                    eventArray.push(res.data.events[i])
+                }
+
+                this.setState({
+                    savedEvents: eventArray
+                })
+
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        });            
     }
 
     render() {
