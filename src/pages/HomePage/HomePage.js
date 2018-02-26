@@ -496,9 +496,11 @@ class HomePage extends Component {
                 removeUserColor: "removeUserRed"
             })
         } else if (this.state.removeUserText === "Click to Confirm!") {
-            API.removeUser(this.state.loginUserId)
-                .then(res => this.userLogout())
-                .catch(err => console.log(err));
+            this.userLogout()
+            
+            // API.removeUser(this.state.loginUserId)
+            //     .then(res => this.userLogout())
+            //     .catch(err => console.log(err));
         }
     }
 
