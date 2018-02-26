@@ -112,6 +112,9 @@ const eventSchema = new Schema({
     },
     weather: {
         type: String
+    },
+    userId: {
+        type: String
     }
 });
 

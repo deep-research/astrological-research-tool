@@ -446,7 +446,7 @@ class HomePage extends Component {
             venusPosition: eventObj.venusPosition,
             venusSector: eventObj.venusSector,
             weather: eventObj.weather,
-            id: this.state.loginUserId
+            userId: this.state.loginUserId
         })
         .then(res => {
             this.removeEvent(eventKey)
@@ -496,11 +496,9 @@ class HomePage extends Component {
                 removeUserColor: "removeUserRed"
             })
         } else if (this.state.removeUserText === "Click to Confirm!") {
-            this.userLogout()
-            
-            // API.removeUser(this.state.loginUserId)
-            //     .then(res => this.userLogout())
-            //     .catch(err => console.log(err));
+            API.removeUser(this.state.loginUserId)
+                .then(res => this.userLogout())
+                .catch(err => console.log(err));
         }
     }
 

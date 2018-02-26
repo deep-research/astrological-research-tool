@@ -5,6 +5,9 @@ export default {
     saveUser: data => {
         return axios.post("/api/register", data);
     },
+    removeUser: userId => {
+        return axios.delete("/api/register/" + userId);
+    },
     findUser: data => {
         return axios.post("/api/login", data)
     },

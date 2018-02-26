@@ -6,4 +6,7 @@ const registerController = require("../../controller/registerController");
 router.route("")
     .post(registerController.saveUser)
 
+router.route("/:userId")
+    .delete(registerController.removeUser)
+
 module.exports = router;

@@ -5,8 +5,8 @@ module.exports = {
     saveEvent: (req, res) => {
         db.Event
             .create(req.body)
-            .then(dbComment => {
-                return db.User.findOneAndUpdate({"_id": req.body.id}, { $push: { events: dbComment._id } }, { new: true });
+            .then(dbEvent => {
+                return db.User.findOneAndUpdate({"_id": req.body.userId}, { $push: { events: dbEvent._id } }, { new: true });
               })
             .then(response => res.json(response))
             .catch(err => res.status(422).json(err));
@@ -20,21 +20,20 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err));
     },
-    removeEvent: function(req, res) {
-        var eventId = req.query.eventId;
-        var userId = req.query.userId;
-        console.log(eventId, userId)
+    removeEvent: (req, res) => {
+        const eventId = req.query.eventId;
+        const userId = req.query.userId;
     
         // Find and remove the event
-        db.Event.findOneAndRemove({ "_id": eventId }, function (err, response) {
+        db.Event.findOneAndRemove({ "_id": eventId }, (err, response) => {
             if (err) throw err;
     
             // Find and remove the user reference
             db.User.update(
                 { "_id": userId },
                 { "$pull": { "events": eventId } },
-                function (err, response){
-                    if (err) throw err;
+                (err, response) => {
+                    if (err) throw(err);
                     res.json(response);
                 }
             );
