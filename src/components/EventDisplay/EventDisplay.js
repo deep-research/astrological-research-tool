@@ -38,13 +38,7 @@ class EventDisplay extends Component {
                                 aria-labelledby={"heading" + event._id}
                             >
                                 <div className="card-body">
-                                    <p> {(this.props.state.loginUserId)
-                                            ?<span><button className="iconBtn" type="button" title="Save" onClick={()=>this.props.saveEvent(event._id)}>
-                                                <i className="far fa-save fa-2x" id="saveIcon"></i>
-                                            </button>&nbsp;&nbsp;</span>
-                                            : <span></span>
-                                        }
-                                        <button className="iconBtn" type="button" title="Remove" onClick={()=>this.props.removeEvent(event._id)}>
+                                    <p> <button className="iconBtn" type="button" title="Remove" onClick={()=>this.props.removeSavedEvent(event._id)}>
                                             <i className="fas fa-trash-alt fa-2x" id="removeIcon"></i>
                                         </button>&nbsp;&nbsp;
                                         <b>City:</b> {event.city} ({event.lat}, {event.lng})</p>

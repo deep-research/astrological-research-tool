@@ -76,7 +76,8 @@ class HomePage extends Component {
     userLogout = () => {
         this.setState({
             loginName: "",
-            loginUserId: ""
+            loginUserId: "",
+            savedEvents: []
         })
     }
 
@@ -444,6 +445,8 @@ class HomePage extends Component {
         })
         .then(res => {
             this.removeEvent(eventKey)
+
+            this.displaySavedEvents(this.state.loginUserId)
         })
         .catch(err => {
             console.log(err)
@@ -464,12 +467,21 @@ class HomePage extends Component {
                 this.setState({
                     savedEvents: eventArray
                 })
-
+            } else {
+                this.setState({
+                    savedEvents: []
+                })                
             }
         })
         .catch(err => {
             console.log(err)
         });            
+    }
+
+    removeSavedEvent = (eventId) => {
+        API.removeEvent(eventId, this.state.loginUserId)
+            .then(res => {this.displaySavedEvents(this.state.loginUserId)})
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -498,6 +510,7 @@ class HomePage extends Component {
                     state={this.state}
                     removeEvent={this.removeEvent}
                     saveEvent={this.saveEvent}
+                    removeSavedEvent={this.removeSavedEvent}
                 />
             </div>
             <ToastContainer autoClose={2250} />

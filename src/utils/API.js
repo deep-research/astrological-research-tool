@@ -9,10 +9,12 @@ export default {
         return axios.post("/api/login", data)
     },
     saveEvent: data => {
-        console.log(data)
         return axios.post("/api/event", data)
     },
     getEvents:  ({userId}) => {
         return axios.get("/api/event/" + userId)
+    },
+    removeEvent: (eventId, userId) => {
+        return axios.delete("/api/event/", {params: {eventId: eventId, userId: userId}});
     }
 };
