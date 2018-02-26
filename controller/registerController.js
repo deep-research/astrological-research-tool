@@ -14,12 +14,6 @@ module.exports = {
         db.User.findOneAndRemove({"_id": userId}, (err, response) => {
             if (err) throw err;
 
-            db.Event.remove({userId: userId}), (err, response) => {
-                if (err) throw err;
-
-                res.send(response)
-            }
-
             db.Event
                 .remove({userId: userId})
                 .then(dbModel => res.json(dbModel))
