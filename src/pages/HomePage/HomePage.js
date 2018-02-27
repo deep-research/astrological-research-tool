@@ -76,13 +76,19 @@ class HomePage extends Component {
         })
     }
 
-    userLogout = () => {
+    userLogout = (showToast=true) => {
         this.setState({
             loginName: "",
             loginUserId: "",
             savedEvents: [],
             removeUserText: "Click to Remove User",
             removeUserColor: "removeUserGrey"
+        }, () => {
+            if (showToast) {
+                toast.info("Logged Out Successfully!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            }
         })
     }
 
@@ -179,6 +185,23 @@ class HomePage extends Component {
                     toast.info("Registration Submitted Successfully!", {
                         position: toast.POSITION.BOTTOM_CENTER
                     });
+
+                    API.findUser({
+                        username: username
+                    })
+                    .then(res => {
+                        const dbUserId = res.data._id;
+
+                        this.setState({
+                            loginName: username,
+                            loginUserId: dbUserId,
+                            loginFormName: "",
+                            loginFormPassword: ""
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
                 })                    
             })
             .catch(err => {
@@ -393,7 +416,7 @@ class HomePage extends Component {
         }
     }
 
-    removeEvent = (eventKey) => {
+    removeEvent = (eventKey, showToast=true) => {
         const oldArray = this.state.events;
 
         const newArray = oldArray.filter(obj => {
@@ -402,6 +425,12 @@ class HomePage extends Component {
 
         this.setState({
             events: newArray
+        }, () => {
+            if (showToast) {
+                toast.info("Event Removed Successfully!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            }
         });
     }
 
@@ -449,12 +478,21 @@ class HomePage extends Component {
             userId: this.state.loginUserId
         })
         .then(res => {
-            this.removeEvent(eventKey)
+            this.removeEvent(eventKey, false)
 
             this.displaySavedEvents(this.state.loginUserId)
+
+            toast.info("Event Saved Successfully!", {
+                position: toast.POSITION.BOTTOM_CENTER
+            })
+            
         })
         .catch(err => {
             console.log(err)
+            
+            toast.error("The Event Was Not Saved!", {
+                position: toast.POSITION.BOTTOM_CENTER
+            });
         });
     }
 
@@ -485,8 +523,20 @@ class HomePage extends Component {
 
     removeSavedEvent = (eventId) => {
         API.removeEvent(eventId, this.state.loginUserId)
-            .then(res => {this.displaySavedEvents(this.state.loginUserId)})
-            .catch(err => console.log(err));
+            .then(res => {
+                this.displaySavedEvents(this.state.loginUserId)
+            
+                toast.info("Event Removed Successfully!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            })
+            .catch(err => {
+                console.log(err)
+
+                toast.error("The Event Was Not Removed!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            });
     }
 
     removeUser = () => {
@@ -497,8 +547,20 @@ class HomePage extends Component {
             })
         } else if (this.state.removeUserText === "Click to Confirm!") {
             API.removeUser(this.state.loginUserId)
-                .then(res => this.userLogout())
-                .catch(err => console.log(err));
+                .then(res => {
+                    this.userLogout(false)
+
+                    toast.info("User Removed Successfully!", {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+
+                    toast.error("The User Was Not Removed!", {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    })
+                });
         }
     }
 

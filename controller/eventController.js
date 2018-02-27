@@ -29,8 +29,8 @@ module.exports = {
     
             // Find and remove the user reference
             db.User.update(
-                { "_id": userId },
-                { "$pull": { "events": eventId }})
+                {"_id": userId },
+                {"$pull": {"events": eventId}})
                 .then(dbModel => res.json(dbModel))
                 .catch(err => res.status(422).json(err))
             ;
