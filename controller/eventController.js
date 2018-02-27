@@ -25,18 +25,15 @@ module.exports = {
         const userId = req.query.userId;
     
         // Find and remove the event
-        db.Event.findOneAndRemove({ "_id": eventId }, (err, response) => {
-            if (err) throw err;
+        db.Event.findOneAndRemove({ "_id": eventId }).then(response => {
     
             // Find and remove the user reference
             db.User.update(
                 { "_id": userId },
-                { "$pull": { "events": eventId } },
-                (err, response) => {
-                    if (err) throw(err);
-                    res.json(response);
-                }
-            );
-        });
+                { "$pull": { "events": eventId }})
+                .then(dbModel => res.json(dbModel))
+                .catch(err => res.status(422).json(err))
+            ;
+        })
     }
 };

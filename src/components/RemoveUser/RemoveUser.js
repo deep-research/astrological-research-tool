@@ -7,7 +7,7 @@ class RemoveUser extends Component {
             <div>
                 <br />
                 {(this.props.state.loginName)
-                    ? <p className={this.props.state.removeUserColor}><span onClick={() => this.props.removeUser()}>{this.props.state.removeUserText}</span></p>
+                    ? <p className={this.props.state.removeUserColor} title="Click to Remove User"><span onClick={() => this.props.removeUser()}>{this.props.state.removeUserText}</span></p>
                     : <div></div>}
             </div>
         )
