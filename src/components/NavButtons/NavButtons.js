@@ -162,6 +162,21 @@ class NavButtons extends Component {
                                         placeholder="Password"
                                         required />
                                     <br />
+                                    <label htmlFor="inputPasswordRegisterConfirm" className="sr-only">Password</label>
+                                    <input
+                                        value={this.props.state.registerFormPasswordConfirm}
+                                        onChange={this.props.registerFormInputChange.bind(this)}
+                                        name="registerFormPasswordConfirm"
+                                        pattern="[a-zA-Z0-9]+"
+                                        title="Password should only contain letters or numbers with no spaces"
+                                        minLength="5"
+                                        maxLength="25"
+                                        type="password"
+                                        id="inputPasswordRegisterConfirm"
+                                        className="form-control"
+                                        placeholder="Confirm Password"
+                                        required />
+                                    <br />
                                     <div className="modal-footer">
                                         <button
                                             type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

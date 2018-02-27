@@ -60,6 +60,7 @@ class HomePage extends Component {
         plutoMotion: "",
         registerFormName: "",
         registerFormPassword: "",
+        registerFormPasswordConfirm: "",
         loginFormName: "",
         loginFormPassword: "",
         loginName: "",
@@ -166,58 +167,67 @@ class HomePage extends Component {
 
         const username = this.state.registerFormName;
         const password = this.state.registerFormPassword;
+        const passwordConfirm = this.state.registerFormPasswordConfirm;
 
-        if (username && password) {
-            const salt = bcrypt.genSaltSync(10);
-            const hash = bcrypt.hashSync(password, salt);
-
-            API.saveUser({
-                username: username,
-                password: hash
-            })
-            .then(res => {
-                this.setState({
-                    registerFormName: "",
-                    registerFormPassword: ""
-                }, () => {
-                    document.getElementById("registerModal").click();
-
-                    toast.info("Registration Submitted Successfully!", {
-                        position: toast.POSITION.BOTTOM_CENTER
-                    });
-
-                    API.findUser({
-                        username: username
-                    })
-                    .then(res => {
-                        const dbUserId = res.data._id;
-
-                        this.setState({
-                            loginName: username,
-                            loginUserId: dbUserId,
-                            loginFormName: "",
-                            loginFormPassword: ""
-                        })
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-                })                    
-            })
-            .catch(err => {
-                console.log(err)
-
-                toast.error("Invalid Username!", {
+        if (username && password && passwordConfirm) {
+            if (password != passwordConfirm) {
+                toast.error("Password Confirmation Failed!", {
                     position: toast.POSITION.BOTTOM_CENTER
                 })
-            });
-          }
+            } else {
+                const salt = bcrypt.genSaltSync(10);
+                const hash = bcrypt.hashSync(password, salt);
+
+                API.saveUser({
+                    username: username,
+                    password: hash
+                })
+                .then(res => {
+                    this.setState({
+                        registerFormName: "",
+                        registerFormPassword: "",
+                        registerFormPasswordConfirm: ""
+                    }, () => {
+                        document.getElementById("registerModal").click();
+
+                        toast.info("Registration Submitted Successfully!", {
+                            position: toast.POSITION.BOTTOM_CENTER
+                        });
+
+                        API.findUser({
+                            username: username
+                        })
+                        .then(res => {
+                            const dbUserId = res.data._id;
+
+                            this.setState({
+                                loginName: username,
+                                loginUserId: dbUserId,
+                                loginFormName: "",
+                                loginFormPassword: ""
+                            })
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
+                    })                    
+                })
+                .catch(err => {
+                    console.log(err)
+
+                    toast.error("Invalid Username!", {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    })
+                });
+            }
+        }
     }
 
     clearRegisterForm = () => {
         this.setState({
             registerFormName: "",
-            registerFormPassword: ""
+            registerFormPassword: "",
+            registerFormPasswordConfirm: ""
         })
     }
 
