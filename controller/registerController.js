@@ -12,7 +12,6 @@ module.exports = {
         const userId = req.params.userId;
 
         db.User.findOneAndRemove({"_id": userId}).then(response => {
-
             db.Event
                 .remove({userId: userId})
                 .then(dbModel => res.json(dbModel))

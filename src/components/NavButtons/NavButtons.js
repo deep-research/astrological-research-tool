@@ -35,7 +35,8 @@ class NavButtons extends Component {
                                     className="btn btn-outline-dark btn-lg nav-button" 
                                     data-toggle="modal"
                                     data-target="#loginModal"
-                                    id="loginModalBtn">
+                                    id="loginModalBtn"
+                                    onClick={() => this.props.clearLoginForm()}>
                                         Login
                                 </button>
                                 }
@@ -45,7 +46,8 @@ class NavButtons extends Component {
                                 <button type="button"
                                     className="btn btn-outline-dark btn-lg nav-button"
                                     data-toggle="modal"
-                                    data-target="#registerModal">
+                                    data-target="#registerModal"
+                                    onClick={() => this.props.clearRegisterForm()}>
                                         Sign Up
                                 </button>
                             </li>
@@ -105,7 +107,7 @@ class NavButtons extends Component {
                                         required />
                                     <br />
                                     <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => this.props.closeLoginForm()}>Close</button>
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
@@ -162,7 +164,7 @@ class NavButtons extends Component {
                                     <br />
                                     <div className="modal-footer">
                                         <button
-                                            type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => this.props.closeRegisterForm()}>Close</button>
+                                            type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
                                 </form>

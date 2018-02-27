@@ -9,7 +9,7 @@ import EventDisplay from "../../components/EventDisplay";
 import RemoveUser from "../../components/RemoveUser";
 import API from "../../utils/API";
 import cities from "../../utils/cities.json";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import bcrypt from "bcryptjs";
 import timezoner from "timezoner";
 import moment from "moment-timezone";
@@ -191,14 +191,14 @@ class HomePage extends Component {
           }
     }
 
-    closeRegisterForm = () => {
+    clearRegisterForm = () => {
         this.setState({
             registerFormName: "",
             registerFormPassword: ""
         })
     }
 
-    closeLoginForm = () => {
+    clearLoginForm = () => {
         this.setState({
             loginFormName: "",
             loginFormPassword: ""
@@ -512,8 +512,8 @@ class HomePage extends Component {
                 loginFormInputChange={this.loginFormInputChange}
                 handleLoginFormSubmit={this.handleLoginFormSubmit}
                 handleRegisterFormSubmit={this.handleRegisterFormSubmit}
-                closeRegisterForm={this.closeRegisterForm}
-                closeLoginForm={this.closeLoginForm}
+                clearRegisterForm={this.clearRegisterForm}
+                clearLoginForm={this.clearLoginForm}
                 userLogout={this.userLogout}
             />
             <div className="container">
