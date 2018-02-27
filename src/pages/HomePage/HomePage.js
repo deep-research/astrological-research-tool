@@ -170,7 +170,7 @@ class HomePage extends Component {
         const passwordConfirm = this.state.registerFormPasswordConfirm;
 
         if (username && password && passwordConfirm) {
-            if (password != passwordConfirm) {
+            if (password !== passwordConfirm) {
                 toast.error("Password Confirmation Failed!", {
                     position: toast.POSITION.BOTTOM_CENTER
                 })

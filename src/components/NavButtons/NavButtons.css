@@ -34,3 +34,7 @@
 #button-div {
     padding: 0;
 }
+
+#inputPasswordLogin, #inputPasswordRegisterConfirm {
+    margin-bottom: 15px;
+}
