@@ -128,6 +128,7 @@ class HomePage extends Component {
                     }, () => {
                         document.getElementById("loginModal").click();
 
+                        // Display the users events
                         this.displaySavedEvents(this.state.loginUserId)
 
                         toast.info("Login Submitted Successfully!", {
@@ -284,6 +285,7 @@ class HomePage extends Component {
         // Save `this` for later use
         const file = this;
 
+        // If the city name was approved
         if (this.state.cityResult) {
             toast.info("Event Submitted Successfully!", {
                 position: toast.POSITION.BOTTOM_CENTER
@@ -297,10 +299,11 @@ class HomePage extends Component {
             const lat = this.state.cityLat;
             const lng = this.state.cityLng;
 
+            // Determine the timezone from the coordinates
             timezoner.getTimeZone(
                 lat,
                 lng,
-                function (err, data) {
+                (err, data) => {
                     if (err) {
                         console.log(err);
                     } else {                   
@@ -310,7 +313,11 @@ class HomePage extends Component {
                         const localMoment = moment.tz(`${year}-${month}-${day} ${hours}:${minutes}`,
                             timeZoneId)
                         const localTime = moment(localMoment).format("h:mm a, MMM Do YYYY");
+
+                        // Convert local time to unversal time
                         const utcTime = moment.utc(localMoment).format("h:mm a, MMM Do YYYY");
+
+                        // Function to display timezone offsets in a human readable format:
 
                         // const dstOffset = data.dstOffset;
                         // const rawOffset = data.rawOffset;
@@ -423,6 +430,7 @@ class HomePage extends Component {
                 }
                 // , { language: 'en', key: '' }
             );
+        // If the city name was not approved
         } else {
             toast.error("City Name Invalid", {
                 position: toast.POSITION.BOTTOM_CENTER
@@ -431,22 +439,28 @@ class HomePage extends Component {
     };
 
     cityValidation = () => {
+        // Empty city input
         if (this.state.cityInput === "") {
             return
+        // City name not approved
         } else if (this.state.cityInput && this.state.cityResult === "") {
             return "is-invalid"
+        // City name approved
         } else {
             return "is-valid"
         }
     }
 
+    // showToast can prevent a message when an event is saved instead of deleted
     removeEvent = (eventKey, showToast=true) => {
         const oldArray = this.state.events;
 
+        // Remove the event from the event array
         const newArray = oldArray.filter(obj => {
             return obj.key !== eventKey;
         });
 
+        // Remove the event from the database
         this.setState({
             events: newArray
         }, () => {
@@ -502,8 +516,10 @@ class HomePage extends Component {
             userId: this.state.loginUserId
         })
         .then(res => {
+            // Remove the event from the state array without a success message
             this.removeEvent(eventKey, false)
 
+            // Display the users saved events
             this.displaySavedEvents(this.state.loginUserId)
 
             toast.info("Event Saved Successfully!", {
@@ -521,10 +537,12 @@ class HomePage extends Component {
     }
 
     displaySavedEvents = (userId) => {
+        // Retrieve the events from the database
         API.getEvents({
             userId: userId
         })
         .then(res => {
+            // Populate event array with the saved events
             if (res.data.events.length > 0) {
                 const eventArray = []
                 for (const i in res.data.events) {
@@ -534,6 +552,7 @@ class HomePage extends Component {
                 this.setState({
                     savedEvents: eventArray
                 })
+            // Empty array if no events have been saved
             } else {
                 this.setState({
                     savedEvents: []
@@ -541,14 +560,15 @@ class HomePage extends Component {
             }
         })
         .catch(err => {
-            console.log(err)
+            console.log(err);
         });            
     }
 
     removeSavedEvent = (eventId) => {
+        // Use the user's id to remove an event
         API.removeEvent(eventId, this.state.loginUserId)
             .then(res => {
-                this.displaySavedEvents(this.state.loginUserId)
+                this.displaySavedEvents(this.state.loginUserId);
             
                 toast.info("Event Removed Successfully!", {
                     position: toast.POSITION.BOTTOM_CENTER
@@ -564,12 +584,15 @@ class HomePage extends Component {
     }
 
     removeUser = () => {
+        // Ask for confirmation
         if (this.state.removeUserText === "Click to Remove User") {
             this.setState({
                 removeUserText: "Click to Confirm!",
                 removeUserColor: "removeUserRed"
             })
+        // If confirmed
         } else if (this.state.removeUserText === "Click to Confirm!") {
+            // Get rid of the user and any associated data
             API.removeUser(this.state.loginUserId)
                 .then(res => {
                     this.userLogout(false)
