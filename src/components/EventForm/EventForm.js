@@ -1,20 +1,8 @@
 import React, {Component} from "react";
 import "./EventForm.css";
 import PlanetForm from "../PlanetForm";
-import { ToastContainer, toast } from 'react-toastify';
 
 class EventForm extends Component {
-    notify = () => {
-        if (this.props.state.name &&
-            this.props.state.cityInput &&
-            this.props.state.time &&
-            this.props.state.date) {
-                toast.info("Event Submitted Successfully!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                });
-            }
-    }
-
     render() {
         return (
         <div id="EventForm">
@@ -236,9 +224,7 @@ class EventForm extends Component {
                         type="submit"
                         className="btn btn-primary"
                         id="eventFormBtn"
-                        onClick={this.notify}
                     >Submit</button>
-                    <ToastContainer autoClose={2250} />
                 </div>
             </form>
         </div>

@@ -32,7 +32,7 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
-
+// Start the server
 app.listen(PORT, () => {
     console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
