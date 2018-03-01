@@ -613,41 +613,41 @@ class HomePage extends Component {
 
     render() {
         return (
-        <div>
-            <Navbar/>
-            <NavButtons
-                state={this.state}
-                registerFormInputChange={this.registerFormInputChange}
-                loginFormInputChange={this.loginFormInputChange}
-                handleLoginFormSubmit={this.handleLoginFormSubmit}
-                handleRegisterFormSubmit={this.handleRegisterFormSubmit}
-                clearRegisterForm={this.clearRegisterForm}
-                clearLoginForm={this.clearLoginForm}
-                userLogout={this.userLogout}
-            />
-            <div className="container">
-                <AboutSection />
-                <EventForm
+            <div>
+                <Navbar/>
+                <NavButtons
                     state={this.state}
-                    eventFormInputChange={this.eventFormInputChange}
-                    handleEventFormSubmit={this.handleEventFormSubmit}
-                    cityValidation= {this.cityValidation}
+                    registerFormInputChange={this.registerFormInputChange}
+                    loginFormInputChange={this.loginFormInputChange}
+                    handleLoginFormSubmit={this.handleLoginFormSubmit}
+                    handleRegisterFormSubmit={this.handleRegisterFormSubmit}
+                    clearRegisterForm={this.clearRegisterForm}
+                    clearLoginForm={this.clearLoginForm}
+                    userLogout={this.userLogout}
                 />
-                <EventDisplay
-                    state={this.state}
-                    removeEvent={this.removeEvent}
-                    saveEvent={this.saveEvent}
-                    removeSavedEvent={this.removeSavedEvent}
-                />
-                <RemoveUser
-                    state={this.state}
-                    removeUser={this.removeUser}
-                />
+                <div className="container">
+                    <AboutSection />
+                    <EventForm
+                        state={this.state}
+                        eventFormInputChange={this.eventFormInputChange}
+                        handleEventFormSubmit={this.handleEventFormSubmit}
+                        cityValidation= {this.cityValidation}
+                    />
+                    <EventDisplay
+                        state={this.state}
+                        removeEvent={this.removeEvent}
+                        saveEvent={this.saveEvent}
+                        removeSavedEvent={this.removeSavedEvent}
+                    />
+                    <RemoveUser
+                        state={this.state}
+                        removeUser={this.removeUser}
+                    />
+                </div>
+                <ToastContainer autoClose={2250} />
+                {/* <Link to={`./index.html`}>click here</Link><br /> */}
+                {/* <Link to={`./`}>click here</Link> */}         
             </div>
-            <ToastContainer autoClose={2250} />
-            {/* <Link to={`./index.html`}>click here</Link><br /> */}
-            {/* <Link to={`./`}>click here</Link> */}         
-        </div>
         );
     }
 }
