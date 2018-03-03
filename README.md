@@ -11,7 +11,7 @@
 
 * Node.js
 * Yarn Package Manager
-* Babel.JS
+* Babel.js
 * MongoDB
 
 ### Installing
