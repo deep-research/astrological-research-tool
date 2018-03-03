@@ -9,7 +9,7 @@
 
 ### Prerequisites
 
-* Node.JS
+* Node.js
 * Yarn Package Manager
 * Babel.JS
 * MongoDB
