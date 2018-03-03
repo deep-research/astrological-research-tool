@@ -4,6 +4,7 @@ import moment from "moment";
 import PlanetDisplay from "../PlanetDisplay";
 
 class EventDisplay extends Component {
+    // Convert dates to a human readable format
     dateConversion = (origionalDate) => {
         var convertedDate = moment(origionalDate, 'YYYY-MM-DD').format('MM-DD-YYYY');
         return convertedDate
