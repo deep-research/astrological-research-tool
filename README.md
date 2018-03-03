@@ -9,6 +9,7 @@
 * Users can study the data to test out different methods of interpretation.
 
 ### Project Functionality
+
 * The user can enter new events without logging in.
 * The user must login to save events on their personal account.
 * Saved events appear once the user logs into the website.
@@ -46,7 +47,7 @@
 * [Timezoner](https://www.npmjs.com/package/timezoner) - Node.js client library for accessing Google Time Zone API.
 * [Moment Timezone](https://momentjs.com/timezone/) - Parse and display dates in any timezone.
 * [React Toastify](https://github.com/fkhadra/react-toastify) - React notification made easy!
-* [Bcrypt JS](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
+* [Bcrypt](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
 * [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js.
 * [Express](https://www.npmjs.com/package/express) - Fast, unopinionated, minimalist web framework for node.js.
 * [Mongo](https://www.mongodb.com/) - A free and open-source cross-platform document-oriented database program.
