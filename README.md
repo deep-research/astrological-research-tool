@@ -1,6 +1,6 @@
 # The Astrological Research Tool
 
-* A full stack astrological application built with React and Mongoose.
+* A full stack astrological application built with React and Mongoose. 
 [The Astrological Research Tool](https://astrological-research-tool.herokuapp.com/)
 
 ## Getting Started
