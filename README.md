@@ -3,6 +3,17 @@
 * A full stack astrological application built with React and Mongoose.  
 [The Astrological Research Tool](https://astrological-research-tool.herokuapp.com/)
 
+### Project Concept
+
+* Store astrological data without any mythological symbolism.
+* Users can study the data to test out different methods of interpretation.
+
+### Project Functionality
+* The user can enter new events without logging in.
+* The user must login to save events on their personal account.
+* Saved events appear once the user logs into the website.
+* Saved events can be removed.
+
 ### Getting Started
 
 * You can see a working version of this project in the link above, or install it on your computer with the instructions below.
