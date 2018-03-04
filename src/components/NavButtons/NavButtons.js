@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import "./NavButtons.css";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 class NavButtons extends Component {
     render() {
@@ -64,129 +66,17 @@ class NavButtons extends Component {
                     </p>
                 </div>
 
-                <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title" id="loginModalLabel">Please sign in</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <form className="form-signin" onSubmit={this.props.handleLoginFormSubmit}>
-                                    <br />
-                                    <label htmlFor="inputNameLogin" className="sr-only">Username</label>
-                                    <input
-                                        value={this.props.state.loginFormName}
-                                        onChange={this.props.loginFormInputChange.bind(this)}
-                                        name="loginFormName"
-                                        pattern="[a-zA-Z0-9]+"
-                                        title="Username should only contain letters or numbers with no spaces"
-                                        minLength="5"
-                                        maxLength="25"
-                                        type="text"
-                                        id="inputNameLogin"
-                                        className="form-control"
-                                        placeholder="Username"
-                                        required autoFocus />
-                                    <br />
-                                    <label htmlFor="inputPasswordLogin" className="sr-only">Password</label>
-                                    <input
-                                        value={this.props.state.loginFormPassword}
-                                        onChange={this.props.loginFormInputChange.bind(this)}
-                                        name="loginFormPassword"
-                                        pattern="[a-zA-Z0-9]+"
-                                        title="Password should only contain letters or numbers with no spaces"
-                                        minLength="5"
-                                        maxLength="25"
-                                        type="password"
-                                        id="inputPasswordLogin"
-                                        className="form-control"
-                                        placeholder="Password"
-                                        required />
-                                    <br />
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" className="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <LoginModal
+                    handleLoginFormSubmit={this.props.handleLoginFormSubmit}
+                    loginFormInputChange={this.props.loginFormInputChange}
+                    state={this.props.state}
+                />
 
-                <div className="modal fade" id="registerModal" tabIndex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                            <h4 className="modal-title" id="loginModalLabel">Create a new account</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <form className="form-signin" onSubmit={this.props.handleRegisterFormSubmit}>
-                                    <br />
-                                    <label htmlFor="inputNameRegister" className="sr-only">Username</label>
-                                    <input
-                                        value={this.props.state.registerFormName}
-                                        onChange={this.props.registerFormInputChange.bind(this)}
-                                        name="registerFormName"
-                                        pattern="[a-zA-Z0-9]+"
-                                        title="Username should only contain letters or numbers with no spaces"
-                                        minLength="5"
-                                        maxLength="25"
-                                        type="text"
-                                        id="inputNameRegister"
-                                        className="form-control"
-                                        placeholder="Username"
-                                        required
-                                        autoFocus />
-                                    <br />
-                                    {/* <label htmlFor="inputEmailRegister" className="sr-only">Email Address</label>
-                                    <input type="email" id="inputEmailRegister" className="form-control" placeholder="Email Address" required autoFocus />
-                                    <br /> */}
-                                    <label htmlFor="inputPasswordRegister" className="sr-only">Password</label>
-                                    <input
-                                        value={this.props.state.registerFormPassword}
-                                        onChange={this.props.registerFormInputChange.bind(this)}
-                                        name="registerFormPassword"
-                                        pattern="[a-zA-Z0-9]+"
-                                        title="Password should only contain letters or numbers with no spaces"
-                                        minLength="5"
-                                        maxLength="25"
-                                        type="password"
-                                        id="inputPasswordRegister"
-                                        className="form-control"
-                                        placeholder="Password"
-                                        required />
-                                    <br />
-                                    <label htmlFor="inputPasswordRegisterConfirm" className="sr-only">Password</label>
-                                    <input
-                                        value={this.props.state.registerFormPasswordConfirm}
-                                        onChange={this.props.registerFormInputChange.bind(this)}
-                                        name="registerFormPasswordConfirm"
-                                        pattern="[a-zA-Z0-9]+"
-                                        title="Password should only contain letters or numbers with no spaces"
-                                        minLength="5"
-                                        maxLength="25"
-                                        type="password"
-                                        id="inputPasswordRegisterConfirm"
-                                        className="form-control"
-                                        placeholder="Confirm Password"
-                                        required />
-                                    <br />
-                                    <div className="modal-footer">
-                                        <button
-                                            type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" className="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <RegisterModal
+                    handleRegisterFormSubmit={this.props.handleregisterFormSubmit}
+                    registerFormInputChange={this.props.registerFormInputChange}
+                    state={this.props.state}
+                />
 
             </div>
         );
