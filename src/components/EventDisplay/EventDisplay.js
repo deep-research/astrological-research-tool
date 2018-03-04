@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./EventDisplay.css";
 import moment from "moment";
-import PlanetDisplay from "../PlanetDisplay";
+import EventDetails from "../EventDetails/EventDetails";
 
 class EventDisplay extends Component {
     // Convert dates to a human readable format
@@ -43,88 +43,7 @@ class EventDisplay extends Component {
                                             <i className="fas fa-trash-alt fa-2x" id="removeIcon"></i>
                                         </button>&nbsp;&nbsp;
                                         <b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
-                                    <p><b>Local Time & Date:</b> {event.localTime} ({event.timeZoneName})</p>
-                                    <p><b>UTC Time & Date:</b> {event.utcTime} (Greenwich Mean Time)</p>
-
-                                    {(event.weather)
-                                        ? <div><p><b>Weather:</b> {event.weather}</p></div>
-                                        : <div></div>}
-                                    {(event.news)
-                                        ? <div><p><b>News:</b> {event.news}</p></div>
-                                        : <div></div>}
-
-                                    {(event.sun)
-                                        ? <div><p><b>Solar Position:</b> {event.sun}</p></div>
-                                        : <div></div>}
-                                    {(event.season)
-                                        ? <div><p><b>Solar Season:</b> {event.season}</p></div>
-                                        : <div></div>}
-
-                                    {(event.lunarPosition)
-                                        ? <div><p><b>Lunar Position:</b> {event.lunarPosition}</p></div>
-                                        : <div></div>}
-                                    {(event.lunarSector)
-                                        ? <div><p><b>Lunar Sector:</b> {event.lunarSector}</p></div>
-                                        : <div></div>}
-                                    {(event.lunarPhase)
-                                        ? <div><p><b>Lunar Phase:</b> {event.lunarPhase}</p></div>
-                                        : <div></div>}
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="mercury"
-                                        adjective="Mercurial"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="venus"
-                                        adjective="Venusian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="mars"
-                                        adjective="Martian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="jupiter"
-                                        adjective="Jovian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="saturn"
-                                        adjective="Saturnian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="uranus"
-                                        adjective="Uranian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="neptune"
-                                        adjective="Neptunian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="pluto"
-                                        adjective="Plutonian"
-                                    />
+                                    <EventDetails event={event} />
                                 </div>
                             </div>
                         </div>
@@ -167,88 +86,7 @@ class EventDisplay extends Component {
                                             <i className="fas fa-trash-alt fa-2x" id="removeIcon"></i>
                                         </button>&nbsp;&nbsp;
                                         <b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
-                                    <p><b>Local Time & Date:</b> {event.localTime} ({event.timeZoneName})</p>
-                                    <p><b>UTC Time & Date:</b> {event.utcTime} (Greenwich Mean Time)</p>
-
-                                    {(event.weather)
-                                        ? <div><p><b>Weather:</b> {event.weather}</p></div>
-                                        : <div></div>}
-                                    {(event.news)
-                                        ? <div><p><b>News:</b> {event.news}</p></div>
-                                        : <div></div>}
-
-                                    {(event.sun)
-                                        ? <div><p><b>Solar Position:</b> {event.sun}</p></div>
-                                        : <div></div>}
-                                    {(event.season)
-                                        ? <div><p><b>Solar Season:</b> {event.season}</p></div>
-                                        : <div></div>}
-
-                                    {(event.lunarPosition)
-                                        ? <div><p><b>Lunar Position:</b> {event.lunarPosition}</p></div>
-                                        : <div></div>}
-                                    {(event.lunarSector)
-                                        ? <div><p><b>Lunar Sector:</b> {event.lunarSector}</p></div>
-                                        : <div></div>}
-                                    {(event.lunarPhase)
-                                        ? <div><p><b>Lunar Phase:</b> {event.lunarPhase}</p></div>
-                                        : <div></div>}
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="mercury"
-                                        adjective="Mercurial"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="venus"
-                                        adjective="Venusian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="mars"
-                                        adjective="Martian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="jupiter"
-                                        adjective="Jovian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="saturn"
-                                        adjective="Saturnian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="uranus"
-                                        adjective="Uranian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="neptune"
-                                        adjective="Neptunian"
-                                    />
-
-                                    <PlanetDisplay
-                                        state={this.props.state}
-                                        event={event}
-                                        planet="pluto"
-                                        adjective="Plutonian"
-                                    />
+                                    <EventDetails event={event} />
                                 </div>
                             </div>
                         </div>
