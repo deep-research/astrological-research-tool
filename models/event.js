@@ -41,7 +41,13 @@ const eventSchema = new Schema({
     mercurySector: {
         type: String
     },
-    moon: {
+    lunarPosition: {
+        type: String
+    },
+    lunarSector: {
+        type: String
+    },
+    lunarPhase: {
         type: String
     },
     name: {
@@ -57,9 +63,6 @@ const eventSchema = new Schema({
         type: String
     },
     news: {
-        type: String
-    },
-    phase: {
         type: String
     },
     plutoMotion: {

@@ -60,11 +60,14 @@ class EventDisplay extends Component {
                                         ? <div><p><b>Solar Season:</b> {event.season}</p></div>
                                         : <div></div>}
 
-                                    {(event.moon)
-                                        ? <div><p><b>Lunar Position:</b> {event.moon}</p></div>
+                                    {(event.lunarPosition)
+                                        ? <div><p><b>Lunar Position:</b> {event.lunarPosition}</p></div>
                                         : <div></div>}
-                                    {(event.phase)
-                                        ? <div><p><b>Lunar Phase:</b> {event.phase}</p></div>
+                                    {(event.lunarSector)
+                                        ? <div><p><b>Lunar Sector:</b> {event.lunarSector}</p></div>
+                                        : <div></div>}
+                                    {(event.lunarPhase)
+                                        ? <div><p><b>Lunar Phase:</b> {event.lunarPhase}</p></div>
                                         : <div></div>}
 
                                     <PlanetDisplay
@@ -181,11 +184,14 @@ class EventDisplay extends Component {
                                         ? <div><p><b>Solar Season:</b> {event.season}</p></div>
                                         : <div></div>}
 
-                                    {(event.moon)
-                                        ? <div><p><b>Lunar Position:</b> {event.moon}</p></div>
+                                    {(event.lunarPosition)
+                                        ? <div><p><b>Lunar Position:</b> {event.lunarPosition}</p></div>
                                         : <div></div>}
-                                    {(event.phase)
-                                        ? <div><p><b>Lunar Phase:</b> {event.phase}</p></div>
+                                    {(event.lunarSector)
+                                        ? <div><p><b>Lunar Sector:</b> {event.lunarSector}</p></div>
+                                        : <div></div>}
+                                    {(event.lunarPhase)
+                                        ? <div><p><b>Lunar Phase:</b> {event.lunarPhase}</p></div>
                                         : <div></div>}
 
                                     <PlanetDisplay

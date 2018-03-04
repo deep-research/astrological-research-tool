@@ -113,13 +113,13 @@ class EventForm extends Component {
                             </select>
                             <div className="formSpacer"></div>
 
-                            <label htmlFor="eventFormMoon">The Moon (Position, Phase)</label>
+                            <label htmlFor="eventFormMoon">The Moon (Position, Sector, Phase)</label>
                             <select
-                                value={this.props.state.moon}
+                                value={this.props.state.lunarPosition}
                                 onChange={this.props.eventFormInputChange.bind(this)}
-                                name="moon"
+                                name="lunarPosition"
                                 className="form-control"
-                                id="eventFormMoon">
+                                id="eventFormLunarPosition">
                                 <option value="Above Horizon, Ascending">Above Horizon, Ascending</option>
                                 <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                                 <option value="Below Horizon, Descending">Below Horizon, Descending</option>
@@ -127,11 +127,23 @@ class EventForm extends Component {
                                 <option defaultValue=""></option>
                             </select>
                             <select
-                                value={this.props.state.phase}
+                                value={this.props.state.lunarSector}
                                 onChange={this.props.eventFormInputChange.bind(this)}
-                                name="phase"
+                                name="lunarSector"
                                 className="form-control"
-                                id="eventFormPhase">
+                                id={"eventFormLunarSector"}>
+                                <option value="Spring">Spring</option>
+                                <option value="Summer">Summer</option>
+                                <option value="Autumn">Autumn</option>
+                                <option value="Winter">Winter</option>
+                                <option defaultValue=""></option>
+                            </select>
+                            <select
+                                value={this.props.state.lunarPhase}
+                                onChange={this.props.eventFormInputChange.bind(this)}
+                                name="lunarPhase"
+                                className="form-control"
+                                id="eventFormLunarPhase">
                                 <option value="New Moon">New Moon</option>
                                 <option value="Waxing Crescent">Waxing Crescent</option>
                                 <option value="First Quarter">First Quarter</option>

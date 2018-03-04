@@ -25,55 +25,53 @@ class AboutSection extends Component {
                 in reimagining the study of time. Some of the changes that
                 were implemented are as follows:
             </p>
-            <p>
-                <ul>
-                    <li>
-                        The <a target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/House_system"
-                            >house system</a> was removed in favor of
-                        classifications for <a target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Diurnal_motion"
-                        >diurnal motion</a>. These catagories describe whether
-                        an object is above or below the horizon, and whether an
-                        object is ascending or descending in terms of <a
-                            target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Horizontal_coordinate_system"
-                            >altitude</a>.
-                    </li>
-                    <li>
-                        The <a target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Zodiac"
-                        >zodiac</a> system was removed in favor of four
-                        seasonally based <a target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Circular_sector"
-                        >sectors</a>, although planets could still be seen as
-                        passing through these sectors on the <a
-                            target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Ecliptic"
-                            >ecliptic</a>.
-                    </li>
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Lunar_phase"
-                        >Lunar phases</a> are used instead of <a
-                            target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Lunar_mansion"
-                        >lunar mansions</a>.
-                    </li>
-                    <li>
-                        There are no <a target="_blank" rel="noopener noreferrer"
-                            href="http://www.chrisbrennanastrologer.com/Brennan-Theoretical-Rationale.pdf"
-                        >hypothetical points</a> such as the <a target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Arabic_parts"
-                        >arabic parts</a> and there is no mention of <a
-                            target="_blank" rel="noopener noreferrer"
-                            href="https://en.wikipedia.org/wiki/Astrological_aspect"
-                        >planetary aspects</a>.
-                    </li>
-                </ul>
-            </p>           
+            <ul>
+                <li>
+                    The <a target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/House_system"
+                        >house system</a> was removed in favor of
+                    classifications for <a target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Diurnal_motion"
+                    >diurnal motion</a>. These catagories describe whether
+                    an object is above or below the horizon, and whether an
+                    object is ascending or descending in terms of <a
+                        target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Horizontal_coordinate_system"
+                        >altitude</a>.
+                </li>
+                <li>
+                    The <a target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Zodiac"
+                    >zodiac</a> system was removed in favor of four
+                    seasonally based <a target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Circular_sector"
+                    >sectors</a>, although planets could still be seen as
+                    passing through these sectors on the <a
+                        target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Ecliptic"
+                        >ecliptic</a>.
+                </li>
+                <li>
+                    <a target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Lunar_phase"
+                    >Lunar phases</a> are used instead of <a
+                        target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Lunar_mansion"
+                    >lunar mansions</a>.
+                </li>
+                <li>
+                    There are no <a target="_blank" rel="noopener noreferrer"
+                        href="http://www.chrisbrennanastrologer.com/Brennan-Theoretical-Rationale.pdf"
+                    >hypothetical points</a> such as the <a target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Arabic_parts"
+                    >arabic parts</a> and there is no mention of <a
+                        target="_blank" rel="noopener noreferrer"
+                        href="https://en.wikipedia.org/wiki/Astrological_aspect"
+                    >planetary aspects</a>.
+                </li>
+            </ul>           
             <p>
                 The conclusion I came to towards the end of this project was that the
                 changes were insufficient. Some problems that are still being inherited
