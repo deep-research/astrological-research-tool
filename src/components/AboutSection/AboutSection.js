@@ -55,10 +55,10 @@ class AboutSection extends Component {
                 <li>
                     <a target="_blank" rel="noopener noreferrer"
                         href="https://en.wikipedia.org/wiki/Lunar_phase"
-                    >Lunar phases</a> are used instead of <a
+                    >Lunar phases</a> are used, and <a
                         target="_blank" rel="noopener noreferrer"
                         href="https://en.wikipedia.org/wiki/Lunar_mansion"
-                    >lunar mansions</a>.
+                    >lunar mansions</a> are not included.
                 </li>
                 <li>
                     There are no <a target="_blank" rel="noopener noreferrer"
@@ -66,10 +66,10 @@ class AboutSection extends Component {
                     >hypothetical points</a> such as the <a target="_blank"
                         rel="noopener noreferrer"
                         href="https://en.wikipedia.org/wiki/Arabic_parts"
-                    >arabic parts</a> and there is no mention of <a
+                    >arabic parts</a>, and <a
                         target="_blank" rel="noopener noreferrer"
                         href="https://en.wikipedia.org/wiki/Astrological_aspect"
-                    >planetary aspects</a>.
+                    >planetary aspects</a>  are not included.
                 </li>
             </ul>           
             <p>
