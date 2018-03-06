@@ -73,7 +73,7 @@ class NavButtons extends Component {
                 />
 
                 <RegisterModal
-                    handleRegisterFormSubmit={this.props.handleregisterFormSubmit}
+                    handleRegisterFormSubmit={this.props.handleRegisterFormSubmit}
                     registerFormInputChange={this.props.registerFormInputChange}
                     state={this.props.state}
                 />

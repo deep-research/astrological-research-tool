@@ -2,12 +2,33 @@ import React, {Component} from "react";
 import "./EventDisplay.css";
 import moment from "moment";
 import EventDetails from "../EventDetails/EventDetails";
+import { ToastContainer, toast } from "react-toastify";
+import API from "../../utils/API";
 
 class EventDisplay extends Component {
     // Convert dates to a human readable format
     dateConversion = (origionalDate) => {
         var convertedDate = moment(origionalDate, 'YYYY-MM-DD').format('MM-DD-YYYY');
         return convertedDate
+    }
+
+    removeSavedEvent = (eventId) => {
+        // Use the user's id to remove an event
+        API.removeEvent(eventId, this.props.state.loginUserId)
+            .then(res => {
+                this.props.displaySavedEvents(this.props.state.loginUserId);
+            
+                toast.info("Event Removed Successfully!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            })
+            .catch(err => {
+                console.log(err)
+
+                toast.error("The Event Was Not Removed!", {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            });
     }
 
     render() {
@@ -41,7 +62,7 @@ class EventDisplay extends Component {
                                 aria-labelledby={"heading" + event._id}
                             >
                                 <div className="card-body">
-                                    <p> <button className="iconBtn" type="button" title="Remove" onClick={()=>this.props.removeSavedEvent(event._id)}>
+                                    <p> <button className="iconBtn" type="button" title="Remove" onClick={()=> this.removeSavedEvent(event._id)}>
                                             <i className="fas fa-trash-alt fa-2x" id="removeIcon"></i>
                                         </button>&nbsp;&nbsp;
                                         <b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
@@ -95,6 +116,7 @@ class EventDisplay extends Component {
                         </div>
                     ))}
                 </div>
+                <ToastContainer autoClose={2250} />
             </div>
         );
     }

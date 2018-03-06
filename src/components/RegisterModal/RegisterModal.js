@@ -12,7 +12,7 @@ const RegisterModal = (props) =>
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="form-signin" onSubmit={props.handleRegisterFormSubmit}>
+                        <form className="form-signin" onSubmit={props.handleRegisterFormSubmit.bind(this)}>
                             <br />
                             <label htmlFor="inputNameRegister" className="sr-only">Username</label>
                             <input

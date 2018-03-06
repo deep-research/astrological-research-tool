@@ -555,25 +555,6 @@ class HomePage extends Component {
         });            
     }
 
-    removeSavedEvent = (eventId) => {
-        // Use the user's id to remove an event
-        API.removeEvent(eventId, this.state.loginUserId)
-            .then(res => {
-                this.displaySavedEvents(this.state.loginUserId);
-            
-                toast.info("Event Removed Successfully!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
-            })
-            .catch(err => {
-                console.log(err)
-
-                toast.error("The Event Was Not Removed!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
-            });
-    }
-
     removeUser = () => {
         // Ask for confirmation
         if (this.state.removeUserText === "Click to Remove User") {
@@ -627,7 +608,7 @@ class HomePage extends Component {
                         state={this.state}
                         removeEvent={this.removeEvent}
                         saveEvent={this.saveEvent}
-                        removeSavedEvent={this.removeSavedEvent}
+                        displaySavedEvents={this.displaySavedEvents}
                     />
                     <RemoveUser
                         state={this.state}
