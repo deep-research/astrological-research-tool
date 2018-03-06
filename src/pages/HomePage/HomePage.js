@@ -441,19 +441,6 @@ class HomePage extends Component {
         }
     };
 
-    cityValidation = () => {
-        // Empty city input
-        if (this.state.cityInput === "") {
-            return
-        // City name not approved
-        } else if (this.state.cityInput && this.state.cityResult === "") {
-            return "is-invalid"
-        // City name approved
-        } else {
-            return "is-valid"
-        }
-    }
-
     // showToast can prevent a message when an event is saved instead of deleted
     removeEvent = (eventKey, showToast=true) => {
         const oldArray = this.state.events;
@@ -635,7 +622,6 @@ class HomePage extends Component {
                         state={this.state}
                         eventFormInputChange={this.eventFormInputChange}
                         handleEventFormSubmit={this.handleEventFormSubmit}
-                        cityValidation= {this.cityValidation}
                     />
                     <EventDisplay
                         state={this.state}

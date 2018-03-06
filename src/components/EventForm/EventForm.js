@@ -3,6 +3,19 @@ import "./EventForm.css";
 import PlanetForm from "../PlanetForm";
 
 class EventForm extends Component {
+    cityValidation = () => {
+        // Empty city input
+        if (this.props.state.cityInput === "") {
+            return
+        // City name not approved
+        } else if (this.props.state.cityInput && this.props.state.cityResult === "") {
+            return "is-invalid"
+        // City name approved
+        } else {
+            return "is-valid"
+        }
+    }
+
     render() {
         return (
             <div id="EventForm">
@@ -31,7 +44,7 @@ class EventForm extends Component {
                                 value={this.props.state.cityInput}
                                 onChange={this.props.eventFormInputChange}
                                 name="cityInput"
-                                className={"form-control " + this.props.cityValidation()}
+                                className={"form-control " + this.cityValidation()}
                                 id="eventFormCity"
                                 placeholder="City"
                             />
@@ -160,7 +173,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="mercury"
                                 planetCaps="Mercury"
                             />
@@ -169,7 +181,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="venus"
                                 planetCaps="Venus"
                             />
@@ -180,7 +191,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="mars"
                                 planetCaps="Mars"
                             />
@@ -189,7 +199,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="jupiter"
                                 planetCaps="Jupiter"
                             />
@@ -198,7 +207,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="saturn"
                                 planetCaps="Saturn"
                             />
@@ -207,7 +215,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="uranus"
                                 planetCaps="Uranus"
                             />
@@ -216,7 +223,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="neptune"
                                 planetCaps="Neptune"
                             />
@@ -225,7 +231,6 @@ class EventForm extends Component {
                                 state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                cityValidation= {this.props.cityValidation}
                                 planetLower="pluto"
                                 planetCaps="Pluto"
                             />
