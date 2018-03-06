@@ -16,58 +16,23 @@ import moment from "moment-timezone";
 
 class HomePage extends Component {
     state = {
-        events: [],
-        savedEvents: [],
-        name: "",
-        cityInput: "",
-        cityResult: "",
-        cityLat: "",
-        cityLng: "",
-        date: "",
-        time: "",
-        localTime: "",
-        utcTime: "",
-        timeZoneName: "",
-        weather: "",
-        news: "",
-        sun: "",
-        season: "",
-        lunarPosition: "",
-        lunarSector: "",
-        lunarPhase: "",
-        mercuryPosition: "",
-        mercurySector: "",
-        mercuryMotion: "",
-        venusPosition: "",
-        venusSector: "",
-        venusMotion: "",
-        marsPosition: "",
-        marsSector: "",
-        marsMotion: "",
-        jupiterPosition: "",
-        jupiterSector: "",
-        jupiterMotion: "",
-        saturnPosition: "",
-        saturnSector: "",
-        saturnMotion: "",
-        uranusPosition: "",
-        uranusSector: "",
-        uranusMotion: "",
-        neptunePosition: "",
-        neptuneSector: "",
-        neptuneMotion: "",
-        plutoPosition: "",
-        plutoSector: "",
-        plutoMotion: "",
-        registerFormName: "",
-        registerFormPassword: "",
-        registerFormPasswordConfirm: "",
-        loginFormName: "",
-        loginFormPassword: "",
-        loginName: "",
-        loginUserId: "",
-        removeUserText: "Click to Remove User",
-        removeUserColor: "removeUserGrey"
+        events: [], savedEvents: [],
+        name: "", cityInput: "", cityResult: "", cityLat: "", cityLng: "",
+        date: "", time: "", localTime: "", utcTime: "", timeZoneName: "",
+        weather: "", news: "",
+        sun: "", season: "",
+        lunarPosition: "", lunarSector: "", lunarPhase: "",
+        mercuryPosition: "", mercurySector: "", mercuryMotion: "",
+        venusPosition: "", venusSector: "", venusMotion: "",
+        marsPosition: "", marsSector: "", marsMotion: "",
+        jupiterPosition: "", jupiterSector: "", jupiterMotion: "",
+        saturnPosition: "", saturnSector: "", saturnMotion: "",
+        uranusPosition: "", uranusSector: "", uranusMotion: "",
+        neptunePosition: "", neptuneSector: "", neptuneMotion: "",
+        plutoPosition: "", plutoSector: "", plutoMotion: "",
+        registerFormName: "", registerFormPassword: "", registerFormPasswordConfirm: "",
+        loginFormName: "", loginFormPassword: "", loginName: "", loginUserId: "",
+        removeUserText: "Click to Remove User", removeUserColor: "removeUserGrey"
     };
 
     registerFormInputChange = event => {
@@ -311,123 +276,48 @@ class HomePage extends Component {
                         const timeZoneName = data.timeZoneName;
                         const timeZoneId = data.timeZoneId;
 
+                        // Convert local time to unversal time
                         const localMoment = moment.tz(`${year}-${month}-${day} ${hours}:${minutes}`,
                             timeZoneId)
                         const localTime = moment(localMoment).format("h:mm a, MMM Do YYYY");
-
-                        // Convert local time to unversal time
                         const utcTime = moment.utc(localMoment).format("h:mm a, MMM Do YYYY");
 
-                        // Function to display timezone offsets in a human readable format:
-
-                        // const dstOffset = data.dstOffset;
-                        // const rawOffset = data.rawOffset;
-                        // const toHHMMSS = (seconds) => {
-                        //     var sec_num = parseInt(seconds, 10); // don't forget the second param
-                        //     var hours   = Math.floor(sec_num / 3600);
-                        //     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-                        //     var seconds = sec_num - (hours * 3600) - (minutes * 60);                        
-                        //     if (hours   < 10) {hours   = "0"+hours;}
-                        //     if (minutes < 10) {minutes = "0"+minutes;}
-                        //     if (seconds < 10) {seconds = "0"+seconds;}
-                        //     return hours+':'+minutes+':'+seconds;
-                        // }
-                        // if (rawOffset >= 0) {
-                        //     console.log("UTC+" + toHHMMSS(data.rawOffset))
-                        // } else {
-                        //     console.log("UTC-" + toHHMMSS(data.rawOffset).slice(2))
-                        // }
-                        // if (dstOffset >= 0) {
-                        //     console.log("UTC+" + toHHMMSS(data.dstOffset))
-                        // } else {
-                        //     console.log("UTC-" + toHHMMSS(data.dstOffset).slice(2))
-                        // }
+                        // see offsetConverter.js...
 
                         const newEvent = {
                             name: file.state.name.trim(),
-                            city: file.state.cityResult,
-                            lat: lat,
-                            lng: lng,
+                            city: file.state.cityResult, lat: lat, lng: lng,
                             key: file.state.events.length + 1,
-                            localTime: localTime,
-                            utcTime: utcTime,
-                            timeZoneName: timeZoneName,
-                            weather: file.state.weather.trim(),
-                            news: file.state.news.trim(),
-                            sun: file.state.sun.trim(),
-                            season: file.state.season.trim(),
-                            lunarPosition: file.state.lunarPosition.trim(),
-                            lunarSector: file.state.lunarSector.trim(),
-                            lunarPhase: file.state.lunarPhase.trim(),
-                            mercuryPosition: file.state.mercuryPosition.trim(),
-                            mercurySector: file.state.mercurySector.trim(),
-                            mercuryMotion: file.state.mercuryMotion.trim(),
-                            venusPosition: file.state.venusPosition.trim(),
-                            venusSector: file.state.venusSector.trim(),
-                            venusMotion: file.state.venusMotion.trim(),
-                            marsPosition: file.state.marsPosition.trim(),
-                            marsSector: file.state.marsSector.trim(),
-                            marsMotion: file.state.marsMotion.trim(),
-                            jupiterPosition: file.state.jupiterPosition.trim(),
-                            jupiterSector: file.state.jupiterSector.trim(),
-                            jupiterMotion: file.state.jupiterMotion.trim(),
-                            saturnPosition: file.state.saturnPosition.trim(),
-                            saturnSector: file.state.saturnSector.trim(),
-                            saturnMotion: file.state.saturnMotion.trim(),
-                            uranusPosition: file.state.uranusPosition.trim(),
-                            uranusSector: file.state.uranusSector.trim(),
-                            uranusMotion: file.state.uranusMotion.trim(),
-                            neptunePosition: file.state.neptunePosition.trim(),
-                            neptuneSector: file.state.neptuneSector.trim(),
-                            neptuneMotion: file.state.neptuneMotion.trim(),
-                            plutoPosition: file.state.plutoPosition.trim(),
-                            plutoSector: file.state.plutoSector.trim(),
-                            plutoMotion: file.state.plutoMotion.trim()
+                            localTime: localTime, utcTime: utcTime, timeZoneName: timeZoneName,
+                            weather: file.state.weather.trim(), news: file.state.news.trim(),
+                            sun: file.state.sun.trim(), season: file.state.season.trim(),
+                            lunarPosition: file.state.lunarPosition.trim(), lunarSector: file.state.lunarSector.trim(), lunarPhase: file.state.lunarPhase.trim(),
+                            mercuryPosition: file.state.mercuryPosition.trim(), mercurySector: file.state.mercurySector.trim(), mercuryMotion: file.state.mercuryMotion.trim(),
+                            venusPosition: file.state.venusPosition.trim(), venusSector: file.state.venusSector.trim(), venusMotion: file.state.venusMotion.trim(),
+                            marsPosition: file.state.marsPosition.trim(), marsSector: file.state.marsSector.trim(), marsMotion: file.state.marsMotion.trim(),
+                            jupiterPosition: file.state.jupiterPosition.trim(), jupiterSector: file.state.jupiterSector.trim(), jupiterMotion: file.state.jupiterMotion.trim(),
+                            saturnPosition: file.state.saturnPosition.trim(), saturnSector: file.state.saturnSector.trim(), saturnMotion: file.state.saturnMotion.trim(),
+                            uranusPosition: file.state.uranusPosition.trim(), uranusSector: file.state.uranusSector.trim(), uranusMotion: file.state.uranusMotion.trim(),
+                            neptunePosition: file.state.neptunePosition.trim(),neptuneSector: file.state.neptuneSector.trim(), neptuneMotion: file.state.neptuneMotion.trim(),
+                            plutoPosition: file.state.plutoPosition.trim(), plutoSector: file.state.plutoSector.trim(), plutoMotion: file.state.plutoMotion.trim()
                         }
             
                         file.setState({
                             events: [...file.state.events, newEvent],
                             name: "",
-                            cityInput: "",
-                            cityResult: "",
-                            cityLat: "",
-                            cityLng: "",
-                            date: "",
-                            time: "",
-                            localTime: "",
-                            utcTime: "",
-                            timeZoneName: "",
-                            weather: "",
-                            news: "",
-                            sun: "",
-                            season: "",
-                            lunarPosition: "",
-                            lunarSector: "",
-                            lunarPhase: "",
-                            mercuryPosition: "",
-                            mercurySector: "",
-                            mercuryMotion: "",
-                            venusPosition: "",
-                            venusSector: "",
-                            venusMotion: "",
-                            marsPosition: "",
-                            marsSector: "",
-                            marsMotion: "",
-                            jupiterPosition: "",
-                            jupiterSector: "",
-                            jupiterMotion: "",
-                            saturnPosition: "",
-                            saturnSector: "",
-                            saturnMotion: "",
-                            uranusPosition: "",
-                            uranusSector: "",
-                            uranusMotion: "",
-                            neptunePosition: "",
-                            neptuneSector: "",
-                            neptuneMotion: "",
-                            plutoPosition: "",
-                            plutoSector: "",
-                            plutoMotion: "",
+                            cityInput: "", cityResult: "", cityLat: "", cityLng: "",
+                            date: "", time: "", localTime: "", utcTime: "", timeZoneName: "",
+                            weather: "", news: "",
+                            sun: "", season: "",
+                            lunarPosition: "", lunarSector: "", lunarPhase: "",
+                            mercuryPosition: "", mercurySector: "", mercuryMotion: "",
+                            venusPosition: "", venusSector: "", venusMotion: "",
+                            marsPosition: "", marsSector: "", marsMotion: "",
+                            jupiterPosition: "", jupiterSector: "", jupiterMotion: "",
+                            saturnPosition: "", saturnSector: "", saturnMotion: "",
+                            uranusPosition: "", uranusSector: "", uranusMotion: "",
+                            neptunePosition: "", neptuneSector: "", neptuneMotion: "",
+                            plutoPosition: "", plutoSector: "", plutoMotion: "",
                         });
                     };
                 }
