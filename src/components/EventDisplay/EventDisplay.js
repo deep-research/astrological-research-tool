@@ -13,6 +13,8 @@ class EventDisplay extends Component {
     render() {
         return (
             <div id="EventDisplay">
+
+                {/* Saved Events Display */}
                 {(this.props.state.savedEvents.length > 0) ? <div><br /><h3>Saved Events</h3></div> : <div></div>}
                 <div id="accordion">
                     {this.props.state.savedEvents.map(event => (
@@ -50,6 +52,7 @@ class EventDisplay extends Component {
                     ))}
                 </div>
 
+                {/* New Events Display */}
                 {(this.props.state.events.length > 0) ? <div><br /><h3>New Events</h3></div> : <div></div>}
                 <div id="accordion">
                     {this.props.state.events.map(event => (
