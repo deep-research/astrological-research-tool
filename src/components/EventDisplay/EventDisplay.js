@@ -31,6 +31,71 @@ class EventDisplay extends Component {
             });
     }
 
+    saveEvent = (eventKey) => {
+        const eventObj = this.props.state.events.find(obj => obj.key === eventKey);
+
+        API.saveEvent({
+            city: eventObj.city,
+            jupiterMotion: eventObj.jupiterMotion,
+            jupiterPosition: eventObj.jupiterPosition,
+            jupiterSector: eventObj.jupiterSector,
+            lat: eventObj.lat,
+            lng: eventObj.lng,
+            localTime: eventObj.localTime,
+            marsMotion: eventObj.marsMotion,
+            marsPosition: eventObj.marsPosition,
+            marsSector: eventObj.marsSector,
+            mercuryMotion: eventObj.mercuryMotion,
+            mercuryPosition: eventObj.mercuryPosition,
+            mercurySector: eventObj.mercurySector,
+            lunarPosition: eventObj.lunarPosition,
+            lunarSector: eventObj.lunarSector,
+            lunarPhase: eventObj.lunarPhase,
+            name: eventObj.name,
+            neptuneMotion: eventObj.neptuneMotion,
+            neptunePosition: eventObj.neptunePosition,
+            neptuneSector: eventObj.neptuneSector,
+            news: eventObj.news,
+            plutoMotion: eventObj.plutoMotion,
+            plutoPosition: eventObj.plutoPosition,
+            plutoSector: eventObj.plutoSector,
+            saturnMotion: eventObj.saturnMotion,
+            saturnPosition: eventObj.saturnPosition,
+            saturnSector: eventObj.saturnSector,
+            season: eventObj.season,
+            sun: eventObj.sun,
+            timeZoneName: eventObj.timeZoneName,
+            uranusMotion: eventObj.uranusMotion,
+            uranusPosition: eventObj.uranusPosition,
+            uranusSector: eventObj.uranusSector,
+            utcTime: eventObj.utcTime,
+            venusMotion: eventObj.venusMotion,
+            venusPosition: eventObj.venusPosition,
+            venusSector: eventObj.venusSector,
+            weather: eventObj.weather,
+            userId: this.props.state.loginUserId
+        })
+        .then(res => {
+            // Remove the event from the state array without a success message
+            this.props.removeEvent(eventKey, false)
+
+            // Display the users saved events
+            this.props.displaySavedEvents(this.props.state.loginUserId)
+
+            toast.info("Event Saved Successfully!", {
+                position: toast.POSITION.BOTTOM_CENTER
+            })
+            
+        })
+        .catch(err => {
+            console.log(err)
+            
+            toast.error("The Event Was Not Saved!", {
+                position: toast.POSITION.BOTTOM_CENTER
+            });
+        });
+    }
+
     render() {
         return (
             <div id="EventDisplay">
@@ -101,7 +166,7 @@ class EventDisplay extends Component {
                             >
                                 <div className="card-body">
                                     <p> {(this.props.state.loginUserId)
-                                            ?<span><button className="iconBtn" type="button" title="Save" onClick={()=>this.props.saveEvent(event.key)}>
+                                            ?<span><button className="iconBtn" type="button" title="Save" onClick={() => this.saveEvent(event.key)}>
                                                 <i className="far fa-save fa-2x" id="saveIcon"></i>
                                             </button>&nbsp;&nbsp;</span>
                                             : <span></span>

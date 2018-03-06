@@ -462,71 +462,6 @@ class HomePage extends Component {
         });
     }
 
-    saveEvent = (eventKey) => {
-        const eventObj = this.state.events.find(obj => obj.key === eventKey);
-
-        API.saveEvent({
-            city: eventObj.city,
-            jupiterMotion: eventObj.jupiterMotion,
-            jupiterPosition: eventObj.jupiterPosition,
-            jupiterSector: eventObj.jupiterSector,
-            lat: eventObj.lat,
-            lng: eventObj.lng,
-            localTime: eventObj.localTime,
-            marsMotion: eventObj.marsMotion,
-            marsPosition: eventObj.marsPosition,
-            marsSector: eventObj.marsSector,
-            mercuryMotion: eventObj.mercuryMotion,
-            mercuryPosition: eventObj.mercuryPosition,
-            mercurySector: eventObj.mercurySector,
-            lunarPosition: eventObj.lunarPosition,
-            lunarSector: eventObj.lunarSector,
-            lunarPhase: eventObj.lunarPhase,
-            name: eventObj.name,
-            neptuneMotion: eventObj.neptuneMotion,
-            neptunePosition: eventObj.neptunePosition,
-            neptuneSector: eventObj.neptuneSector,
-            news: eventObj.news,
-            plutoMotion: eventObj.plutoMotion,
-            plutoPosition: eventObj.plutoPosition,
-            plutoSector: eventObj.plutoSector,
-            saturnMotion: eventObj.saturnMotion,
-            saturnPosition: eventObj.saturnPosition,
-            saturnSector: eventObj.saturnSector,
-            season: eventObj.season,
-            sun: eventObj.sun,
-            timeZoneName: eventObj.timeZoneName,
-            uranusMotion: eventObj.uranusMotion,
-            uranusPosition: eventObj.uranusPosition,
-            uranusSector: eventObj.uranusSector,
-            utcTime: eventObj.utcTime,
-            venusMotion: eventObj.venusMotion,
-            venusPosition: eventObj.venusPosition,
-            venusSector: eventObj.venusSector,
-            weather: eventObj.weather,
-            userId: this.state.loginUserId
-        })
-        .then(res => {
-            // Remove the event from the state array without a success message
-            this.removeEvent(eventKey, false)
-
-            // Display the users saved events
-            this.displaySavedEvents(this.state.loginUserId)
-
-            toast.info("Event Saved Successfully!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            })
-            
-        })
-        .catch(err => {
-            console.log(err)
-            
-            toast.error("The Event Was Not Saved!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            });
-        });
-    }
-
     displaySavedEvents = (userId) => {
         // Retrieve the events from the database
         API.getEvents({
@@ -607,7 +542,6 @@ class HomePage extends Component {
                     <EventDisplay
                         state={this.state}
                         removeEvent={this.removeEvent}
-                        saveEvent={this.saveEvent}
                         displaySavedEvents={this.displaySavedEvents}
                     />
                     <RemoveUser
