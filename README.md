@@ -39,7 +39,7 @@
 
 ## Deployment
 
-* Upload the project to Heroku and connect it to Mongo Lab Add-on.
+* Upload the project to Heroku and connect it to the Mongo Lab Add-on.
 
 ## Built With
 
