@@ -7,7 +7,11 @@ class RemoveUser extends Component {
     removeUser = () => {
         // Ask for confirmation
         if (this.props.state.removeUserText === "Click to Remove User") {
-            this.props.removeUserState()
+            const obj = {
+                removeUserText: "Click to Confirm!",
+                removeUserColor: "removeUserRed"
+            }
+            this.props.objSetState(obj)
         // If confirmed
         } else if (this.props.state.removeUserText === "Click to Confirm!") {
             // Get rid of the user and any associated data

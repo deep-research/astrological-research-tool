@@ -60,7 +60,23 @@ class EventForm extends Component {
                             plutoPosition: file.state.plutoPosition.trim(), plutoSector: file.state.plutoSector.trim(), plutoMotion: file.state.plutoMotion.trim()
                         }
             
-                        file.handleEventFormSubmitState(newEvent)
+                        file.objSetState({
+                            events: [...file.state.events, newEvent],
+                            name: "",
+                            cityInput: "", cityResult: "", cityLat: "", cityLng: "",
+                            date: "", time: "", localTime: "", utcTime: "", timeZoneName: "",
+                            weather: "", news: "",
+                            sun: "", season: "",
+                            lunarPosition: "", lunarSector: "", lunarPhase: "",
+                            mercuryPosition: "", mercurySector: "", mercuryMotion: "",
+                            venusPosition: "", venusSector: "", venusMotion: "",
+                            marsPosition: "", marsSector: "", marsMotion: "",
+                            jupiterPosition: "", jupiterSector: "", jupiterMotion: "",
+                            saturnPosition: "", saturnSector: "", saturnMotion: "",
+                            uranusPosition: "", uranusSector: "", uranusMotion: "",
+                            neptunePosition: "", neptuneSector: "", neptuneMotion: "",
+                            plutoPosition: "", plutoSector: "", plutoMotion: "",
+                        })
                     };
                 }
                 // , { language: 'en', key: '' }

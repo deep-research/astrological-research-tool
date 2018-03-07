@@ -1,7 +1,15 @@
 import React from "react";
 
-const RegisterModal = (props) =>
-    <div>
+const RegisterModal = (props) => {
+    const registerFormInputChange = event => {
+        const { name, value } = event.target;
+
+        props.objSetState({
+            [name]: value
+        })
+    };
+
+    return <div>
         <div className="modal fade" id="registerModal" tabIndex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
@@ -17,7 +25,7 @@ const RegisterModal = (props) =>
                             <label htmlFor="inputNameRegister" className="sr-only">Username</label>
                             <input
                                 value={props.state.registerFormName}
-                                onChange={props.registerFormInputChange.bind(this)}
+                                onChange={registerFormInputChange.bind(this)}
                                 name="registerFormName"
                                 pattern="[a-zA-Z0-9]+"
                                 title="Username should only contain letters or numbers with no spaces"
@@ -36,7 +44,7 @@ const RegisterModal = (props) =>
                             <label htmlFor="inputPasswordRegister" className="sr-only">Password</label>
                             <input
                                 value={props.state.registerFormPassword}
-                                onChange={props.registerFormInputChange.bind(this)}
+                                onChange={registerFormInputChange.bind(this)}
                                 name="registerFormPassword"
                                 pattern="[a-zA-Z0-9]+"
                                 title="Password should only contain letters or numbers with no spaces"
@@ -51,7 +59,7 @@ const RegisterModal = (props) =>
                             <label htmlFor="inputPasswordRegisterConfirm" className="sr-only">Password</label>
                             <input
                                 value={props.state.registerFormPasswordConfirm}
-                                onChange={props.registerFormInputChange.bind(this)}
+                                onChange={registerFormInputChange.bind(this)}
                                 name="registerFormPasswordConfirm"
                                 pattern="[a-zA-Z0-9]+"
                                 title="Password should only contain letters or numbers with no spaces"
@@ -74,5 +82,6 @@ const RegisterModal = (props) =>
             </div>
         </div>
     </div>
+}
 
 export default RegisterModal;

@@ -39,14 +39,6 @@ class HomePage extends Component {
         })
     }
 
-    registerFormInputChange = event => {
-        const { name, value } = event.target;
-
-        this.setState({
-            [name]: value
-        })
-    }
-
     userLogout = (showToast=true) => {
         this.setState({
             loginName: "",
@@ -232,26 +224,6 @@ class HomePage extends Component {
             }
         );
     };
-    
-    handleEventFormSubmitState = (newEvent) => {
-        this.setState({
-            events: [...this.state.events, newEvent],
-            name: "",
-            cityInput: "", cityResult: "", cityLat: "", cityLng: "",
-            date: "", time: "", localTime: "", utcTime: "", timeZoneName: "",
-            weather: "", news: "",
-            sun: "", season: "",
-            lunarPosition: "", lunarSector: "", lunarPhase: "",
-            mercuryPosition: "", mercurySector: "", mercuryMotion: "",
-            venusPosition: "", venusSector: "", venusMotion: "",
-            marsPosition: "", marsSector: "", marsMotion: "",
-            jupiterPosition: "", jupiterSector: "", jupiterMotion: "",
-            saturnPosition: "", saturnSector: "", saturnMotion: "",
-            uranusPosition: "", uranusSector: "", uranusMotion: "",
-            neptunePosition: "", neptuneSector: "", neptuneMotion: "",
-            plutoPosition: "", plutoSector: "", plutoMotion: "",
-        });
-    };
 
     // showToast can prevent a message when an event is saved instead of deleted
     removeEvent = (eventKey, showToast=true) => {
@@ -300,11 +272,8 @@ class HomePage extends Component {
         });            
     }
 
-    removeUserState = () => {
-        this.setState({
-            removeUserText: "Click to Confirm!",
-            removeUserColor: "removeUserRed"
-        })
+    objSetState = (obj) => {
+        this.setState(obj)
     }
 
     render() {
@@ -313,13 +282,13 @@ class HomePage extends Component {
                 <Navbar/>
                 <NavButtons
                     state={this.state}
-                    registerFormInputChange={this.registerFormInputChange}
                     loginFormInputChange={this.loginFormInputChange}
                     handleLoginFormSubmit={this.handleLoginFormSubmit}
                     handleRegisterFormSubmit={this.handleRegisterFormSubmit}
                     clearRegisterForm={this.clearRegisterForm}
                     clearLoginForm={this.clearLoginForm}
                     userLogout={this.userLogout}
+                    objSetState={this.objSetState}
                 />
                 <div className="container">
                     <AboutSection />
@@ -327,7 +296,7 @@ class HomePage extends Component {
                         state={this.state}
                         toastFunction={this.toastFunction}
                         eventFormInputChange={this.eventFormInputChange}
-                        handleEventFormSubmitState={this.handleEventFormSubmitState}
+                        objSetState={this.objSetState}
                     />
                     <EventDisplay
                         state={this.state}
@@ -336,7 +305,7 @@ class HomePage extends Component {
                     />
                     <RemoveUser
                         state={this.state}
-                        removeUserState={this.removeUserState}
+                        objSetState={this.objSetState}
                         userLogout={this.userLogout}
                     />
                 </div>
