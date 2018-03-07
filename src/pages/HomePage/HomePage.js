@@ -35,6 +35,12 @@ class HomePage extends Component {
         removeUserText: "Click to Remove User", removeUserColor: "removeUserGrey"
     };
 
+    toastFunction = (type, text) => {
+        toast[type](text, {
+            position: toast.POSITION.BOTTOM_CENTER
+        })
+    }
+
     registerFormInputChange = event => {
         const { name, value } = event.target;
 
@@ -52,9 +58,7 @@ class HomePage extends Component {
             removeUserColor: "removeUserGrey"
         }, () => {
             if (showToast) {
-                toast.info("Logged Out Successfully!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
+                this.toastFunction("info", "Logged Out Successfully!")
             }
         })
     }
@@ -97,15 +101,11 @@ class HomePage extends Component {
                         // Display the users events
                         this.displaySavedEvents(this.state.loginUserId)
 
-                        toast.info("Login Submitted Successfully!", {
-                            position: toast.POSITION.BOTTOM_CENTER
-                        });
+                        this.toastFunction("info", "Login Submitted Successfully!")
                     });
                 // If the password doesn't match, don't log in
                 } else {
-                    toast.error("Invalid Password!", {
-                        position: toast.POSITION.BOTTOM_CENTER
-                    });
+                    this.toastFunction("error", "Invalid Password!")
 
                     this.setState({
                         loginFormPassword: ""
@@ -113,18 +113,14 @@ class HomePage extends Component {
                 }
             // If no user was found
             } else {
-                toast.error("Invalid Username!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                });
+                this.toastFunction("error", "Invalid Username!")
             }
         })
         // If the database query fails
         .catch(err => {
             console.log(err)
 
-            toast.error("Invalid Username or Password!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            });
+            this.toastFunction("error", "Invalid Username or Password!")
 
             this.setState({
                 loginFormPassword: "",
@@ -142,9 +138,7 @@ class HomePage extends Component {
 
         // If the password confirmation doesn't match
         if (password !== passwordConfirm) {
-            toast.error("Password Confirmation Failed!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            })
+            this.toastFunction("error", "Password Confirmation Failed!")
 
             this.setState({
                 registerFormPassword: "",
@@ -164,9 +158,7 @@ class HomePage extends Component {
                 const dbUserId = res.data._id;
                 document.getElementById("registerModal").click();
 
-                toast.info("Registration Submitted Successfully!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                });
+                this.toastFunction("info", "Registration Submitted Successfully!")
 
                 // Store info for the user in state
                 this.setState({
@@ -180,9 +172,7 @@ class HomePage extends Component {
             .catch(err => {
                 console.log(err)
 
-                toast.error("Invalid Username!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
+                this.toastFunction("error", "Invalid Username!")
 
                 this.setState({
                     registerFormName: ""
@@ -253,9 +243,7 @@ class HomePage extends Component {
 
         // If the city name was approved
         if (this.state.cityResult) {
-            toast.info("Event Submitted Successfully!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            });
+            this.toastFunction("info", "Event Submitted Successfully!")
 
             const year = this.state.date.slice(0,4);
             const month = this.state.date.slice(5,7);
@@ -325,9 +313,7 @@ class HomePage extends Component {
             );
         // If the city name was not approved
         } else {
-            toast.error("City Name Invalid", {
-                position: toast.POSITION.BOTTOM_CENTER
-            });
+            this.toastFunction("error", "City Name Invalid")
         }
     };
 
@@ -345,9 +331,7 @@ class HomePage extends Component {
             events: newArray
         }, () => {
             if (showToast) {
-                toast.info("Event Removed Successfully!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
+                this.toastFunction("info", "Event Removed Successfully!")
             }
         });
     }

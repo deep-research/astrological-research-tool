@@ -169,70 +169,54 @@ class EventForm extends Component {
                             </select>
                             <div className="formSpacer"></div>
                             
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="mercury"
-                                planetCaps="Mercury"
+                                planetLower="mercury" planetCaps="Mercury"
                             />
 
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="venus"
-                                planetCaps="Venus"
+                                planetLower="venus" planetCaps="Venus"
                             />
                         </div>
 
                         <div className="col-sm-12 col-md-6">
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="mars"
-                                planetCaps="Mars"
+                                planetLower="mars" planetCaps="Mars"
                             />
 
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="jupiter"
-                                planetCaps="Jupiter"
+                                planetLower="jupiter" planetCaps="Jupiter"
                             />
 
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="saturn"
-                                planetCaps="Saturn"
+                                planetLower="saturn" planetCaps="Saturn"
                             />
 
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="uranus"
-                                planetCaps="Uranus"
+                                planetLower="uranus" planetCaps="Uranus"
                             />
 
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="neptune"
-                                planetCaps="Neptune"
+                                planetLower="neptune" planetCaps="Neptune"
                             />
 
-                            <PlanetForm
-                                state={this.props.state}
+                            <PlanetForm state={this.props.state}
                                 eventFormInputChange={this.props.eventFormInputChange}
                                 handleEventFormSubmit={this.props.handleEventFormSubmit}
-                                planetLower="pluto"
-                                planetCaps="Pluto"
+                                planetLower="pluto" planetCaps="Pluto"
                             />
                         </div>
                     </div>
