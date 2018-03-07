@@ -380,32 +380,11 @@ class HomePage extends Component {
         });            
     }
 
-    removeUser = () => {
-        // Ask for confirmation
-        if (this.state.removeUserText === "Click to Remove User") {
-            this.setState({
-                removeUserText: "Click to Confirm!",
-                removeUserColor: "removeUserRed"
-            })
-        // If confirmed
-        } else if (this.state.removeUserText === "Click to Confirm!") {
-            // Get rid of the user and any associated data
-            API.removeUser(this.state.loginUserId)
-                .then(res => {
-                    this.userLogout(false)
-
-                    toast.info("User Removed Successfully!", {
-                        position: toast.POSITION.BOTTOM_CENTER
-                    })
-                })
-                .catch(err => {
-                    console.log(err)
-
-                    toast.error("The User Was Not Removed!", {
-                        position: toast.POSITION.BOTTOM_CENTER
-                    })
-                });
-        }
+    removeUserState = () => {
+        this.setState({
+            removeUserText: "Click to Confirm!",
+            removeUserColor: "removeUserRed"
+        })
     }
 
     render() {
@@ -436,7 +415,8 @@ class HomePage extends Component {
                     />
                     <RemoveUser
                         state={this.state}
-                        removeUser={this.removeUser}
+                        removeUserState={this.removeUserState}
+                        userLogout={this.userLogout}
                     />
                 </div>
                 <ToastContainer autoClose={2250} />
