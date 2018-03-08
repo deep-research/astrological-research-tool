@@ -11,27 +11,10 @@ import API from "../../utils/API";
 import cities from "../../utils/cities.json";
 import { ToastContainer, toast } from "react-toastify";
 import bcrypt from "bcryptjs";
+import state_init from "./state_init.js"
 
 class HomePage extends Component {
-    state = {
-        events: [], savedEvents: [],
-        name: "", cityInput: "", cityResult: "", cityLat: "", cityLng: "",
-        date: "", time: "", localTime: "", utcTime: "", timeZoneName: "",
-        weather: "", news: "",
-        sun: "", season: "",
-        lunarPosition: "", lunarSector: "", lunarPhase: "",
-        mercuryPosition: "", mercurySector: "", mercuryMotion: "",
-        venusPosition: "", venusSector: "", venusMotion: "",
-        marsPosition: "", marsSector: "", marsMotion: "",
-        jupiterPosition: "", jupiterSector: "", jupiterMotion: "",
-        saturnPosition: "", saturnSector: "", saturnMotion: "",
-        uranusPosition: "", uranusSector: "", uranusMotion: "",
-        neptunePosition: "", neptuneSector: "", neptuneMotion: "",
-        plutoPosition: "", plutoSector: "", plutoMotion: "",
-        registerFormName: "", registerFormPassword: "", registerFormPasswordConfirm: "",
-        loginFormName: "", loginFormPassword: "", loginName: "", loginUserId: "",
-        removeUserText: "Click to Remove User", removeUserColor: "removeUserGrey"
-    };
+    state = state_init
 
     toastFunction = (type, text) => {
         toast[type](text, {
@@ -50,14 +33,6 @@ class HomePage extends Component {
             if (showToast) {
                 this.toastFunction("info", "Logged Out Successfully!")
             }
-        })
-    }
-
-    loginFormInputChange = event => {
-        const { name, value } = event.target;
-
-        this.setState({
-            [name]: value
         })
     }
 
@@ -171,21 +146,6 @@ class HomePage extends Component {
         }
     }
 
-    clearRegisterForm = () => {
-        this.setState({
-            registerFormName: "",
-            registerFormPassword: "",
-            registerFormPasswordConfirm: ""
-        })
-    }
-
-    clearLoginForm = () => {
-        this.setState({
-            loginFormName: "",
-            loginFormPassword: ""
-        })
-    }
-
     eventFormInputChange = event => {
         const { name, value } = event.target;
 
@@ -282,11 +242,8 @@ class HomePage extends Component {
                 <Navbar/>
                 <NavButtons
                     state={this.state}
-                    loginFormInputChange={this.loginFormInputChange}
                     handleLoginFormSubmit={this.handleLoginFormSubmit}
                     handleRegisterFormSubmit={this.handleRegisterFormSubmit}
-                    clearRegisterForm={this.clearRegisterForm}
-                    clearLoginForm={this.clearLoginForm}
                     userLogout={this.userLogout}
                     objSetState={this.objSetState}
                 />
@@ -300,6 +257,7 @@ class HomePage extends Component {
                     />
                     <EventDisplay
                         state={this.state}
+                        toastFunction={this.toastFunction}
                         removeEvent={this.removeEvent}
                         displaySavedEvents={this.displaySavedEvents}
                     />

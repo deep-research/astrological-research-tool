@@ -1,7 +1,15 @@
 import React from "react";
 
-const LoginModal = (props) =>
-    <div>
+const LoginModal = (props) => {
+    const loginFormInputChange = event => {
+        const { name, value } = event.target;
+
+        props.objSetState({
+            [name]: value
+        })
+    };
+
+    return <div>
         <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
@@ -17,7 +25,7 @@ const LoginModal = (props) =>
                             <label htmlFor="inputNameLogin" className="sr-only">Username</label>
                             <input
                                 value={props.state.loginFormName}
-                                onChange={props.loginFormInputChange.bind(this)}
+                                onChange={loginFormInputChange.bind(this)}
                                 name="loginFormName"
                                 pattern="[a-zA-Z0-9]+"
                                 title="Username should only contain letters or numbers with no spaces"
@@ -32,7 +40,7 @@ const LoginModal = (props) =>
                             <label htmlFor="inputPasswordLogin" className="sr-only">Password</label>
                             <input
                                 value={props.state.loginFormPassword}
-                                onChange={props.loginFormInputChange.bind(this)}
+                                onChange={loginFormInputChange.bind(this)}
                                 name="loginFormPassword"
                                 pattern="[a-zA-Z0-9]+"
                                 title="Password should only contain letters or numbers with no spaces"
@@ -54,5 +62,6 @@ const LoginModal = (props) =>
             </div>
         </div>
     </div>
+}
 
 export default LoginModal;

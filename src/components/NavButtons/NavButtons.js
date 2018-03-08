@@ -4,6 +4,21 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 class NavButtons extends Component {
+    clearLoginForm = () => {
+        this.props.objSetState({
+            loginFormName: "",
+            loginFormPassword: ""
+        })
+    }
+
+    clearRegisterForm = () => {
+        this.props.objSetState({
+            registerFormName: "",
+            registerFormPassword: "",
+            registerFormPasswordConfirm: ""
+        })
+    }
+
     render() {
         return (
             <div className="container-fluid" id="navButtons">
@@ -38,7 +53,7 @@ class NavButtons extends Component {
                                     data-toggle="modal"
                                     data-target="#loginModal"
                                     id="loginModalBtn"
-                                    onClick={() => this.props.clearLoginForm()}>
+                                    onClick={() => this.clearLoginForm()}>
                                         Login
                                 </button>
                                 }
@@ -49,7 +64,7 @@ class NavButtons extends Component {
                                     className="btn btn-outline-dark btn-lg nav-button"
                                     data-toggle="modal"
                                     data-target="#registerModal"
-                                    onClick={() => this.props.clearRegisterForm()}>
+                                    onClick={() => this.clearRegisterForm()}>
                                         Sign Up
                                 </button>
                             </li>
@@ -70,6 +85,7 @@ class NavButtons extends Component {
                     handleLoginFormSubmit={this.props.handleLoginFormSubmit}
                     loginFormInputChange={this.props.loginFormInputChange}
                     state={this.props.state}
+                    objSetState={this.props.objSetState}
                 />
 
                 <RegisterModal

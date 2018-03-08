@@ -4,6 +4,7 @@ import moment from "moment";
 import EventDetails from "../EventDetails/EventDetails";
 import { ToastContainer, toast } from "react-toastify";
 import API from "../../utils/API";
+import saveEvent from "./saveEvent.js"
 
 class EventDisplay extends Component {
     // Convert dates to a human readable format
@@ -29,47 +30,6 @@ class EventDisplay extends Component {
                     position: toast.POSITION.BOTTOM_CENTER
                 })
             });
-    }
-
-    saveEvent = (eventKey) => {
-        const eventObj = this.props.state.events.find(obj => obj.key === eventKey);
-
-        API.saveEvent({
-            name: eventObj.name,
-            city: eventObj.city, lat: eventObj.lat, lng: eventObj.lng,
-            lunarPosition: eventObj.lunarPosition,lunarSector: eventObj.lunarSector, lunarPhase: eventObj.lunarPhase,
-            mercuryMotion: eventObj.mercuryMotion, mercuryPosition: eventObj.mercuryPosition, mercurySector: eventObj.mercurySector,
-            venusMotion: eventObj.venusMotion, venusPosition: eventObj.venusPosition, venusSector: eventObj.venusSector,
-            marsMotion: eventObj.marsMotion, marsPosition: eventObj.marsPosition, marsSector: eventObj.marsSector,
-            jupiterMotion: eventObj.jupiterMotion, jupiterPosition: eventObj.jupiterPosition, jupiterSector: eventObj.jupiterSector,
-            saturnMotion: eventObj.saturnMotion, saturnPosition: eventObj.saturnPosition, saturnSector: eventObj.saturnSector,
-            uranusMotion: eventObj.uranusMotion, uranusPosition: eventObj.uranusPosition, uranusSector: eventObj.uranusSector,
-            neptuneMotion: eventObj.neptuneMotion, neptunePosition: eventObj.neptunePosition, neptuneSector: eventObj.neptuneSector,
-            plutoMotion: eventObj.plutoMotion, plutoPosition: eventObj.plutoPosition, plutoSector: eventObj.plutoSector,
-            sun: eventObj.sun, season: eventObj.season,  
-            timeZoneName: eventObj.timeZoneName, utcTime: eventObj.utcTime, localTime: eventObj.localTime,
-            weather: eventObj.weather, news: eventObj.news,
-            userId: this.props.state.loginUserId
-        })
-        .then(res => {
-            // Remove the event from the state array without a success message
-            this.props.removeEvent(eventKey, false)
-
-            // Display the users saved events
-            this.props.displaySavedEvents(this.props.state.loginUserId)
-
-            toast.info("Event Saved Successfully!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            })
-            
-        })
-        .catch(err => {
-            console.log(err)
-            
-            toast.error("The Event Was Not Saved!", {
-                position: toast.POSITION.BOTTOM_CENTER
-            });
-        });
     }
 
     render() {
@@ -142,7 +102,18 @@ class EventDisplay extends Component {
                             >
                                 <div className="card-body">
                                     <p> {(this.props.state.loginUserId)
-                                            ?<span><button className="iconBtn" type="button" title="Save" onClick={() => this.saveEvent(event.key)}>
+                                            ?<span><button
+                                                className="iconBtn"
+                                                type="button"
+                                                title="Save"
+                                                onClick={() =>
+                                                    saveEvent(
+                                                        event.key,
+                                                        this.props.toastFunction,
+                                                        this.props.state,
+                                                        this.props.removeEvent,
+                                                        this.props.displaySavedEvents
+                                                    )}>
                                                 <i className="far fa-save fa-2x" id="saveIcon"></i>
                                             </button>&nbsp;&nbsp;</span>
                                             : <span></span>
