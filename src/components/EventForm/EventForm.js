@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./EventForm.css";
-import PlanetForm from "../PlanetForm";
+import PlanetForm from "./PlanetForm.js";
 import handleEventFormSubmit from "./handleEventFormSubmit.js"
 
 class EventForm extends Component {

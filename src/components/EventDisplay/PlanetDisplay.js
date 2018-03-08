@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "./PlanetDisplay.css";
 
 class PlanetDisplay extends Component {
     render() {

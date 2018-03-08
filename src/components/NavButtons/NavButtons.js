@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./NavButtons.css";
-import LoginModal from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
 
 class NavButtons extends Component {
     clearLoginForm = () => {

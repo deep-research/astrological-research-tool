@@ -1,5 +1,5 @@
 import React from "react";
-import PlanetDisplay from "../PlanetDisplay";
+import PlanetDisplay from "./PlanetDisplay.js";
 
 const EventDetails = (props) =>
     <div>

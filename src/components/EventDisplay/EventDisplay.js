@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import "./EventDisplay.css";
 import moment from "moment";
-import EventDetails from "../EventDetails/EventDetails";
-import { ToastContainer, toast } from "react-toastify";
+import EventDetails from "./EventDetails.js";
 import API from "../../utils/API";
 import saveEvent from "./saveEvent.js"
 
@@ -19,16 +18,12 @@ class EventDisplay extends Component {
             .then(res => {
                 this.props.displaySavedEvents(this.props.state.loginUserId);
             
-                toast.info("Event Removed Successfully!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
+                this.props.toastFunction("info", "Event Removed Successfully!")
             })
             .catch(err => {
                 console.log(err)
 
-                toast.error("The Event Was Not Removed!", {
-                    position: toast.POSITION.BOTTOM_CENTER
-                })
+                this.props.toastFunction("error", "The Event Was Not Removed!")
             });
     }
 
@@ -128,7 +123,6 @@ class EventDisplay extends Component {
                         </div>
                     ))}
                 </div>
-                <ToastContainer autoClose={2250} />
             </div>
         );
     }

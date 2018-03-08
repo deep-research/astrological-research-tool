@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "./PlanetForm.css";
 
 class PlanetForm extends Component {
     render() {
