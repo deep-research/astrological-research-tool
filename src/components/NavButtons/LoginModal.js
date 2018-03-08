@@ -1,6 +1,67 @@
 import React from "react";
+import bcrypt from "bcryptjs";
+import API from "../../utils/API";
 
 const LoginModal = (props) => {
+    const handleLoginFormSubmit = event => {
+        event.preventDefault()
+
+        const username = props.state.loginFormName;
+        const password = props.state.loginFormPassword;
+
+        API.findUser({
+            username: username
+        })
+        .then(res => {
+            // If a user was found
+            if (res.data) {
+                const dbUser = res.data.username;
+                const dbHash = res.data.password;
+                const dbUserId = res.data._id;
+                const bcryptCheck = bcrypt.compareSync(password, dbHash);
+
+                // If the password is correct, log in
+                if (bcryptCheck) {
+                    props.objSetState({
+                        loginName: dbUser,
+                        loginUserId: dbUserId,
+                        loginFormName: "",
+                        loginFormPassword: ""
+                    })
+                    .then(() => {
+                        document.getElementById("loginModal").click();
+
+                        // Display the users events
+                        props.displaySavedEvents(props.state.loginUserId)
+
+                        props.toastFunction("info", "Login Submitted Successfully!")
+                    });
+                // If the password doesn't match, don't log in
+                } else {
+                    props.toastFunction("error", "Invalid Password!")
+
+                    props.objSetState({
+                        loginFormPassword: ""
+                    })
+                }
+            // If no user was found
+            } else {
+                props.toastFunction("error", "Invalid Username!")
+            }
+        })
+        // If the database query fails
+        .catch(err => {
+            console.log(err)
+
+            props.toastFunction("error", "Invalid Username or Password!")
+
+            props.objSetState({
+                loginFormPassword: "",
+                loginFormName: ""
+            })
+        });
+    }
+    
     const loginFormInputChange = event => {
         const { name, value } = event.target;
 
@@ -20,7 +81,7 @@ const LoginModal = (props) => {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="form-signin" onSubmit={props.handleLoginFormSubmit}>
+                        <form className="form-signin" onSubmit={handleLoginFormSubmit}>
                             <br />
                             <label htmlFor="inputNameLogin" className="sr-only">Username</label>
                             <input

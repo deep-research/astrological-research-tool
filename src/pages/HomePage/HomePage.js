@@ -36,64 +36,6 @@ class HomePage extends Component {
         })
     }
 
-    handleLoginFormSubmit = event => {
-        event.preventDefault()
-
-        const username = this.state.loginFormName;
-        const password = this.state.loginFormPassword;
-
-        API.findUser({
-            username: username
-        })
-        .then(res => {
-            // If a user was found
-            if (res.data) {
-                const dbUser = res.data.username;
-                const dbHash = res.data.password;
-                const dbUserId = res.data._id;
-                const bcryptCheck = bcrypt.compareSync(password, dbHash);
-
-                // If the password is correct, log in
-                if (bcryptCheck) {
-                    this.setState({
-                        loginName: dbUser,
-                        loginUserId: dbUserId,
-                        loginFormName: "",
-                        loginFormPassword: ""
-                    }, () => {
-                        document.getElementById("loginModal").click();
-
-                        // Display the users events
-                        this.displaySavedEvents(this.state.loginUserId)
-
-                        this.toastFunction("info", "Login Submitted Successfully!")
-                    });
-                // If the password doesn't match, don't log in
-                } else {
-                    this.toastFunction("error", "Invalid Password!")
-
-                    this.setState({
-                        loginFormPassword: ""
-                    })
-                }
-            // If no user was found
-            } else {
-                this.toastFunction("error", "Invalid Username!")
-            }
-        })
-        // If the database query fails
-        .catch(err => {
-            console.log(err)
-
-            this.toastFunction("error", "Invalid Username or Password!")
-
-            this.setState({
-                loginFormPassword: "",
-                loginFormName: ""
-            })
-        });
-    }
-
     handleRegisterFormSubmit = event => {
         event.preventDefault()
 
@@ -233,7 +175,11 @@ class HomePage extends Component {
     }
 
     objSetState = (obj) => {
-        this.setState(obj)
+        return new Promise((resolve, reject)=>{
+            this.setState(obj)
+            
+            resolve();
+        });
     }
 
     render() {
@@ -242,10 +188,11 @@ class HomePage extends Component {
                 <Navbar/>
                 <NavButtons
                     state={this.state}
-                    handleLoginFormSubmit={this.handleLoginFormSubmit}
                     handleRegisterFormSubmit={this.handleRegisterFormSubmit}
+                    displaySavedEvents={this.displaySavedEvents}
                     userLogout={this.userLogout}
                     objSetState={this.objSetState}
+                    toastFunction={this.toastFunction}
                 />
                 <div className="container">
                     <AboutSection />

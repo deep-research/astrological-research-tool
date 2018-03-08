@@ -2,7 +2,7 @@ const db = require("../models");
 
 // Defining methods for the loginController
 module.exports = {
-    findOne: function(req, res) {
+    findOne: (req, res) => {
         db.User
             // Login by searching for a matching username in the database
             .findOne({"username": req.body.username})

@@ -82,10 +82,11 @@ class NavButtons extends Component {
                 </div>
 
                 <LoginModal
-                    handleLoginFormSubmit={this.props.handleLoginFormSubmit}
                     loginFormInputChange={this.props.loginFormInputChange}
                     state={this.props.state}
                     objSetState={this.props.objSetState}
+                    toastFunction={this.props.toastFunction}
+                    displaySavedEvents={this.props.displaySavedEvents}
                 />
 
                 <RegisterModal
