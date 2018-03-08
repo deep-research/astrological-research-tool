@@ -2,8 +2,48 @@ import React, {Component} from "react";
 import "./EventForm.css";
 import PlanetForm from "./PlanetForm.js";
 import handleEventFormSubmit from "./handleEventFormSubmit.js"
+import cities from "../../utils/cities.json";
 
 class EventForm extends Component {
+    eventFormInputChange = event => {
+        const { name, value } = event.target;
+
+        this.props.objSetState(
+            {[name]: value})
+            .then(() => {
+                // If you're updating the city name
+                if (name === "cityInput") {
+                    const userCity = this.props.state.cityInput.toLowerCase();
+                    
+                    // Get the index of a matching city
+                    var indexOfCity = cities.map((x) =>
+                        {return x.name.toLowerCase(); }).indexOf(userCity);
+
+                    // If a match was found, extract the data
+                    if (cities[indexOfCity])  {
+                        const cityName = cities[indexOfCity].name;
+                        const cityLat = cities[indexOfCity].lat;
+                        const cityLng = cities[indexOfCity].lng;
+
+                        this.props.objSetState({
+                                cityResult: cityName,
+                                cityLat: cityLat,
+                                cityLng: cityLng 
+                            }
+                        );
+                    // If no match is found, clear the city data
+                    } else {
+                        this.props.objSetState({
+                            cityResult: "",
+                            cityLat: "",
+                            cityLng: ""                             
+                        })
+                    }
+                };
+            }
+        );
+    };
+
     cityValidation = () => {
         // Empty city input
         if (this.props.state.cityInput === "") {
@@ -30,7 +70,7 @@ class EventForm extends Component {
                                 type="text"
                                 maxLength="40"
                                 value={this.props.state.name}
-                                onChange={this.props.eventFormInputChange}
+                                onChange={this.eventFormInputChange}
                                 name="name"
                                 className="form-control"
                                 id="eventFormName"
@@ -43,7 +83,7 @@ class EventForm extends Component {
                                 type="text"
                                 maxLength="40"
                                 value={this.props.state.cityInput}
-                                onChange={this.props.eventFormInputChange}
+                                onChange={this.eventFormInputChange}
                                 name="cityInput"
                                 className={"form-control " + this.cityValidation()}
                                 id="eventFormCity"
@@ -55,7 +95,7 @@ class EventForm extends Component {
                             <input required
                                 type="time"
                                 value={this.props.state.time}
-                                onChange={this.props.eventFormInputChange}
+                                onChange={this.eventFormInputChange}
                                 name="time"
                                 className="form-control"
                                 id="eventFormTime"
@@ -66,7 +106,7 @@ class EventForm extends Component {
                                 min="0001-01-01"
                                 max="3999-12-31"
                                 value={this.props.state.date}
-                                onChange={this.props.eventFormInputChange}
+                                onChange={this.eventFormInputChange}
                                 name="date"
                                 className="form-control"
                                 id="eventFormDate"
@@ -79,7 +119,7 @@ class EventForm extends Component {
                                 type="text"
                                 maxLength="60"
                                 value={this.props.state.weather}
-                                onChange={this.props.eventFormInputChange}
+                                onChange={this.eventFormInputChange}
                                 name="weather"
                                 className="form-control"
                                 id="eventFormWeather"
@@ -92,7 +132,7 @@ class EventForm extends Component {
                                 type="text"
                                 maxLength="60"
                                 value={this.props.state.news}
-                                onChange={this.props.eventFormInputChange}
+                                onChange={this.eventFormInputChange}
                                 name="news"
                                 className="form-control"
                                 id="eventFormNews"
@@ -103,7 +143,7 @@ class EventForm extends Component {
                             <label htmlFor="eventFormSun">The Sun (Position, Season)</label>
                             <select
                                 value={this.props.state.sun}
-                                onChange={this.props.eventFormInputChange.bind(this)}
+                                onChange={this.eventFormInputChange.bind(this)}
                                 name="sun"
                                 className="form-control"
                                 id="eventFormSun">
@@ -115,7 +155,7 @@ class EventForm extends Component {
                             </select>
                             <select
                                 value={this.props.state.season}
-                                onChange={this.props.eventFormInputChange.bind(this)}
+                                onChange={this.eventFormInputChange.bind(this)}
                                 name="season"
                                 className="form-control"
                                 id="eventFormSeason">
@@ -130,7 +170,7 @@ class EventForm extends Component {
                             <label htmlFor="eventFormMoon">The Moon (Position, Sector, Phase)</label>
                             <select
                                 value={this.props.state.lunarPosition}
-                                onChange={this.props.eventFormInputChange.bind(this)}
+                                onChange={this.eventFormInputChange.bind(this)}
                                 name="lunarPosition"
                                 className="form-control"
                                 id="eventFormLunarPosition">
@@ -142,7 +182,7 @@ class EventForm extends Component {
                             </select>
                             <select
                                 value={this.props.state.lunarSector}
-                                onChange={this.props.eventFormInputChange.bind(this)}
+                                onChange={this.eventFormInputChange.bind(this)}
                                 name="lunarSector"
                                 className="form-control"
                                 id={"eventFormLunarSector"}>
@@ -154,7 +194,7 @@ class EventForm extends Component {
                             </select>
                             <select
                                 value={this.props.state.lunarPhase}
-                                onChange={this.props.eventFormInputChange.bind(this)}
+                                onChange={this.eventFormInputChange.bind(this)}
                                 name="lunarPhase"
                                 className="form-control"
                                 id="eventFormLunarPhase">
@@ -172,12 +212,12 @@ class EventForm extends Component {
                             
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="mercury" planetCaps="Mercury"
                             />
 
                             <PlanetForm state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="venus" planetCaps="Venus"
                             />
                         </div>
@@ -185,37 +225,37 @@ class EventForm extends Component {
                         <div className="col-sm-12 col-md-6">
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="mars" planetCaps="Mars"
                             />
 
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="jupiter" planetCaps="Jupiter"
                             />
 
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="saturn" planetCaps="Saturn"
                             />
 
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="uranus" planetCaps="Uranus"
                             />
 
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="neptune" planetCaps="Neptune"
                             />
 
                             <PlanetForm
                                 state={this.props.state}
-                                eventFormInputChange={this.props.eventFormInputChange}
+                                eventFormInputChange={this.eventFormInputChange}
                                 planetLower="pluto" planetCaps="Pluto"
                             />
                         </div>

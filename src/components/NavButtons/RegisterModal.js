@@ -1,6 +1,60 @@
 import React from "react";
+import bcrypt from "bcryptjs";
+import API from "../../utils/API";
 
 const RegisterModal = (props) => {
+    const handleRegisterFormSubmit = event => {
+        event.preventDefault()
+
+        const username = props.state.registerFormName;
+        const password = props.state.registerFormPassword;
+        const passwordConfirm = props.state.registerFormPasswordConfirm;
+
+        // If the password confirmation doesn't match
+        if (password !== passwordConfirm) {
+            props.toastFunction("error", "Password Confirmation Failed!")
+
+            props.objSetState({
+                registerFormPassword: "",
+                registerFormPasswordConfirm: ""
+            })
+        // If the password confirmation matches
+        } else {
+            const salt = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(password, salt);
+
+            // Add the user into the database
+            API.saveUser({
+                username: username,
+                password: hash
+            })
+            .then(res => {
+                const dbUserId = res.data._id;
+                document.getElementById("registerModal").click();
+
+                props.toastFunction("info", "Registration Submitted Successfully!")
+
+                // Store info for the user in state
+                props.objSetState({
+                    loginName: username,
+                    loginUserId: dbUserId,
+                    loginFormName: "",
+                    loginFormPassword: ""
+                });
+            })
+            // If the username is already in the database
+            .catch(err => {
+                console.log(err)
+
+                props.toastFunction("error", "Invalid Username!")
+
+                props.objSetState({
+                    registerFormName: ""
+                })
+            });
+        }
+    };
+
     const registerFormInputChange = event => {
         const { name, value } = event.target;
 
@@ -20,7 +74,7 @@ const RegisterModal = (props) => {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="form-signin" onSubmit={props.handleRegisterFormSubmit.bind(this)}>
+                        <form className="form-signin" onSubmit={handleRegisterFormSubmit.bind(this)}>
                             <br />
                             <label htmlFor="inputNameRegister" className="sr-only">Username</label>
                             <input

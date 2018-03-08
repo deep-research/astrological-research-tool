@@ -81,8 +81,8 @@ class AboutSection extends Component {
                 such as the <a target="_blank" rel="noopener noreferrer"
                     href="https://en.wikipedia.org/wiki/Roaring_Twenties"
                 >Roaring Twenties</a> and the <a target="_blank" rel="noopener noreferrer"
-                    href="https://en.wikipedia.org/wiki/American_Century"
-                >American Century</a>. Instead of removing the myth altogether,
+                    href="https://en.wikipedia.org/wiki/Cold_War"
+                >Cold War</a>. Instead of removing the myth altogether,
                 we may need to learn how to discover the myth for ourselves.
             </p>
             <p>

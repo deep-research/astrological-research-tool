@@ -90,9 +90,9 @@ class NavButtons extends Component {
                 />
 
                 <RegisterModal
-                    handleRegisterFormSubmit={this.props.handleRegisterFormSubmit}
                     objSetState={this.props.objSetState}
                     state={this.props.state}
+                    toastFunction={this.props.toastFunction}
                 />
             </div>
         );
