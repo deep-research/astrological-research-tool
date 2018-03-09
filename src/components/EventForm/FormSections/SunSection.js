@@ -1,52 +1,38 @@
 import React, {Component} from "react";
 
-class PlanetForm extends Component {
+class SunSection extends Component {
     render() {
         return (
             <div>
-                <label htmlFor={"eventForm" + this.props.planetCaps}>{this.props.planetCaps} (Position, Sector, Motion)</label>
-
+                <label htmlFor="eventFormSun">The Sun (Position, Season)</label>
                 <select
-                    value={this.props.state[this.props.planetLower + "Position"]}
+                    value={this.props.state.sun}
                     onChange={this.props.eventFormInputChange.bind(this)}
-                    name={this.props.planetLower + "Position"}
+                    name="sun"
                     className="form-control"
-                    id={"eventForm" + this.props.planetCaps + "Position"}>
+                    id="eventFormSun">
                     <option value="Above Horizon, Ascending">Above Horizon, Ascending</option>
                     <option value="Above Horizon, Descending">Above Horizon, Descending</option>
                     <option value="Below Horizon, Descending">Below Horizon, Descending</option>
                     <option value="Below Horizon, Ascending">Below Horizon, Ascending</option>
                     <option defaultValue=""></option>
                 </select>
-
                 <select
-                    value={this.props.state[this.props.planetLower + "Sector"]}
+                    value={this.props.state.season}
                     onChange={this.props.eventFormInputChange.bind(this)}
-                    name={this.props.planetLower + "Sector"}
+                    name="season"
                     className="form-control"
-                    id={"eventForm" + this.props.planetCaps + "Sector"}>
+                    id="eventFormSeason">
                     <option value="Spring">Spring</option>
                     <option value="Summer">Summer</option>
                     <option value="Autumn">Autumn</option>
                     <option value="Winter">Winter</option>
                     <option defaultValue=""></option>
                 </select>
-
-                <select
-                    value={this.props.state[this.props.planetLower + "Motion"]}
-                    onChange={this.props.eventFormInputChange.bind(this)}
-                    name={this.props.planetLower + "Motion"}
-                    className="form-control"
-                    id={"eventForm" + this.props.planetCaps + "Motion"}>
-                    <option value="Direct">Direct</option>
-                    <option value="Retrograde">Retrograde</option>
-                    <option defaultValue=""></option>
-                </select>
-                
                 <div className="formSpacer"></div>
             </div>
         )
     }
 }
 
-export default PlanetForm;
+export default SunSection;

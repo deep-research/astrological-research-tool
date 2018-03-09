@@ -3,6 +3,7 @@ import "./EventDisplay.css";
 import moment from "moment";
 import EventDetails from "./EventDetails.js";
 import API from "../../utils/API";
+import saveEventObj from "./saveEventObj"
 
 class EventDisplay extends Component {
     // Convert dates to a human readable format
@@ -14,47 +15,7 @@ class EventDisplay extends Component {
     saveEvent = (eventKey) => {
         const eventObj = this.props.state.events.find(obj => obj.key === eventKey);
     
-        API.saveEvent({
-            name: eventObj.name,
-            city: eventObj.city,
-            lat: eventObj.lat,
-            lng: eventObj.lng,
-            lunarPosition: eventObj.lunarPosition,
-            lunarSector: eventObj.lunarSector,
-            lunarPhase: eventObj.lunarPhase,
-            mercuryMotion: eventObj.mercuryMotion,
-            mercuryPosition: eventObj.mercuryPosition,
-            mercurySector: eventObj.mercurySector,
-            venusMotion: eventObj.venusMotion,
-            venusPosition: eventObj.venusPosition,
-            venusSector: eventObj.venusSector,
-            marsMotion: eventObj.marsMotion,
-            marsPosition: eventObj.marsPosition,
-            marsSector: eventObj.marsSector,
-            jupiterMotion: eventObj.jupiterMotion,
-            jupiterPosition: eventObj.jupiterPosition,
-            jupiterSector: eventObj.jupiterSector,
-            saturnMotion: eventObj.saturnMotion, 
-            saturnPosition: eventObj.saturnPosition,
-            saturnSector: eventObj.saturnSector,
-            uranusMotion: eventObj.uranusMotion,
-            uranusPosition: eventObj.uranusPosition,
-            uranusSector: eventObj.uranusSector,
-            neptuneMotion: eventObj.neptuneMotion,
-            neptunePosition: eventObj.neptunePosition,
-            neptuneSector: eventObj.neptuneSector,
-            plutoMotion: eventObj.plutoMotion,
-            plutoPosition: eventObj.plutoPosition,
-            plutoSector: eventObj.plutoSector,
-            sun: eventObj.sun,
-            season: eventObj.season,  
-            timeZoneName: eventObj.timeZoneName,
-            utcTime: eventObj.utcTime,
-            localTime: eventObj.localTime,
-            weather: eventObj.weather,
-            news: eventObj.news,
-            userId: this.props.state.loginUserId
-        })
+        API.saveEvent(saveEventObj(eventObj, this.props.state.loginUserId))
         .then(res => {
             // Remove the event from the state array without a success message
             this.removeEvent(eventKey, false)
