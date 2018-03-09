@@ -34,25 +34,6 @@ class HomePage extends Component {
         })
     }
 
-    // showToast can prevent a message when an event is saved instead of deleted
-    removeEvent = (eventKey, showToast=true) => {
-        const oldArray = this.state.events;
-
-        // Remove the event from the event array
-        const newArray = oldArray.filter(obj => {
-            return obj.key !== eventKey;
-        });
-
-        // Remove the event from the database
-        this.setState({
-            events: newArray
-        }, () => {
-            if (showToast) {
-                this.toastFunction("info", "Event Removed Successfully!")
-            }
-        });
-    }
-
     displaySavedEvents = (userId) => {
         // Retrieve the events from the database
         API.getEvents({
@@ -109,8 +90,8 @@ class HomePage extends Component {
                     />
                     <EventDisplay
                         state={this.state}
+                        objSetState={this.objSetState}
                         toastFunction={this.toastFunction}
-                        removeEvent={this.removeEvent}
                         displaySavedEvents={this.displaySavedEvents}
                     />
                     <RemoveUser

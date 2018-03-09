@@ -27,6 +27,25 @@ class EventDisplay extends Component {
             });
     }
 
+    // showToast can prevent a message when an event is saved instead of deleted
+    removeEvent = (eventKey, showToast=true) => {
+        const oldArray = this.props.state.events;
+
+        // Remove the event from the event array
+        const newArray = oldArray.filter(obj => {
+            return obj.key !== eventKey;
+        });
+
+        // Remove the event from the database
+        this.props.objSetState({
+            events: newArray
+        }).then(() => {
+            if (showToast) {
+                this.props.toastFunction("info", "Event Removed Successfully!")
+            }
+        });
+    }
+
     render() {
         return (
             <div id="EventDisplay">
@@ -106,14 +125,14 @@ class EventDisplay extends Component {
                                                         event.key,
                                                         this.props.toastFunction,
                                                         this.props.state,
-                                                        this.props.removeEvent,
+                                                        this.removeEvent,
                                                         this.props.displaySavedEvents
                                                     )}>
                                                 <i className="far fa-save fa-2x" id="saveIcon"></i>
                                             </button>&nbsp;&nbsp;</span>
                                             : <span></span>
                                         }
-                                        <button className="iconBtn" type="button" title="Remove" onClick={()=>this.props.removeEvent(event.key)}>
+                                        <button className="iconBtn" type="button" title="Remove" onClick={()=>this.removeEvent(event.key)}>
                                             <i className="fas fa-trash-alt fa-2x" id="removeIcon"></i>
                                         </button>&nbsp;&nbsp;
                                         <b>City:</b> {event.city} ({event.lat}, {event.lng})</p>
