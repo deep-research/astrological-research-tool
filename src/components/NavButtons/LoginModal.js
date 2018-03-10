@@ -32,7 +32,7 @@ const LoginModal = (props) => {
                         document.getElementById("loginModal").click();
 
                         // Display the users events
-                        props.displaySavedEvents(props.state.loginUserId)
+                        props.displaySavedEvents(dbUserId)
 
                         props.toastFunction("info", "Login Submitted Successfully!")
                     });
