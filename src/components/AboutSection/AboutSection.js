@@ -88,7 +88,7 @@ class AboutSection extends Component {
             <p>
                 For more information: <a
                     href="https://github.com/deep-research/astrological-research-tool"
-                    target="_blank" rel="noopener noreferrer">Github Repository</a>.
+                    target="_blank" rel="noopener noreferrer">Github Repository</a>
             </p>
         </div>
         );
