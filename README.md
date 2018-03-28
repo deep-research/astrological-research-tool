@@ -37,11 +37,11 @@
 7. `yarn start` to get it running.
 8. It will open in `localhost:3000`.
 
-## Deployment
+### Deployment
 
 * Upload the project to Heroku and connect it to the Mongo Lab Add-on.
 
-## Built With
+### Built With
 
 * [All Cities JSON by Randy Meech](https://gist.github.com/randymeech/5dabf9bf2831d9467ea6) - An array of objects containing global city names and coordinates.
 * [Timezoner](https://www.npmjs.com/package/timezoner) - Node.js client library for accessing Google Time Zone API.
@@ -59,6 +59,6 @@
 * [README-Template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) - A template to make good README.md.
 
 
-## Author
+### Author
 
 * [Deep Research](https://github.com/deep-research)
