@@ -11,7 +11,7 @@ class AboutSection extends Component {
                     target="_blank" rel="noopener noreferrer"
                     href="https://en.wikipedia.org/wiki/Metaphysics"
                     >metaphysical</a> research that studies time in more
-                practical manner when compared to the <a
+                    practical manner when compared to the <a
                     href="https://en.wikipedia.org/wiki/Mythology"
                     target="_blank" rel="noopener noreferrer"
                     >mythologically</a> based methods of <a
