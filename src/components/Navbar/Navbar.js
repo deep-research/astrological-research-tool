@@ -8,7 +8,7 @@ class Navbar extends Component {
                 <nav className="navbar navbar-expand-md navbar-dark
                     d-flex justify-content-around py-3 header"
                     id="topBar">
-                    <a className="navbar-brand" id="title" href=".">The Astrological Research Tool</a>
+                    <a className="navbar-brand" id="title" href=".">The Astronomical Research Tool</a>
                 </nav>
             </div>
         );
