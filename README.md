@@ -1,7 +1,7 @@
 ## The Astronomical Research Tool
 
 * A full stack astronomical data application built with React and Mongoose.  
-[The Astrological Research Tool](https://astrological-research-tool.herokuapp.com/)
+[The Astronomical Research Tool](https://astronomical-research-tool.herokuapp.com/)
 
 ### Project Concept
 
